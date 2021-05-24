@@ -2,6 +2,10 @@ body{
   margin: 0;
   font-family: 'Source Sans Pro';
 }
+/* 배경210524 */
+#wrap{
+  background-color:powderblue;
+}
 
 a{
   text-decoration: none;
@@ -33,11 +37,75 @@ a{
 
 .navbar__menu li{
   padding: 8px 12px;
+  /* 포지션변경 */
+  position:relative;
+  text-align:center;
 }
 
+/* 여기부터 하단 메뉴*/
+.navbar__menu li ul{
+  display: none;
+  position: absolute;
+  margin-right:50px;
+  left:0;
+  list-style-type: none;
+  background-color:powderblue;
+}
+
+.navbar__menu li a{
+  -webkit-transition: all 0.5s ease-in-out 0s;
+  -moz-transition: all 0.5s ease-in-out 0s;
+  -o-transition: all 0.5s ease-in-out 0s;
+  -ms-transition: all 0.5s ease-in-out 0s;
+  transition: all 0.5s ease-in-out 0s;
+  color: #888888;
+}
+
+
+.navbar__menu li a:hover, .navbar__menu li:hover > a {
+    color:green;
+    background-color: yellow;
+}
+
+.navbar__menu ul {
+    display: none;
+    margin: 0;
+    padding: 0;
+    width: 163px;
+    position: absolute;
+    top: 36px;
+    left: 0;
+    background: #f1efef;
+}
+
+.navbar__menu ul li {
+  padding:0;
+}
+
+.navbar__menu ul li a {
+    display: block;
+    padding: 8px 12px;
+    background: #e8e3e3;
+}
+
+.navbar__menu li li{
+  font-size: 12px;
+}
+/* 여기까지 하단 메뉴*/
+
 .navbar__menu li:hover{
+  /* 동적기능 */
+  transition: all 0.5s ease-in-out 0s;
+
   background-color: powderblue;
   border-radius: 4px;
+}
+
+/* 하단 메뉴설정 */
+.navbar__menu li:hover ul{
+  display:block;
+  padding:0;
+  width:100%;
 }
 
 .navbar__icons{
@@ -59,6 +127,8 @@ a{
   color: tomato;
 }
 
+/* **하단 메뉴부분 설정 안 했음 */
+/* 화면이 줄어든 경우 768px */
 @media screen and (max-width: 768px){
   .navbar{
     flex-direction: column;

@@ -10,49 +10,68 @@
     <script src="https://kit.fontawesome.com/8b15bac25a.js" crossorigin="anonymous"></script>
     <script src="main.js" defer></script>
 
-    <!-- <style>
-      * {margin:0; padding:0; font-family:궁서체;}
-      #wrap{background-color:lightblue;}
-    </style> -->
   </head>
-  <nav class="navbar">
-    <div class="navbar__logo">
-      <i class="fas fa-trophy"></i>
-      <a href="">모랭</a>
-    </div>
-
-    <ul class="navbar__menu">
-       <li><a href=""></a>Home</li>
-       <li><a href=""></a>Ranking</li>
-       <li><a href=""></a>community</li>
-       <li><a href=""></a>F&Q</li>
-       <li><a href=""></a>etc</li>
-    </ul>
-
-    <ul class="navbar__icons">
-      <li><i class="fab fa-facebook-square"></i></li>
-      <li><i class="fas fa-comment"></i></li>
-      <li><input type="button" name="" value="Login"></li>
-    </ul>
-
-    <a href="#" class="navbar__toogleBtn">
-      <i class="fas fa-bars"></i>
-    </a>
-
-  </nav>
   <body>
-    <!--  bgcolor="#B3DEES" -->
-    <!-- 상단 -->
-    <!-- <div id="wrap" style="width:100%; height:100%;">
+    <div id="wrap">
+      <!-- 상단 -->
       <div id="header">
-        <div class="Navi" style="padding:20px;">
-          <h3 style="color:powderblue; background-color:#FAE6B1; ">Ranking
-          <input style="background-color:#31525B; float:right; margin-top:2px; margin-right:2px;" type="button" value="login" onclick=""></h3>
-        </div>
-      </div> -->
+        <nav class="navbar">
+          <div class="navbar__logo">
+            <i class="fas fa-trophy"></i>
+            <a href="">모랭</a>
+          </div>
 
+          <ul class="navbar__menu">
+            <!-- 하단 메뉴 추가 -->
+             <li><a href=""></a>Home
+               <ul>
+                 <li><a href="#">창주</a></li>
+                 <li><a href="#">조장님</a></li>
+               </ul>
+             </li>
+             <li><a href=""></a>Ranking
+               <ul>
+                 <li><a href="#">나가신다</a></li>
+                 <li><a href="#">길을</a></li>
+                 <li><a href="#">비켜라</a></li>
+               </ul>
+             </li>
+             <li><a href=""></a>community
+               <ul>
+                 <li><a href="#">창주하나</a></li>
+                 <li><a href="#">창주둘</a></li>
+                 <li><a href="#">창주셋</a></li>
+               </ul>
+             </li>
+             <li><a href=""></a>F&Q
+               <ul>
+                 <li><a href="#">창주하나</a></li>
+                 <li><a href="#">창주둘</a></li>
+                 <li><a href="#">창주셋</a></li>
+               </ul>
+             </li>
+             <li><a href=""></a>etc
+               <ul>
+                 <li><a href="#">창주하나</a></li>
+                 <li><a href="#">창주둘</a></li>
+                 <li><a href="#">창주셋</a></li>
+               </ul>
+             </li>
+          </ul>
 
-      <!-- 메인 -->
+          <ul class="navbar__icons">
+            <li><i class="fab fa-facebook-square"></i></li>
+            <li><i class="fas fa-comment"></i></li>
+            <li><input type="button" name="" value="Login"></li>
+          </ul>
+
+          <a href="#" class="navbar__toogleBtn">
+            <i class="fas fa-bars"></i>
+          </a>
+        </nav>
+      </div>
+
+        <!-- 메인 -->
       <div id="content" style="text-align:center;">
         <p class="main_image">
           <img src="ranking.png">
@@ -61,7 +80,7 @@
           <input type="search" name="" value="" placeholder=" 입력" style="width:280px; height:40px; font-size:16px;">
           <input type="button" value="검색" style="background-color:#31525B; width:50px; height:40px; font-size:16px;">
         </div>
-        <div class="ranking_station" style="padding:20px; margin:auto; margin-bottom: 30px; width:600px; height:300px; background-color:#FFF;">
+        <div class="ranking_station" style="padding:20px; margin:auto; margin-bottom: 30px; width:600px; height:350px; background-color:#FFF;">
           <h3 class="title">Ranking</h3>
             <!-- 순위표 -->
             <table class="ranking_table" style="width:40%; float:left; margin:20px; line-height:2;" border=;>
@@ -116,7 +135,7 @@
         </div>
       </div>
 
-      <!-- 하단 -->
+        <!-- 하단 -->
       <div id="footer" style= "background-color:white; text-align:center;">
         <hr width="100%;">
         <p class="team_Explan" style="padding-top:30px;">
