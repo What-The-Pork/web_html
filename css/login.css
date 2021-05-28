@@ -1,4 +1,6 @@
 body {
+  margin:0;
+  padding:0;
   background: #eee !important;
 }
 
@@ -48,6 +50,13 @@ input::placeholder{
   color:#aaa;
 }
 
+input:focus {
+  transition: all 0.25s;
+  box-shadow: 0 0 5px #428bca;
+  border: 1px solid #357ebd;
+  outline:none;
+}
+
 .form-signin input[type=password] {
   margin-bottom: 20px;
   border-bottom-left-radius: 5px;
@@ -71,7 +80,23 @@ input::placeholder{
 }
 
 .btn:hover{
-  color: #fff;
   background-color: #3276b1;
   border-color: #285e8e;
+  cursor:pointer;
+  transition: all 0.9s;
+  box-shadow: 100% 0 0 0 inset;
+}
+.forget-signup{
+  margin:10px 0 0 0;
+  text-align:center;
+}
+
+span{
+  display:inline;
+}
+
+span a{
+  text-decoration: none;
+  color:black;
+  font-size: 12px;
 }
