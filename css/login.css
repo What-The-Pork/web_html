@@ -1,3 +1,5 @@
+/* https://kimyc1223.github.io/2019-10-14-WEB001/ */
+
 body {
   margin:0;
   padding:0;
@@ -7,6 +9,8 @@ body {
 .wrapper {
   margin-top: 80px;
   margin-bottom: 80px;
+  color:#777;
+  font-size:12px;
 }
 
 .form-signin {
@@ -48,6 +52,7 @@ input {
 
 input::placeholder{
   color:#aaa;
+  font-size: 14px;
 }
 
 input:focus {
@@ -55,6 +60,10 @@ input:focus {
   box-shadow: 0 0 5px #428bca;
   border: 1px solid #357ebd;
   outline:none;
+}
+
+input:focus placeholder {
+  transition:translate(-12%,-50%) scale(75%);
 }
 
 .form-signin input[type=password] {
@@ -70,21 +79,44 @@ input:focus {
 }
 
 .btn{
-  border:1px solid #357ebd;
+  position:relative;
+  left:50%;
+  transform: translateX(-50%);
+  /* margin-bottom: 40px; */
+  width:100%;
+  height:45px;
+  background: linear-gradient(125deg,#81ecec,#6c5ce7,#81ecec);
+  background-position: left;
+  background-size: 200%;
+  color:white;
+  font-weight: bold;
+  font-size: 18px;
+  border:none;
+  border-radius:5px;
+  cursor:pointer;
+  transition: 0.75s;
+  /* display:inline;p */
+
+  /* border:1px solid #357ebd;
   border-radius:5px;
   width:100%;
   height:45px;
-  background-color: #428bca;
-  color: #fff;
+  background:linear-gradient(to left, #428bca, #45a9ff); */
+  /* background-color : #428bca; */
+  /* color: #fff;
   font-size: 18px;
+  cursor:pointer; */
+
 }
 
 .btn:hover{
-  background-color: #3276b1;
+  /* background: linear-gradient(to left, #3276b1, #094982);
   border-color: #285e8e;
   cursor:pointer;
   transition: all 0.9s;
-  box-shadow: 100% 0 0 0 inset;
+  box-shadow: 100% 0 0 0 inset; */
+  color:white;
+  background-position: right;
 }
 .forget-signup{
   margin:10px 0 0 0;
@@ -97,6 +129,6 @@ span{
 
 span a{
   text-decoration: none;
-  color:black;
+  color:#777;
   font-size: 12px;
 }

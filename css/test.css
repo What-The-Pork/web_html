@@ -1,152 +1,177 @@
-body{
-  margin: 0;
-  font-family: 'Source Sans Pro';
+body {
+  margin:0;
+  padding:0;
+  background: #eee !important;
 }
 
-a{
-  text-decoration: none;
-  color: powderblue;
-}
-
-.navbar{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #FAE6B1;
-  padding: 8px 12px;
-}
-
-.navbar__logo{
-  font-size: 24px;
-  color: tomato;
-}
-
-.navbar__logo i {
-  color: tomato;
-}
-
-.navbar__menu{
-  display: flex;
-  list-style: none;
-  padding-left: 0;
-}
-
-.navbar__menu li{
-  padding: 8px 12px;
+.wrapper {
+  margin-top: 80px;
+  margin-bottom: 80px;
+  color:#777;
+  font-size:12px;
+  overflow: hidden;
   position:relative;
-  text-align:center;
 }
 
-.navbar__menu li ul{
-  display: none;
+.form-signin {
+  max-width: 380px;
+  padding: 15px 35px 45px;
+  margin: 0 auto;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.centered {
+  width: 300px;
+  margin: auto;
+  position: relative;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.account {
+  width: 100%;
+  height: 60px;
+  overflow: hidden;
+  position: relative;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+label {
   position: absolute;
-  margin-right:50px;
-  left:0;
-  list-style-type: none;
-  background-color:powderblue;
+  top: 15px;
+  cursor: text;
+  transition: 0.25s ease;
 }
 
-.navbar__menu li a{
-  -webkit-transition: all 0.5s ease-in-out 0s;
-  -moz-transition: all 0.5s ease-in-out 0s;
-  -o-transition: all 0.5s ease-in-out 0s;
-  -ms-transition: all 0.5s ease-in-out 0s;
-  transition: all 0.5s ease-in-out 0s;
-  color: #888888;
-}
-
-
-.navbar__menu li a:hover, .navbar__menu li:hover > a {
-    color:green;
-    background-color: yellow;
-}
-
-.navbar__menu ul {
-    display: none;
-    margin: 0;
-    padding: 0;
-    width: 163px;
-    position: absolute;
-    top: 36px;
-    left: 0;
-    background: #f1efef;
-}
-
-.navbar__menu ul li {
-  padding:0;
-}
-
-.navbar__menu ul li a {
-    display: block;
-    padding: 8px 12px;
-    background: #e8e3e3;
-}
-
-
-.navbar__menu li:hover {
-  transition: all 0.5s ease-in-out 0s;
-  background-color: powderblue;
-  border-radius: 4px;
-}
-
-.navbar__menu li:hover ul{
-  display:block;
-  padding:0;
+.centered input {
+  position:absolute;
+  display: block;
   width:100%;
-  /* width:80px; */
+  height:50px;
+  border: none;
+  transition: 0.3s ease;
 }
 
-.navbar__icons{
-  list-style: none;
-  color: white;
-  display: flex;
-  padding-left: 0;
-}
-
-.navbar__icons li {
-  padding: 8px 12px;
-}
-
-.navbar__toogleBtn{
-  display: none;
+input:valid ~ label {
   position: absolute;
-  right: 32px;
-  font-size: 24px;
-  color: tomato;
+  top: 15px;
+  font: 15px;
+  color: white;
+
+}
+input:focus {
+  outline: none;
 }
 
-/* 밑에 따로 적용 필요 */
-@media screen and (max-width: 768px){
-  .navbar{
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 8px 24px;
-  }
+input:focus ~ label {
+  top: -2px;
+  font: 700 12px Roboto;
+  color: #2196f3;
+  z-index: 5;
+  transition: 0.5s;
+}
+input:focus ~ .bar:before {
+  transform: translateX(0);
+  transition: all 0.25s;
+  box-shadow: 0 0 5px #428bca;
+}
+/* 입력창 클릭 시 그림자 */
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #333 inset;
+  -webkit-text-fill-color: BLACK !important;
+}
 
-  .navbar__menu{
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-  }
+span{
+  display:inline;
+}
 
-  .navbar__menu li {
-    width: 100%;
-    text-align: center;
-  }
+span a{
+  text-decoration: none;
+  color:#777;
+  font-size: 12px;
+}
 
-  .navbar__icons {
-    display: none;
-    justify-content: center;
-    width: 100%;
-  }
+.bar {
+  background: #aaa;
+  content: "";
+  width: auto;
+  height: 1px;
+  transition: 0.3s ease;
+  position: relative;
+}
+.bar:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 150%;
+  background: #999;
+  transform: translateX(100%);
+}
 
-  .navbar__toogleBtn{
-    display: block;
-  }
+::selection {
+  background: rgba(33, 150, 243, 0.3);
+}
 
-  .navbar__menu.active,
-  .navbar__icons.active {
-    display: flex;
-  }
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 30px;
+}
+.form-signin .checkbox {
+  display:block;
+  margin-bottom:30px;
+}
+.form-signin .form-control {
+  position: relative;
+  font-size: 16px;
+  height: auto;
+  width:100%;
+  padding: 20px 20px 10px 0px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+
+.checkbox {
+  position:relative;
+}
+
+/* https://kimyc1223.github.io/2019-10-14-WEB001/ */
+.btn{
+  position:relative;
+  left:50%;
+  transform: translateX(-50%);
+  /* margin-bottom: 40px; */
+  width:100%;
+  height:45px;
+  background: linear-gradient(125deg,#81ecec,#6c5ce7,#81ecec);
+  background-position: left;
+  background-size: 200%;
+  color:white;
+  font-weight: bold;
+  font-size: 18px;
+  border:none;
+  border-radius:5px;
+  cursor:pointer;
+  transition: 0.75s;
+}
+
+.btn:hover{
+  color:white;
+  background-position: right;
+}
+
+.forget-signup{
+  margin:10px 0 0 0;
+  text-align:center;
 }
