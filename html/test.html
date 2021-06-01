@@ -12,12 +12,12 @@
         <p><a href="index.html"><img src="../images/모두의랭킹2.png" width="100px" alt=""></a></p>
         <div class="centered">
           <div class="account">
-            <input type="text" class="form-control" name="username" required="" autofocus/>
+            <input type="text" class="form-control" id="id" name="username" required="" autofocus/>
             <label for="name">ID</label>
             <div class="bar"></div>
           </div>
           <div class="account">
-            <input type="password" class="form-control" name="password" required=""/>
+            <input type="password" class="form-control" id="pwd" name="password" required=""/>
             <label for="name">Password</label>
             <div class="bar"></div>
           </div>
@@ -26,11 +26,12 @@
           <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe">
           <span>자동 로그인</span>
         </label>
-        <button class="btn" type="submit">Login</button>
+        <button class="btn" type="submit" onclick="location.href='#'">Login</button>
         <p class="forget-signup">
-          <span class="forget"><a href="#">아이디 |</a><a href="#"> 비밀번호 찾기</a></span>
+          <span class="forget"><a href="#">아이디 |</a><a> 비밀번호 찾기</a></span>
           <span clss="signup"><a href="#">| 회원가입</a></span>
         </p>
+          <!-- <input type="button" name="" value=""> -->
       </form>
     </div>
   </body>
