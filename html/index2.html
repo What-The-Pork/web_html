@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>index2</title>
     <link rel="stylesheet" href="../css/index2.css">
+    <script type="text/javascript" src="../js/index2.js"></script>
   </head>
   <body>
     <div class="wrap">
@@ -22,7 +23,16 @@
         </div>
         <div class="category">
           <ul>
-            <li><a href="#">영화</a></li>
+            <li><a href="#">영화</a>
+              <ul class="view" id="view">
+                <li><a href="#">코미디</a></li>
+                <li><a href="#">멜로</a></li>
+                <li><a href="#">연애</a></li>
+                <li><a href="#">로맨스</a></li>
+                <li><a href="#">성인</a></li>
+                <li><a href="#">공</a></li>
+              </ul>
+            </li>
             <li><a href="#">게임</a></li>
             <li><a href="#">스포츠</a></li>
             <li><a href="#">드라마</a></li>
@@ -33,13 +43,15 @@
             <li><a href="#">인물</a></li>
             <li><a href="#">주식</a></li>
             <li><a href="#">연예</a></li>
-            <li><a href="#">더보기▼</a></li>
+            <button type="button" name="button" onclick="view2()"></button>
+            <button type="button" onclick="javascript:display();">더보기▼</button>
+            <button type="button" onclick="display();">더보기▲</button>
           </ul>
         </div>
       </div>
       <div id="footer">
-        <span>수원시 에이비씨동 디이에프구 제트제트제트 빌딩 12344호</span>
-        <a href="#">고객센터</a>
+        <p>수원시 에이비씨동 디이에프구 제트제트제트 빌딩 12344호</p>
+        <a href="https://help.naver.com/">고객센터</a>
       </div>
     </div>
   </body>

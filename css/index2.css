@@ -30,6 +30,14 @@ a {
   width:540px;
   height:40px;
   padding-left:10px;
+  border:1px solid #ddd;
+  border-radius: 10px;
+}
+
+.search input:focus{
+  outline:none;
+  box-shadow:0 2px 5px black;
+
 }
 
 ul{
@@ -37,16 +45,20 @@ ul{
   list-style: none;
   font-size: 13px;
   justify-content: center;
-  margin-top:10px;
+  margin-top:28px;
 }
 
 ul li {
   padding: 5px 10px;
 }
 
-ul li a img{
-  width:70px;
+ul li:last-child{}
+
+ul ul{
+  display:none;
 }
+
 #footer{
-  margin-top:30px;
+  margin-top:150px;
+  font-size: 12px;
 }
