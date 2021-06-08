@@ -18,7 +18,8 @@ text-decoration: none;
 }
 
 .form-signin {
-  max-width: 380px;
+  max-width: 500px;
+  height: 700px;
   padding: 15px 35px 45px;
   margin: 0 auto;
   background-color: #fff;
@@ -27,6 +28,12 @@ text-decoration: none;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+}
+
+.form-signin p {
+  margin-top:80px;
+  margin-bottom:70px;
+  text-align:center;
 }
 
 .centered {
@@ -54,6 +61,8 @@ label {
   cursor: text;
   transition: 0.25s ease;
 }
+
+
 
 .centered input {
   position:absolute;
@@ -127,6 +136,7 @@ span a{
 .form-signin .form-signin-heading,
 .form-signin .checkbox {
   margin-bottom: 30px;
+  margin-top: 30px;
 }
 .form-signin .checkbox {
   display:block;
