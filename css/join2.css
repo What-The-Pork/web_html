@@ -1,0 +1,88 @@
+body {
+  margin:0;
+  padding:0;
+  background:#eee !important;
+}
+
+hr{
+  width: 90%;
+  border:1px solid #eee;
+}
+
+a{
+  text-decoration: none;
+}
+
+li {
+  display:flex;
+  list-style: none;
+  padding-left: 10px;
+}
+
+input{
+  border: 1px solid #eee;
+}
+
+h4{
+  margin:10px 0;
+}
+
+#wrapper {
+  background:white;
+  text-align:center;
+  margin:auto;
+  width:500px;
+  height:100%;
+  border-radius: 10px;
+  margin-top:50px;s
+  /* box-shadow:; */
+}
+
+.button img{
+  width:10px;
+  padding:20px;
+}
+
+.title{
+  margin-top:0;
+  margin-bottom:20px;
+}
+
+.logo img{
+  margin:70px 0 0 0;
+  width:100px;
+}
+
+.account_info{
+  font-size: 12px;
+  color:#aaa;
+  text-align:left;
+  padding-left:80px;
+}
+
+.account_info input{
+  width:330px;
+  height:30px;
+  margin-bottom:10px;
+}
+
+.email{
+  margin-bottom:20px;
+}
+
+
+.confirm, .cancle{
+  width:200px;
+  height:75px;
+  margin:0 15px 30px;
+  border:1px solid #eee;
+  background:#ffe699;
+  font-size:24px;
+  color:white;
+  cursor:pointer;
+}
+
+.cancle{
+  background:white;
+  color:black;
+}
