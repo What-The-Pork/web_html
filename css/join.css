@@ -19,6 +19,11 @@ li {
   padding-left: 10px;
 }
 
+footer{
+  text-align: center;
+  font-size: 12px;
+  margin-top:30px;
+}
 
 #wrapper {
   background:white;
