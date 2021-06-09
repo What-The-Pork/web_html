@@ -19,6 +19,15 @@ li {
   padding-left: 10px;
 }
 
+button{
+  position:relative;
+  top:-6px;
+  left:0;
+  background:none;
+  border:none;
+  font-size: 18px;
+}
+
 footer{
   text-align: center;
   font-size: 12px;
@@ -51,7 +60,7 @@ footer{
   width:100px;
 }
 
-.terms{
+.terms_check{
   margin: 50px 0;
 }
 
@@ -61,6 +70,14 @@ footer{
   width:25px;
   height:25px;
   margin-right:10px;
+}
+
+.term1, .term3 {
+  left:135px;
+}
+
+.term2 {
+  left:76px;
 }
 
 .confirm, .cancle{
@@ -77,4 +94,21 @@ footer{
 .cancle{
   background:white;
   color:black;
+}
+
+.background{
+  opacity:3;
+  background-color: #eee;
+  width:100%;
+  height:100%;
+}
+
+.term_text_1{
+  display:none;
+  position:absolute;
+  font-size: 12px;
+  width:300px;
+  height:220px;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
