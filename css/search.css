@@ -1,0 +1,83 @@
+.navbar{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #white;
+
+  /* 구분선 */
+  border-style: solid ;
+  border-color: white white black white; /* 위 오른쪽 아래 왼쪽 색 */
+  /* padding: 8px 12px; */
+}
+
+.navbar_login{
+  display: flex;
+  list-style: none;
+  padding-left: 0;
+}
+
+.navbar_login li{
+  padding: 8px 12px;
+  /* 포지션변경 */
+  position:relative;
+  text-align:center;
+}
+
+.main_logo{
+  display: flex;
+  padding: 8px 12px;
+  justify-content:center
+}
+
+.content{
+  display: flex;
+  padding: 8px 12px;
+  justify-content:center
+}
+
+.category{
+  display: flex;
+  list-style: none;
+  padding-left: 0;
+  justify-content:center
+}
+
+.category li{
+  padding: 8px 12px;
+  /* 포지션변경 */
+  position:relative;
+  text-align:center;
+}
+
+.result{
+  display: flex;
+  list-style: none;
+  padding-left: 0;
+  justify-content:center
+}
+
+.categorybord{
+  margin : 20px;
+  padding : 30px;
+  border : 1px solid black;
+  border-radius : 5px;
+}
+
+.categorycont{
+  display: flex;
+  list-style: none;
+  padding-left: 0;
+  justify-content:center
+}
+
+.categorycont li{
+  padding: 8px 12px;
+  /* 포지션변경 */
+  position:relative;
+  text-align:center;
+
+  margin : 20px;
+  padding : 30px;
+  border : 1px solid black;
+  border-radius : 5px;
+}
