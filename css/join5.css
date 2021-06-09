@@ -44,18 +44,13 @@ footer{
   /* box-shadow:; */
 }
 
-.button img{
-  width:10px;
-  padding:20px;
-}
-
 .title{
   margin-top:0;
   margin-bottom:20px;
 }
 
 .logo img{
-  margin:70px 0 0 0;
+  margin:70px 0 30px 0;
   width:100px;
 }
 
@@ -70,10 +65,9 @@ input[type=checkbox]{
   height:25px;
   margin-right:10px;
   margin-bottom:15px;
-
 }
 
-.next{
+button {
   width:450px;
   height:75px;
   background:#ffe699;
