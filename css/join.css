@@ -46,6 +46,11 @@ footer{
   /* box-shadow:; */
 }
 
+#exit{
+  z-index: 100;
+  position:absolute;
+}
+
 .button_img img{
   width:10px;
   padding:20px;
