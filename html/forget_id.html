@@ -2,8 +2,8 @@
 <html lang="ko">
   <head>
     <meta charset="utf-8">
-    <title>ID찾기</title>
-    <link rel="stylesheet" href="../css/test2.css">
+    <title>아이디 찾기</title>
+    <link rel="stylesheet" href="../css/forget_id.css">
   </head>
   <body>
     <div id="wrapper">
@@ -11,14 +11,17 @@
       <article class="main">
         <div class="contents">
           <div class="logo">
-            <img src="../images/모두의랭킹2.png" width="250px" alt="">
+            <a href="index.html"><img src="../images/모두의랭킹2.png" width="250px" alt=""></a>
           </div>
           <div class="content">
             <h1>아이디 찾기</h1>
             <p>회원정보에 등록된 이메일 주소를 입력해주세요.</p>
-            <input type="email" name="이메일" value="" placeholder="이메일주소 입력">
+            <input type="email" name="이메일" value="" placeholder="이메일 주소 입력">
             <div class="line"></div>
-            <button type="button" name="button" onclick="location.href='index.html'">이메일 전송</button>
+            <div class="button">
+              <button type="button" name="button" onclick="location.href='forget_id_success.html'">이메일 확인</button>
+              <button type="button" name="button" onclick="location.href='login.html'">나가기</button>
+            </div>
             <a href="login.html">로그인 하러가기</a>
           </div>
         </div>

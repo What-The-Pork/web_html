@@ -29,6 +29,7 @@ button{
   cursor:pointer;
 }
 
+
 footer{
   text-align: center;
   font-size: 12px;
@@ -100,6 +101,7 @@ footer{
 .cancle{
   background:white;
   color:black;
+  top:0;
 }
 
 .term_text{

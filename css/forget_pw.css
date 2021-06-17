@@ -33,8 +33,7 @@ input:focus{
 }
 
 button{
-  display: block;
-  width:70%;
+  width:40%;
   height:50px;
   background:#ffe699;
   border:1px solid #ccc;
@@ -43,6 +42,11 @@ button{
   margin:30px auto;
   font-size:18px;
   cursor:pointer;
+}
+
+button:last-child{
+  color:black;
+  background: white;
 }
 
 a {

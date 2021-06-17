@@ -32,7 +32,7 @@ text-decoration: none;
 
 .form-signin p {
   margin-top:80px;
-  margin-bottom:70px;
+  margin-bottom:30px;
   text-align:center;
 }
 
@@ -53,6 +53,10 @@ text-decoration: none;
   position: relative;
   margin-top: auto;
   margin-bottom: auto;
+}
+
+.account:last-child{
+  margin-bottom: 40px;
 }
 
 label {
@@ -156,9 +160,9 @@ span a{
   z-index: 2;
 }
 
-.checkbox {
+/* .checkbox {
   position:relative;
-}
+} */
 
 /* https://kimyc1223.github.io/2019-10-14-WEB001/ */
 .btn{
@@ -166,7 +170,7 @@ span a{
   left:50%;
   transform: translateX(-50%);
   /* margin-bottom: 40px; */
-  width:100%;
+  width:75%;
   height:45px;
   background: linear-gradient(125deg,#ffeb90,#e7c05c,#d49420);
   background-position: left;

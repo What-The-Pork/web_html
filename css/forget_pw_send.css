@@ -33,8 +33,7 @@ input:focus{
 }
 
 button{
-  display: block;
-  width:70%;
+  width:75%;
   height:50px;
   background:#ffe699;
   border:1px solid #ccc;
@@ -71,4 +70,16 @@ a {
   height:1.5px;
   background: #ccc;
   margin:auto;
+}
+
+.email_send p{
+  padding:20px;
+}
+
+.email_send p:last-child{
+  color:black;
+}
+
+.email_send p a{
+  font-size: 16px;
 }
