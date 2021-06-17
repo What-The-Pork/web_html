@@ -63,3 +63,6 @@ function doDisplay3(){
     con.style.display = 'none';
   }
 }
+
+
+//exit2에서 확인 클릭 시 약관 체크 활성화
