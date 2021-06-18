@@ -13,139 +13,101 @@
   </head>
   <body>
     <div id="wrap">
-      <!-- 상단 -->
-      <div id="header">
-        <nav class="navbar">
-          <div class="navbar__logo">
-            <i class="fas fa-trophy"></i>
-            <a href="">모랭</a>
-          </div>
 
-          <ul class="navbar__menu">
-            <!-- 하단 메뉴 추가 -->
-             <li><a href=""></a>Home
-               <ul>
-                 <li><a href="#">창주</a></li>
-                 <li><a href="#">조장님</a></li>
-               </ul>
-             </li>
-             <li><a href=""></a>Ranking
-               <ul>
-                 <li><a href="#">나가신다</a></li>
-                 <li><a href="#">길을</a></li>
-                 <li><a href="#">비켜라</a></li>
-               </ul>
-             </li>
-             <li><a href=""></a>community
-               <ul>
-                 <li><a href="#">창주하나</a></li>
-                 <li><a href="#">창주둘</a></li>
-                 <li><a href="#">창주셋</a></li>
-               </ul>
-             </li>
-             <li><a href=""></a>F&Q
-               <ul>
-                 <li><a href="#">창주하나</a></li>
-                 <li><a href="#">창주둘</a></li>
-                 <li><a href="#">창주셋</a></li>
-               </ul>
-             </li>
-             <li><a href=""></a>etc
-               <ul>
-                 <li><a href="#">창주하나</a></li>
-                 <li><a href="#">창주둘</a></li>
-                 <li><a href="#">창주셋</a></li>
-               </ul>
-             </li>
-          </ul>
+      <header>
+        <div class="login">
+          <button type="button" name="button" onclick="location.href='login.html'">로그인</button>
+        </div>
+      </header>
+      <!-- 네비 -->
+      <nav class="navbar">
+        <div class="navbar__logo">
+          <i class="fas fa-trophy"></i>
+          <a href="">모랭</a>
+        </div>
 
-          <ul class="navbar__icons">
-            <li><i class="fab fa-facebook-square"></i></li>
-            <li><i class="fas fa-comment"></i></li>
-            <li><input type="button" name="" value="Login" onclick="location.href='login.html'"></li>
-          </ul>
+        <ul class="navbar__menu">
+          <!-- 하단 메뉴 추가 -->
+           <li><a href=""></a>Home
+             <ul>
+               <li><a href="#">창주</a></li>
+               <li><a href="#">조장님</a></li>
+             </ul>
+           </li>
+           <li><a href=""></a>Ranking
+             <ul>
+               <li><a href="#">나가신다</a></li>
+               <li><a href="#">길을</a></li>
+               <li><a href="#">비켜라</a></li>
+             </ul>
+           </li>
+           <li><a href=""></a>community
+             <ul>
+               <li><a href="#">창주하나</a></li>
+               <li><a href="#">창주둘</a></li>
+               <li><a href="#">창주셋</a></li>
+             </ul>
+           </li>
+           <li><a href=""></a>F&Q
+             <ul>
+               <li><a href="#">창주하나</a></li>
+               <li><a href="#">창주둘</a></li>
+               <li><a href="#">창주셋</a></li>
+             </ul>
+           </li>
+           <li><a href=""></a>etc
+             <ul>
+               <li><a href="#">창주하나</a></li>
+               <li><a href="#">창주둘</a></li>
+               <li><a href="#">창주셋</a></li>
+             </ul>
+           </li>
+        </ul>
 
-          <a href="#" class="navbar__toogleBtn">
-            <i class="fas fa-bars"></i>
-          </a>
-        </nav>
-      </div>
+        <ul class="navbar__icons">
+          <li><i class="fab fa-facebook-square"></i></li>
+          <li><i class="fas fa-comment"></i></li>
+          <li><input type="button" name="" value="Login" onclick="location.href='login.html'"></li>
+        </ul>
 
-        <!-- 메인 -->
-      <div id="content" style="text-align:center;">
+        <a href="#" class="navbar__toogleBtn">
+          <i class="fas fa-bars"></i>
+        </a>
+      </nav>
+      <!-- 메인 -->
+      <section>
         <p class="main_image">
-          <img src="../images/ranking.png">
+          <img src="../images/모두의랭킹4.png" width="250px">
         </p>
         <div class="search_bar" style="margin:20px 0;">
-          <input type="search" name="" value="" placeholder=" 입력" style="width:280px; height:40px; font-size:16px;">
-          <input type="button" value="검색" style="background-color:#31525B; width:50px; height:40px; font-size:16px;">
+          <input type="search" name="" value="" placeholder=" 입력">
+          <button type="button" name="button"><img src="../images/scan.png" alt=""></button>
         </div>
-        <div class="ranking_station" style="padding:20px; margin:auto; margin-bottom: 30px; width:600px; height:350px; background-color:#FFF;">
-          <h3 class="title">Ranking</h3>
-            <!-- 순위표 -->
-            <table class="ranking_table" style="width:40%; float:left; margin:20px; line-height:2;" border=;>
-              <th>순위</th>
-              <th>검색어</th>
-              <tr>
-                <td>1</td>
-                <td>맘스터치</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>맥도날드</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>롯데리아</td>
-              </tr>
-              <tr>
-                <td>4</td>
-                <td>KFC</td>
-              </tr>
-              <tr>
-                <td>5</td>
-                <td>노브랜드</td>
-              </tr>
-            </table>
-          <!-- 순위표2 -->
-            <table class="ranking_table2" style=" width:40%; float:right; margin:20px; line-height:2;" border=;>
-              <th>순위</th>
-              <th>검색어</th>
-              <tr>
-                <td>1</td>
-                <td>반올림피자</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>파파존스</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>도미노피자</td>
-              </tr>
-              <tr>
-                <td>4</td>
-                <td>미스터피자</td>
-              </tr>
-              <tr>
-                <td>5</td>
-                <td>피자헛</td>
-              </tr>
-            </table>
+        <div class="category">
+          <ul>
+            <li><a href="#">박창주</a></li>
+            <li><a href="#">강전석</a></li>
+            <li><a href="#">김동연</a></li>
+            <li><a href="#">김정명</a></li>
+            <li><a href="#">신치수</a></li>
+            <li><a href="#">김동호</a></li>
+            <li><a href="#">더보기▼</a></li>
+          </ul>
         </div>
-      </div>
-
-        <!-- 하단 -->
-      <div id="footer" style= "background-color:white; text-align:center;">
+      </section>
+      <!-- 하단 -->
+      <footer>
+      <div id="footer">
         <hr width="100%;">
-        <p class="team_Explan" style="padding-top:30px;">
-          <a style=""><img src="../images/WTP.jpg" width=50px; style="vertical-align:middle;"> What the Pork</a>
+        <p class="team_Explan">
+          <a style=""><img src="../images/WTP.jpg" width=50px;> <h2>What the Pork</h2></a>
           <br>
-          <span style="font-size:12px;"><b>주소</b> : 경기 수원시 팔달구 중부대로 100 3층</span>
-          <br>
-          <span style="font-size:12px;"><b>대표</b> : 박창주 </span>
+          <p style="font -size:12px;"><b>주소</b> : 경기 수원시 팔달구 중부대로 100 3층
+          <br><b>대표</b> : 박창주 </p>
         </p>
       </div>
+      </footer>
+
     </div>
   </body>
 </html>
