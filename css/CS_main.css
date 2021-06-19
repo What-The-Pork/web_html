@@ -10,7 +10,7 @@ body{
   background: url(../images/head_color.png) repeat-x;
 }
 
-#wrapper{
+#wire{
   width:70%;
   height:100%;
   margin:auto;
@@ -57,7 +57,7 @@ nav ul li:first-child a{
 
 .main_contents{
   margin:auto;
-  width:80%;
+  width:1080px;
   height:460px;
   border:1px solid #ccc;
   margin:auto;
@@ -67,6 +67,7 @@ nav ul li:first-child a{
 
 .notice_list{
   border:1px solid #ccc;
+  width:233px;
   height: 100%;
   float:left;
   border-bottom:2px solid #ccc;
@@ -79,11 +80,13 @@ nav ul li:first-child a{
 
 .notice_list ul li{
   margin: 0;
+  width:221px;
   height:35px;
   padding:0 5px;
   border:1px solid #ccc;
   border-bottom:none;
   padding-top:15px;
+  /* background: #eee; */
 }
 
 .notice_list ul li:first-child{
@@ -99,26 +102,25 @@ nav ul li:first-child a{
 }
 
 .main_content{
-  width:77.8%;
+  width:843px;
   height:99.7%;
   border:2px solid #ccc;
-  margin-left:auto;
+  margin-left:233px;
 }
 
 .main_title{
-  width:100%;
+  width:843px;
   height:8%;
   border:2px solid #ccc;
   border-left:none;
   border-right:none;
-  margin-left:auto;
   padding:20px 0 10px;
   background: #fae6b1;
 }
 
 .main_text{
-  width:100%;
-  margin-left:auto;
+  width:837px;
+  /* margin-left:auto; */
   padding:20px 0 10px;
 }
 
@@ -126,7 +128,14 @@ nav ul li:first-child a{
 
 
 footer{
-  vertical-align: middle;
+  position:absolute;
+  bottom:0;
+  width:100%;
+  margin:20px 0;
+}
+
+footer img{
+  margin-top:20px;
 }
 
 footer{
