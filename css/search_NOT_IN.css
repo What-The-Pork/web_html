@@ -1,0 +1,47 @@
+*{
+  justify-content:center;
+  text-decoration : none;
+}
+
+header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #white;
+
+  /* 구분선 */
+  border-style: solid ;
+  border-color: white white black white; /* 위 오른쪽 아래 왼쪽 색 */
+  /* padding: 8px 12px; */
+}
+article{
+  margin: 20px;
+}
+
+.main_logo{
+  display: flex;
+  padding: 8px 12px;
+
+}
+
+.content{
+  display: flex;
+  padding: 8px 12px;
+
+}
+
+
+.result{
+  display: flex;
+  list-style: none;
+  padding-left: 0;
+
+}
+
+.GOTOCS{
+  display: flex;
+}
+
+footer{
+  border : 1px solid black;
+}
