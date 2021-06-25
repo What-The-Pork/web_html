@@ -4,18 +4,18 @@
   font-family: 'Source Sans Pro';
   text-align: center;
 }
-
-#wrapper{
-    width:100%;
-    height:100%;
-}
-
-/* 배경210524 */
-body{
+html,body{
   width:100%;
   height:100%;
 }
 
+#wrapper{
+    width:100%;
+    height:100%;
+    background: url(../images/background_img.png) bottom;
+}
+
+/* 배경210524 */
 header{
   height:75px;
 }
@@ -212,7 +212,7 @@ section{
 }
 
 .category{
-  height:270px;
+  height:auto;
 }
 
 .category ul{
@@ -237,14 +237,30 @@ section{
 
 footer{
   width:100%;
-  background: #eee;
+  display: block;
   position:absolute;
   bottom:0;
-}
-
-footer p{
+  background-color:rgba(255, 255, 255, 0.9);
+  /* background: white; */
   font-size: 12px;
 }
+
+.company{
+  display: inline;
+  padding: 10px;
+}
+
+.footer *{
+  display:inline-block;
+  vertical-align:middle;
+}
+
+.detail{
+  text-align: left;
+}
+
+
+
 
 
 /* **하단 메뉴부분 설정 안 했음 */
@@ -281,5 +297,20 @@ footer p{
   .navbar__menu.active,
   .navbar__icons.active {
     display: flex;
+  }
+}
+
+@media screen and (max-height:600px){
+  footer{
+    display:none;
+  }
+}
+@media screen and (max-height:560px){
+  .main_image{
+    margin-top: auto;
+  }
+
+  .category li a{
+    color:black;
   }
 }
