@@ -11,7 +11,7 @@ html, body{
   height:100%;
 }
 
-#wrappers {
+#wrapper {
   width:100%;
   height:100%;
 }
@@ -37,8 +37,8 @@ header{
 
 #wire{
   width:70%;
+  height:auto;
   margin:auto;
-  height:100%;
 }
 
 .head img{
@@ -96,6 +96,7 @@ nav ul li a:hover{
 .main_contents{
   display:flex;
   width:100%;
+  min-width:800px;
   height:600px;
   border:2px solid #ccc;
   margin:auto;
@@ -174,24 +175,57 @@ nav ul li a:hover{
 }
 
 .QnA_title{
-  height:50px;
+  height:58px;
   color: #999;
-  padding-top:25px;
   border-bottom: 2px solid #eee;
 }
 
+.QnA_title h1{
+  line-height: 58px;
+}
+
+
 .main_text{
   /* width:837px; */
-  height:260px;
+  height:200px;
+  max-height:200px;
   padding:20px;
+  box-sizing: border-box;
+  overflow-y: auto;
 }
 
 .main_text_answer{
   border-top: 1px solid #ccc;
-  padding: 30px 0 0 0;
-  height:auto;
+  padding: 20px 0 0 0;
+  height:157px;
   position:relative;
   bottom:0;
+  overflow-y: auto;
+}
+
+.line{
+  display:block;
+  position:relative;
+  width:100%;
+  height:50px;
+  border-top:1px solid #ccc;
+}
+
+.line *{
+  height:50px;
+  line-height: 50px;
+}
+
+.line p{
+  display: block;
+  position: absolute;
+  width:150px;
+}
+
+.line a{
+  display:block;
+  width:100%;
+
 }
 
 footer{
@@ -222,7 +256,7 @@ footer{
   text-align: left;
 }
 
-@media screen and (max-height:390px){
+@media screen and (max-height:835px){
   footer{
     display:none;
   }

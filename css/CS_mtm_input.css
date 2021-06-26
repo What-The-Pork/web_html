@@ -4,6 +4,7 @@
   text-decoration: none;
   list-style: none;
   text-align: center;
+  outline: none;
 }
 
 html, body{
@@ -11,7 +12,7 @@ html, body{
   height:100%;
 }
 
-#wrapper {
+#wrapper{
   width:100%;
   height:100%;
 }
@@ -37,8 +38,9 @@ header{
 
 #wire{
   width:70%;
-  margin:auto;
   height:auto;
+  margin:auto;
+
 }
 
 .head img{
@@ -100,7 +102,6 @@ nav ul li a:hover{
   border:2px solid #ccc;
   margin:auto;
   margin-top: 70px;
-  margin-bottom: 100px;
 }
 
 .notice_list{
@@ -153,6 +154,7 @@ nav ul li a:hover{
   flex-direction: column; */
   width:100%;
   height:100%;
+  box-sizing: border-box;
   /* display: block; */
   /* position:relative; */
   /* border:1px solid #ccc; */
@@ -169,48 +171,85 @@ nav ul li a:hover{
   border-bottom:2px solid #ccc;
 }
 
-
-
 .main_table{
   width:auto;
   height:auto;
-  padding:25px 60px;
+  padding:25px;
 }
 
 .mtm{
   width:100%;
   height:100%;
-  border:2px solid #eee;
+
   border-collapse: collapse;
   padding:25px;
-}
-
-.mtm th, .mtm tr, .mtm td{
-  border:1px solid #eee;
-  padding:10px 20px;
+  box-sizing: border-box;
+  border-top:2px solid #eee;
+  border-bottom:2px solid #eee;
 }
 
 .mtm th{
+  border-top:1px solid #eee;
+  border-bottom:1px solid #eee;
+  padding:10px 20px;
   background:#fae6b1;
+  width:220px;
 }
 
 .mtm tr{
+  border-top:1px solid #eee;
+  border-bottom:1px solid #eee;
+}
+
+.mtm td{
+  width:780px;
   height:100%;
 }
 
-.text_btn button{
+.mtm td{
+  text-align: left;
+  padding-left: 10px;
+}
+
+.mtm td input{
+  width:50%;
+  height:28px;
+  border:1px solid #ccc;
+  text-align: left;
+  padding-left:10px;
+}
+
+select{
+  height:28px;
+  border:1px solid #ccc;
+}
+
+textarea{
+  width:98%;
+  height:300px;
+  resize:none;
+  margin:15px 0 10px;
+  padding:10px;
+  text-align: left;
+  border:1px solid #ccc;
+}
+
+.text_btn{
+  padding-top:15px;
+}
+
+button{
   width:100px;
   height:45px;
-  background: #fae6b1;
-  border:1px solid #eee;
   cursor:pointer;
+  background:#fae6b1;
+  border:1px solid #eee;
 }
 
-.text_btn button:first-of-type{
-  background: white;
+button:first-of-type{
+  background:white;
+  border:1px solid #ccc;
 }
-
-
 
 footer{
   width:100%;
@@ -240,8 +279,8 @@ footer{
   text-align: left;
 }
 
-@media screen and (max-height:390px){
+/* @media screen and (max-height:820px){
   footer{
     display:none;
   }
-}
+} */
