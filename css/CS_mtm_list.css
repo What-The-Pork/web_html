@@ -108,7 +108,7 @@ nav ul li a:hover{
   width:300px;
   height: 600px;
   /* float:left; */
-  /* border-bottom:2px solid #ccc; */
+  border-right:2px solid #ccc;
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -129,26 +129,35 @@ nav ul li a:hover{
   border:1px solid #ccc;
 }
 
-
 .notice_list ul li:first-child{
   background: #fae6b1;
   border-top:none;
+}
+
+.notice_list ul li:last-child{
+  border-bottom:2px solid #ccc;
 }
 
 .notice_list ul li a{
   color:#aaa;
 }
 
-.notice_list ul li:first-child a{
+.notice_list ul li:last-child a{
   font-weight: bold;
   color:black;
 }
 
+
+
+.notice_list ul li a:hover{
+  color:black;
+}
+
 .main_content{
-  display:flex;
-  flex-direction: column;
+  /* display:flex; */
+  /* flex-direction: column; */
   width:100%;
-  /* border:1px solid #ccc; */
+  /* border:2px solid #ccc; */
   /* margin-left:233px; */
 }
 
@@ -157,15 +166,62 @@ nav ul li a:hover{
   display: flex;
   align-items:center;
   justify-content: center;
-  height:70px;
+  height:60px;
   background: #fae6b1;
   border-bottom:2px solid #ccc;
+  box-sizing: border-box;
 }
 
-.main_text{
+.main_list{
   /* width:837px; */
-  height:100%;
+  height:auto;
   padding:20px;
+}
+
+.list_info{
+  width:100%;
+  height:100%;
+  padding:10px;
+
+}
+
+.list_info td,th{
+  border-bottom:1px solid #eee;
+}
+
+.list_info tr{
+  height:40px;
+  box-sizing: border-box;
+}
+
+.list_info tr td{
+  width:120px;
+}
+
+.list_info tr :nth-child(2){
+  width:auto;
+}
+
+.list_info tr :nth-child(2) a{
+  display:inline-block;
+  /* min-width:350px; */
+  width:auto;
+  height:20px;
+  box-sizing: content-box;
+  overflow:hidden;
+}
+
+.list_info tr td:last-child{
+  color:#46acf5;
+}
+
+#ing{
+  color:#f3c727;
+}
+
+.list_page{
+  width:100%;
+  height:80px;
 }
 
 footer{

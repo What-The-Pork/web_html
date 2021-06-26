@@ -38,6 +38,7 @@ header{
 #wire{
   width:70%;
   margin:auto;
+  height:100%;
 }
 
 .head img{
@@ -94,7 +95,6 @@ nav ul li a:hover{
 
 .main_contents{
   display:flex;
-  /* margin:auto; */
   width:100%;
   height:600px;
   border:2px solid #ccc;
@@ -108,7 +108,7 @@ nav ul li a:hover{
   width:300px;
   height: 600px;
   /* float:left; */
-  /* border-bottom:2px solid #ccc; */
+  border-right:2px solid #ccc;
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -135,8 +135,17 @@ nav ul li a:hover{
   border-top:none;
 }
 
+.notice_list ul li:last-child{
+  border-bottom:2px solid #ccc;
+}
+
 .notice_list ul li a{
   color:#aaa;
+}
+
+.notice_list ul li:nth-child(2) a{
+  color:black;
+  font-weight: bold;
 }
 
 .notice_list ul li:first-child a{
@@ -145,9 +154,11 @@ nav ul li a:hover{
 }
 
 .main_content{
-  display:flex;
-  flex-direction: column;
+  /* display:flex;
+  flex-direction: column; */
   width:100%;
+  height:auto;
+  position:relative;
   /* border:1px solid #ccc; */
   /* margin-left:233px; */
 }
@@ -157,21 +168,36 @@ nav ul li a:hover{
   display: flex;
   align-items:center;
   justify-content: center;
-  height:70px;
+  height:58px;
   background: #fae6b1;
   border-bottom:2px solid #ccc;
 }
 
+.QnA_title{
+  height:50px;
+  color: #999;
+  padding-top:25px;
+  border-bottom: 2px solid #eee;
+}
+
 .main_text{
   /* width:837px; */
-  height:100%;
+  height:260px;
   padding:20px;
+}
+
+.main_text_answer{
+  border-top: 1px solid #ccc;
+  padding: 30px 0 0 0;
+  height:auto;
+  position:relative;
+  bottom:0;
 }
 
 footer{
   width:100%;
   display: block;
-  position:absolute;
+  position:fixed;
   bottom:0;
   background-color:rgba(255, 255, 255, 0.9);
   /* background: white; */
