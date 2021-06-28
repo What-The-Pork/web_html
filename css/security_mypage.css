@@ -36,6 +36,11 @@ header{
   /* margin-top: 10px; */
 }
 
+.head-text{
+  width:900px;
+  margin-left: 240px;
+}
+
 .head-manu {
   height: 30px;
   border-bottom: 1px solid #ccc;
@@ -46,7 +51,7 @@ header{
   margin-top: 5px;
   display: flex;
   height:20px;
-  margin-left: 310px;
+  margin-left: 250px;
 }
 .head-manu ul li a{
   color:#ccc;

@@ -22,6 +22,11 @@ body{
   background: #e2e2e2;
 }
 
+.head-text{
+  width:900px;
+  margin-left: 240px;
+}
+
 header{
   display: block;
   /* position: absolute; */
@@ -52,7 +57,7 @@ header{
   margin-top: 5px;
   display: flex;
   height:20px;
-  margin-left: 310px;
+  margin-left: 250px;
 }
 .head-manu ul li a{
   color:#ccc;
@@ -105,6 +110,7 @@ header{
 .content-items{
   width: 1000px;
   margin: auto;
+  height: 700px;
   display: flex;
 }
 
