@@ -213,6 +213,7 @@ section{
 
 .category{
   height:270px;
+  width: auto;
 }
 
 .category ul{
@@ -224,6 +225,7 @@ section{
 
 .category ul li{
   padding:10px 20px;
+  width: 70px;
 }
 
 .category a{

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="hometest.css">
+  </head>
+  <body>
+    <div id="wrap">
+      <div class="login">
+        <img src="image\user.png" alt="">
+        <div class="login_ca">
+          <ul>
+            <li><a href="#">로그인</a></li>
+            <li><a href="#">아이디/비밀번호찾기</a></li>
+            <li><a href="#">회원가입</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="logo">
+        <img src="image\모두의랭킹2.png" alt="">
+      </div>
+      <div class="search">
+        <input class="keyword" type="text" name="search" maxlength=255 value="" autocomplete="off" placeholder="원하는 랭킹을 입력하세요" alt="">
+        <button type="button" name="button">
+          <img src="image\Magnifying Glass.png" alt="">
+        </button>
+      </div>
+      <div class="category">
+        <ul>
+          <li class="big"><a class="bigLink" href="#">영화</a>
+            <ul class="small">
+              <li><a class="smallLink" href="#">액션</a></li>
+              <li><a class="smallLink" href="#">코미디</a></li>
+              <li><a class="smallLink" href="#">로맨스</a></li>
+            </ul>
+          </li>
+          <li class="big"><a class="bigLink" href="#">드라마</a>
+            <ul class="small">
+              <li><a class="smallLink" href="#">액션</a></li>
+              <li><a class="smallLink" href="#">코미디</a></li>
+              <li><a class="smallLink" href="#">로맨스</a></li>
+            </ul>
+          </li>
+          <li class="big"><a class="bigLink" href="#">애니메이션</a>
+            <ul class="small">
+              <li><a class="smallLink" href="#">액션</a></li>
+              <li><a class="smallLink" href="#">코미디</a></li>
+              <li><a class="smallLink" href="#">로맨스</a></li>
+            </ul>
+          </li>
+          <li class="big"><a class="bigLink" href="#">게임</a>
+            <ul class="small">
+              <li><a class="smallLink" href="#">액션</a></li>
+              <li><a class="smallLink" href="#">코미디</a></li>
+              <li><a class="smallLink" href="#">로맨스</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <!-- 이미지 슬라이드 시작 -->
+      <div class="slider">
+        <div class="slides">
+          <!-- 버튼 시작 -->
+          <input type="radio" name="radio-btn" id="radio1" value="">
+          <input type="radio" name="radio-btn" id="radio2" value="">
+          <input type="radio" name="radio-btn" id="radio3" value="">
+          <!-- 버튼 끝 -->
+          <!-- 슬라이드 이미지 시작 -->
+          <div class="slide first">
+            <img src="image/image1.webp" alt="">
+          </div>
+          <div class="slide">
+            <img src="image/image2.webp" alt="">
+          </div>
+          <div class="slide">
+            <img src="image/image3.webp" alt="">
+          </div>
+          <!-- 슬라이드 이미지 끝 -->
+          <!-- 자동 내비게이션 시작 -->
+          <div class="navigation-auto">
+            <div class="auto-btn1"></div>
+            <div class="auto-btn2"></div>
+            <div class="auto-btn3"></div>
+          </div>
+          <!-- 자동 내비게이션 끝 -->
+        </div>
+        <div class="navigation-manual">
+          <label for="radio1" class="manual-btn"></label>
+          <label for="radio2" class="manual-btn"></label>
+          <label for="radio3" class="manual-btn"></label>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
