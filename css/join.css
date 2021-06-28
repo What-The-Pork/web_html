@@ -127,15 +127,18 @@ footer{
 
 .text_wrapper{
   position:absolute;
-  top:145px;
-  left:797px;
+  top:50%;
+  left:50%;
   background:white;
   width:330px;
   height:500px;
+  margin-right:135px;
+  margin-bottom:250px;
 }
 
 .term_text_1{
   display:none;
+  margin:auto;
   width:450px;
   height:500px;
 

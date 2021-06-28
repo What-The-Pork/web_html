@@ -37,6 +37,7 @@ header{
 
 #wire{
   width:70%;
+  height:auto;
   margin:auto;
 }
 
@@ -94,8 +95,8 @@ nav ul li a:hover{
 
 .main_contents{
   display:flex;
-  /* margin:auto; */
   width:100%;
+  min-width:800px;
   height:600px;
   border:2px solid #ccc;
   margin:auto;
@@ -108,7 +109,7 @@ nav ul li a:hover{
   width:300px;
   height: 600px;
   /* float:left; */
-  /* border-bottom:2px solid #ccc; */
+  border-right:2px solid #ccc;
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -135,8 +136,17 @@ nav ul li a:hover{
   border-top:none;
 }
 
+.notice_list ul li:last-child{
+  border-bottom:2px solid #ccc;
+}
+
 .notice_list ul li a{
   color:#aaa;
+}
+
+.notice_list ul li:nth-child(2) a{
+  color:black;
+  font-weight: bold;
 }
 
 .notice_list ul li:first-child a{
@@ -145,9 +155,11 @@ nav ul li a:hover{
 }
 
 .main_content{
-  display:flex;
-  flex-direction: column;
+  /* display:flex;
+  flex-direction: column; */
   width:100%;
+  height:auto;
+  position:relative;
   /* border:1px solid #ccc; */
   /* margin-left:233px; */
 }
@@ -157,21 +169,69 @@ nav ul li a:hover{
   display: flex;
   align-items:center;
   justify-content: center;
-  height:70px;
+  height:58px;
   background: #fae6b1;
   border-bottom:2px solid #ccc;
 }
 
+.QnA_title{
+  height:58px;
+  color: #999;
+  border-bottom: 2px solid #eee;
+}
+
+.QnA_title h1{
+  line-height: 58px;
+}
+
+
 .main_text{
   /* width:837px; */
-  height:100%;
+  height:200px;
+  max-height:200px;
   padding:20px;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.main_text_answer{
+  border-top: 1px solid #ccc;
+  padding: 20px 0 0 0;
+  height:157px;
+  position:relative;
+  bottom:0;
+  overflow-y: auto;
+}
+
+.line{
+  display:block;
+  position:relative;
+  width:100%;
+  height:50px;
+  border-top:1px solid #ccc;
+}
+
+.line *{
+  height:50px;
+  line-height: 50px;
+}
+
+.line p{
+  display: block;
+  position: absolute;
+  width:150px;
+}
+
+.line a{
+  display:block;
+  width:100%;
+
 }
 
 footer{
   width:100%;
   display: block;
-  position:absolute;
+  position:fixed;
   bottom:0;
   background-color:rgba(255, 255, 255, 0.9);
   /* background: white; */
@@ -196,7 +256,7 @@ footer{
   text-align: left;
 }
 
-@media screen and (max-height:390px){
+@media screen and (max-height:835px){
   footer{
     display:none;
   }

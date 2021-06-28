@@ -1,0 +1,134 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  background: url(https://compote.slate.com/images/697b023b-64a5-49a0-8059-27b963453fb1.gif);
+}
+
+#Login{
+  display:block;
+  color: white;
+  background: #ffffff;
+  color: #000000;
+}
+#Login button{
+  float:right;
+}
+.logo{
+  display:block;
+  text-align: center;
+  margin-top:10px;
+}
+.search{
+    margin-left: 32%;
+    height: 40px;
+    width: 700px;
+    border: 1px solid #eb811e;
+    background: #ffffff;
+    border-radius: 3px;
+}
+.search input{
+  font-size: 16px;
+  width: 600px;
+  padding: 10px;
+  border: 0px;
+  outline: none;
+  float: left;
+  color: #000000;
+}
+.search button{
+  float:right;
+}
+.search .img-button{
+  margin-top: 3px;
+}
+
+#category{
+/* category 설정 */
+margin-top: 20px;
+margin-left: 30%;
+height: auto;
+}
+#category ul{
+/* category 안의 ul 설정 */
+list-style-type: none;
+margin-top: 10px;
+}
+#category ul li {
+/* category 안에 ul 태그안에 있는 모든 li태그의 스타일 */
+color: white;
+background-color: #ffffff;
+float: left;
+line-height: 30px;
+vertical-align: middle;
+text-align: center;
+position: relative;
+}
+.bigLink ,.smallLink{
+  /* big과 small의 a 태그의 공통 설정 */
+  text-decoration: none;
+  display: block;
+  width: 100px;
+  font-weight: bold;
+  list-style: none;
+}
+.big{
+  /* big의 설정 */
+  color:white;
+}
+.bigLink{
+  color: #2d2d2d;
+  font-size: 15px;
+}
+.bigLink:hover{
+  color: #eb811e;
+}
+#category:hover .big{
+  /* big이 마우스오버 되었을때 스타일 */
+  background-color: #ffffff;
+}
+.smallLink{
+  /* small의 a 태그 스타일 설정 */
+  color: #2d2d2d;
+  background-color: white;
+  margin-right: -1px;
+  font-size: 13px;
+}
+.small{
+  /* small의 스타일 설정 */
+  position: absolute;
+  height: 0px;
+  overflow: hidden;
+  transition: height .2s;
+  -webkit-transition: height .2s;
+  -moz-transition: height .2s;
+  -o-transition: height .2s;
+  width: 600px;
+}
+.small li{
+  /* 가로로 펼쳐지도록 설정 */
+  display: inline-block;
+}
+.big:hover .small{
+  /* big에서 마우스 오버한경우 small의 설정 */
+  height: 32px;
+}
+.smallLink:hover{
+  /* small의 a태그의 마우스오버 스타일 설정 */
+  color: #eb811e;
+  background-color: #ffffff;
+}
+.slideshow-rank{
+  margin-top: 100px;
+  width: 755px;
+  height: 500px;
+  border: 1px solid black;
+  margin-left: 600px;
+  position: relative;
+}
+.slideranks img{
+  width: 755px;
+  height: 500px;
+}

@@ -8,11 +8,16 @@ header{
   justify-content: space-between;
   align-items: center;
   background-color: #white;
+  height: 30px;
 
   /* 구분선 */
   border-style: solid ;
   border-color: white white black white; /* 위 오른쪽 아래 왼쪽 색 */
   /* padding: 8px 12px; */
+}
+
+body{
+  margin: 20px;
 }
 
 .main_logo{
@@ -90,6 +95,5 @@ header{
 }
 
 footer{
-  
   border : 1px solid black;
 }
