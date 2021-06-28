@@ -3,17 +3,28 @@
   padding:0;
 }
 
-body{
-  width:100%
+html, body{
+  width:100%;
   height:100%;
   text-align:center;
 }
 
 header{
-  width:100%
-  height:100%;
-  text-align:left;
+  width:100%;
+  height:125px;
+  margin-top:20px;
+
 }
+
+#frame{
+  margin:auto;
+  width:100%;
+  height:100%;
+  min-width: 1080px;
+  max-width: 1080px;
+
+}
+
 a {
   text-decoration: none;
   color:#555;
@@ -28,40 +39,41 @@ a {
 }
 
 .like_share_button{
-  width:80px;
-  height:60px;
-  top: 70px;
-   left: px;
-   position: relative;
+  width:100px;
+  height:70px;
+
+
    font-size:20px
 
 }
 
 .cont_img_bt{
-  top:20px;
 
    position: relative;
 }
 
 .more{
 
-   left: 100px;
+  top:150px;
    position: relative;
 }
 .logo{
-  margin:150px;
-  align:left;
-  padding-left:10px;
+  float:left;
+  /* margin-right: 80%; */
 
 }
-
+.search{
+    display: inline-block;
+}
 .search input{
   width:540px;
   height:40px;
   padding-left:50px;
+  padding-right:50px;
   border:2px solid #ddd;
   border-radius: 50px;
   text-align:center;
+
 }
 
 .search input:focus{
@@ -72,13 +84,15 @@ a {
 .img-button{
   width:80px;
   height:40px;
+
 }
 
 .parent_container{
+  margin:auto;
   border: 2px solid black;
   display: flex;
-  text-align: center;
   justify-content: space-around;
+
 
 }
 
@@ -91,9 +105,9 @@ a {
 
 }
 .container img{
-  width:150px;
-  height:200px;
-  float:left;
+  width:100%;
+
+  /* float:left; */
 }
 
 .center_container{
@@ -102,12 +116,17 @@ a {
   border: 2px solid black;
   overflow:scroll;
 
+  position: relative;
+}
+
+.sub_container{
+  width: auto;
+  height: 300px;
+  border: 2px solid black;
 
 
   position: relative;
 }
-
-
 
 
 .contain_info {
@@ -116,11 +135,12 @@ a {
   border: 2px solid red;
   float:right;
   text-align: center;
+  overflow: hidden;
 
 }
 .cont_img
 {
-  width: 40%;
+  width: 170px;
   height: 200px;
     border: 2px solid yellow;
     display: inline-block;
@@ -128,7 +148,7 @@ a {
 
 
 .comment_box{
-  width: 90%;
+  width: auto;
   height: 60px;
   border: 3px solid orange;
 }
@@ -179,11 +199,25 @@ ul ul{
 #img_popup_layer {position:fixed;top:0;left:0;z-index: 10000; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0);}
 
 /*팝업 박스*/
-.popup_box{position: relative;top:50%;left:50%; width:550px;transform:translate(-50%, -50%);z-index:1002;box-sizing:border-box;background:#fff;box-shadow: 2px 5px 10px 0px rgba(0,0,0,0.35);-webkit-box-shadow: 2px 5px 10px 0px rgba(0,0,0,0.35);-moz-box-shadow: 2px 5px 10px 0px rgba(0,0,0,0.35);}
+.popup_box{
+  position: relative;
+  top:50%;
+  left:50%;
+   width:550px;
+   transform:translate(-50%, -50%);
+   z-index:1002;
+   /* box-sizing:border-box; */
+   background:#fff;
+   box-shadow: 2px 5px 10px 0px rgba(0,0,0,0.35);
+   -webkit-box-shadow: 2px 5px 10px 0px rgba(0,0,0,0.35);
+   -moz-box-shadow: 2px 5px 10px 0px rgba(0,0,0,0.35);
+ }
 /*컨텐츠 영역*/
-.popup_box .popup_cont {padding:50px;line-height:1.4rem;font-size:14px;word-break: break-word;}
+.popup_box .popup_cont {padding:20px;line-height:1.4rem;font-size:14px;word-break: break-word;
+}
 .popup_box .popup_cont h2 {padding:15px 0;color:#333;margin:0;}
-.popup_box .popup_cont p{ border-top: 1px solid #666;padding-top: 30px;}
+.popup_box .popup_cont p{ ;border-top: 1px solid #666;padding-top: 30px;}
+
 /*버튼영역*/
 .popup_box .popup_btn {display:table;table-layout: fixed;width:100%;height:70px;background:#5d5d5d;word-break: break-word;}
 .popup_box .popup_btn a {position: relative; display: table-cell; height:70px; color:#fff; font-size:17px;text-align:center;vertical-align:middle;text-decoration:none; background:#e3aa27;}
