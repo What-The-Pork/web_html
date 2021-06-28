@@ -2,6 +2,11 @@
   margin: 0;
   padding: 0;
 }
+
+body{
+  background: url(https://compote.slate.com/images/697b023b-64a5-49a0-8059-27b963453fb1.gif);
+}
+
 #Login{
   display:block;
   color: white;
