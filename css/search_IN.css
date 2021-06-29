@@ -1,99 +1,139 @@
-*{
-  justify-content:center;
-  text-decoration : none;
+* {
+  margin:0;
+  padding:0;
+  text-decoration: none;
+  list-style: none;
+  text-align: center;
+}
+
+html, body{
+  width:100%;
+  height:100%;
+}
+
+#wrapper {
+  width:100%;
+  height:100%;
 }
 
 header{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #white;
-  height: 30px;
-
-  /* 구분선 */
-  border-style: solid ;
-  border-color: white white black white; /* 위 오른쪽 아래 왼쪽 색 */
-  /* padding: 8px 12px; */
+  display: block;
+  /* position: absolute; */
+  /* top:0; */
+  width:100%;
+  height:50px;
+  background: #fae6b1;
 }
 
-body{
-  margin: 20px;
+.head{
+  display: block;
+  margin:auto;
+  max-width: 1300px;
+  height:50px;
+  color:white;
+  /* padding-top:8px; */
+  /* margin-top: 10px; */
 }
 
-.main_logo{
-  display: flex;
-  padding: 8px 12px;
-
+#wire{
+  width:70%;
+  margin:auto;
 }
 
-.content{
-  display: flex;
-  padding: 8px 12px;
-
+.head img{
+  width:125px;
+  float:left;
+  margin-right: 15px;
+  padding-top:8px;
 }
 
-.category{
-  display: flex;
-  list-style: none;
-  padding-left: 0;
-
+.head h2{
+  float:left;
 }
 
-.category li{
-  padding: 8px 12px;
-  /* 포지션변경 */
-  position:relative;
-  text-align:center;
+.head span{
+  float:right;
 }
 
-.result{
-  display: flex;
-  list-style: none;
-  padding-left: 0;
-
+/* 본문 */
+.main_contents {
+  margin-top: 10%;
+}
+.notice_text{
+  margin-top: 5%;
 }
 
 .categorybord{
-  margin : 20px;
-  padding : 30px;
-  border : 1px solid black;
-  border-radius : 5px;
+  width: 50%;
+  margin: auto;
+  margin-top: 8%;
+  margin-bottom: 8px;
+  border: 1px solid black;
 }
 
 .small_category{
   display: flex;
-  list-style: none;
-  padding-left: 0;
-
+  justify-content: center;
 }
 
 .small_category li{
-  padding: 8px 12px;
-  /* 포지션변경 */
-  position:relative;
-  text-align:center;
+  margin: 10px;
+}
 
-  margin : 20px;
-  padding : 30px;
-  border : 1px solid black;
-  border-radius : 5px;
+.cate1, .cate2, .cate3{
+  background-color: white;
+  border: none;
 }
 
 .rankingbord {
-  display: none;
-  text-align:center;
-  margin : 0 auto;
-  padding : 30px;
-  border : 1px solid black;
-  border-radius : 5px;
-  width: 30%;
+  margin-top: 8px;
+  margin: auto;
+  height: 300px;
+  width: 600px;
+  border: 1px solid black;
 }
 
-.rankingbord table *{
-  /*        위  왼  아래  오른 */
-  padding: 5px 10px 5px 10px;
+.rankingbord table{
+  position:absolute;
+  top:55%;
+  left:43%;
+  overflow: hidden; /*글자 넘칠때 아래로 뻗는경우 예방*/
+  margin:auto;
+  border: 1px solid black;
 }
+
+.rankings{
+  display: none;
+}
+
+
 
 footer{
-  border : 1px solid black;
+  width:100%;
+  display: block;
+  position:absolute;
+  bottom:0;
+  background-color:rgba(255, 255, 255, 0.9);
+  /* background: white; */
+  font-size: 12px;
+}
+
+.company{
+  display: inline;
+  padding: 10px;
+}
+
+.footer *{
+  display:inline-block;
+  vertical-align:middle;
+}
+
+.detail{
+  text-align: left;
+}
+
+@media screen and (max-height:390px){
+  footer{
+    display:none;
+  }
 }

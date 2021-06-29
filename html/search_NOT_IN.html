@@ -2,48 +2,53 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="../css/search_NOT_IN.css">
-
     <title>모두의 랭킹</title>
+    <link rel="stylesheet" href="../css/search_NOT_IN.css">
   </head>
-
   <body>
+    <div id="wrapper">
+      <header>
+        <div class="head">
+          <a href="index.html"><img src="../images/모두의랭킹.png" alt=""></a>
+          <button type="button" style="width:50px; height:50px; float:right; padding-top:0px;">=</button>
+        </div>
+      </header>
 
-    <header>
-      <div class="header_logo">
-        <a href="index.html">
-          <img href="index.html" src="../images/모두의랭킹2.png" height="50">
-        </a>
+      <div id="wire">
+
+        <section>
+          <article class="main_contents">
+
+            <div class="search_bar">
+              <input type="text"  placeholder="박창주" value="" style="height:50px; width:50%">
+              <button type="button" style="width:50px; height:50px;">검색</button>
+            </div>
+
+            <div class="notice_text">
+              "<span style="color:orange">박창주</span>"에 대한 검색결과가 없습니다.
+            </div>
+
+            <div class="main_content">
+              <a href="CS_main.html"><button type="button" style="height:50px; width:50%">추가 요청하기</button></a>
+            </div>
+
+          </article>
+        </section>
+
       </div>
 
-      <ul class="header_menu">
-         <li><a href=""></a>Login</li>
-         <li><a href=""></a>Mypage</li>
-         <li><a href=""></a>Service Center</li>
-      </ul>
-    </header>
-
-    <section>
-      <article class="content">
-        <input type="text" name="" value="박창주" style=" width:50%">
-        <button type="button" name="button">검색</button>
-      </article>
-
-      <article class="result">
-        "<span style="color:orange">박창주</span>"에 대한 검색결과가 없습니다.
-      </article>
-
-      <article class="GOTOCS">
-        <a href="CS_main.html"><button type="button" name="button">추가 요청하기</button></a>
-
-      </article>
-
-
-    </section>
-
-    <footer >
-      (footer)
-    </footer>
-
+      <footer>
+        <div class="footer">
+          <div class="company">
+            <a style=""><img src="../images/WTP.jpg" width=50px;> <h2>What the Pork</h2></a>
+          </div>
+          <div class="detail">
+            <b>주소</b> : 경기 수원시 팔달구 중부대로 100 3층
+            <br>
+            <b>대표</b> : 박창주
+          </div>
+        </div>
+      </footer>
+    </div>
   </body>
 </html>

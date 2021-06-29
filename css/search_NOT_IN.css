@@ -1,47 +1,94 @@
-*{
-  justify-content:center;
-  text-decoration : none;
+* {
+  margin:0;
+  padding:0;
+  text-decoration: none;
+  list-style: none;
+  text-align: center;
+}
+
+html, body{
+  width:100%;
+  height:100%;
+}
+
+#wrapper {
+  width:100%;
+  height:100%;
 }
 
 header{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #white;
-
-  /* 구분선 */
-  border-style: solid ;
-  border-color: white white black white; /* 위 오른쪽 아래 왼쪽 색 */
-  /* padding: 8px 12px; */
-}
-article{
-  margin: 20px;
+  display: block;
+  /* position: absolute; */
+  /* top:0; */
+  width:100%;
+  height:50px;
+  background: #fae6b1;
 }
 
-.main_logo{
-  display: flex;
-  padding: 8px 12px;
-
+.head{
+  display: block;
+  margin:auto;
+  max-width: 1300px;
+  height:50px;
+  color:white;
+  /* padding-top:8px; */
+  /* margin-top: 10px; */
 }
 
-.content{
-  display: flex;
-  padding: 8px 12px;
-
+#wire{
+  width:70%;
+  margin:auto;
 }
 
-
-.result{
-  display: flex;
-  list-style: none;
-  padding-left: 0;
-
+.head img{
+  width:125px;
+  float:left;
+  margin-right: 15px;
+  padding-top:8px;
 }
 
-.GOTOCS{
-  display: flex;
+.head h2{
+  float:left;
 }
+
+.head span{
+  float:right;
+
+  padding-top:0px;
+}
+
+.main_contents div{
+  margin-top: 70px;
+  margin-bottom: 100px;
+}
+
 
 footer{
-  border : 1px solid black;
+  width:100%;
+  display: block;
+  position:absolute;
+  bottom:0;
+  background-color:rgba(255, 255, 255, 0.9);
+  /* background: white; */
+  font-size: 12px;
+}
+
+.company{
+  display: inline;
+  padding: 10px;
+}
+
+.footer *{
+  display:inline-block;
+  vertical-align:middle;
+}
+
+.detail{
+  text-align: left;
+}
+
+@media screen and (max-height:390px){
+  footer{
+    display:none;
+  }
 }
