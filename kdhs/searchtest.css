@@ -42,19 +42,20 @@ a {
   width:100px;
   height:70px;
 
-
+margin-top: 100px;
    font-size:20px
 
 }
 
 .cont_img_bt{
-
+  top:28px;
    position: relative;
 }
 
 .more{
 
-  top:150px;
+   left:100px;
+
    position: relative;
 }
 .logo{
@@ -97,7 +98,7 @@ a {
 }
 
 .container{
-  width: 38%;
+  width: 35%;
   height: 400px;
   border: 2px solid black;
   margin-bottom: 200px;
@@ -111,7 +112,7 @@ a {
 }
 
 .center_container{
-  width: 30%;
+  width: 40%;
   height: 500px;
   border: 2px solid black;
   overflow:scroll;
@@ -136,6 +137,9 @@ a {
   float:right;
   text-align: center;
   overflow: hidden;
+
+  word-wrap: break-word;      /* IE 5.5-7 */
+
 
 }
 .cont_img
