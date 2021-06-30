@@ -12,8 +12,13 @@ html, body{
   height:100%;
 }
 
+body{
+  background: #e2e2e2;
+}
+
 #wrapper {
   width:100%;
+  height: auto;
   height:100%;
 }
 
@@ -45,6 +50,7 @@ header{
   height: 30px;
   border-bottom: 1px solid #ccc;
   border-top: 1px solid  #ffd66b;
+  background: white;
 }
 
 .head-manu ul{
@@ -88,15 +94,23 @@ header{
   margin-top: 5px;
 }
 
+.head-manu{
+  clear: both;
+}
+
 .contents{
   width: 100%;
-  height: 900px;
+  margin-top: 32px;
+  margin: auto;
+  max-width: 1300px;
+  height: auto;
   background: #e2e2e2
 }
 
 .content-items{
   width: 1000px;
   margin: auto;
+  height: 700px;
   display: flex;
 }
 
@@ -110,9 +124,11 @@ header{
 }
 
 .content-item-title{
-  display: flex;
+  display: flex
   margin-left: 38%;
 }
+
+
 
 .text_btns button {
   width:90px;
@@ -120,7 +136,7 @@ header{
   background: #fae6b1;
   border:1px solid #eee;
   cursor:pointer;
-  margin-left: 70%;
+  margin-top: 90px;
 }
 
 
@@ -159,13 +175,13 @@ header{
 
 .content-item-nixname{
   margin-top: 27px;
-  margin-left: 50px;
+  margin-left: 100px;
 }
-footer{
+.footer{
   width:100%;
-  display: block;
-  position:absolute;
-  bottom:0;
+  /* display: block; */
+  /* position:absolute; */
+  /* bottom:0; */
   background-color: #e2e2e2;
   /* background: white; */
   font-size: 12px;

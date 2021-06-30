@@ -12,9 +12,14 @@ html, body{
   height:100%;
 }
 
+body{
+  background: #e2e2e2;
+}
+
 #wrapper {
   width:100%;
-  height:100%;
+  height:auto;
+  background: #e2e2e2;
 }
 
 header{
@@ -45,6 +50,7 @@ header{
   height: 30px;
   border-bottom: 1px solid #ccc;
   border-top: 1px solid  #ffd66b;
+  background: white;
 }
 
 .head-manu ul{
@@ -89,11 +95,17 @@ header{
 }
 
 .contents{
-  width: 100%;
-  height: 1000px;
-  background: #e2e2e2
+  width:100%;
+  margin-top:32px;
+  margin:auto;
+  max-width: 1300px;
+  height: auto;
+  background: #e2e2e2;
 }
 
+.head-manu{
+  clear:both;
+}
 
 .form-password {
   max-width: 500px;
