@@ -127,8 +127,7 @@ header{
   background: #fae6b1;
   border:1px solid #eee;
   cursor:pointer;
-  margin-left: 70%;
-  display: block;
+  margin-top:40px;
 }
 
 .content-box{
@@ -137,17 +136,25 @@ header{
   border: 1px solid white;
   margin-left: 30%;
   background: white;
-  margin-top: auto;
+  margin-top: 50px;
+  padding:50px 50px 0;
+  text-align: left;
+  box-sizing: border-box;
+  border:1px solid #ccc;
+  border-radius: 15px;
 }
 
-.text_btn1 button{
-  width:90px;
-  height:40px;
-  background: #fae6b1;
-  border:1px solid #eee;
-  cursor:pointer;
-  margin-left: 70%;
-  margin-top: 35px;
+.content-box h2{
+  text-align: left;
+  padding-bottom:20px;
+}
+
+label{
+  font-size: 14px;
+}
+
+input[type="checkbox"]{
+  margin-right: 5px;
 }
 
 .content-item-min{
@@ -174,6 +181,7 @@ header{
 }
 .footer{
   width:100%;
+  margin-top: 100px; 
   /* margin-top:300px; */
   /* margin-top:300px; */
   /* display: block; */

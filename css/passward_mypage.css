@@ -148,6 +148,7 @@ header{
 label {
   position: absolute;
   top: 15px;
+  left:0;
   cursor: text;
   transition: 0.25s ease;
 }
@@ -161,6 +162,8 @@ label {
   height:50px;
   border: none;
   transition: 0.3s ease;
+  text-align: left;
+  padding-top:10px;
 }
 
 input:valid ~ label {
@@ -182,7 +185,7 @@ input:focus ~ label {
   transition: 0.5s;
 }
 input:focus ~ .bar:before {
-  transform: translateX(0);
+  transform: translateX(-50%);
   transition: all 0.25s;
   box-shadow: 0 0 5px #428bca;
 }
@@ -255,7 +258,8 @@ span a{
 .btn{
   position:relative;
   left:50%;
-  transform: translateX(-50%);
+  transform: translateX(-66%);
+  transition: 0.5s;
   /* margin-bottom: 40px; */
   width:75%;
   height:45px;
