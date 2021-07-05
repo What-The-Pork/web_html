@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <title>마이페이지</title>
     <link rel="stylesheet" href="../css/main_mypage.css">
+    <link rel="stylesheet" href="../css/login_btn.css">
+    <script type="text/javascript" src="../js/login_btn.js"></script>
   </head>
   <body>
     <div id="wrapper">
@@ -12,8 +14,19 @@
           <div class="head-text">
             <a href="index.html"><img src="../images/모두의랭킹.png"></a>
             <h2>마이페이지</h2>
-            <span><button>▽</button></span>
-            <span>고등어 조립</span>
+            <button type="button" class="login_btn" id="login_btn" onclick="doDisplay()">박창주님▼</button>
+            <div id="profile_wrap">
+              <div class="hello">
+                박창주 님 안녕하세요
+              <div class="profile_img">
+                <img src="" alt="">
+              </div>
+              <a href="main_mypage.html" class="mypage">마이페이지</a>
+              <hr>
+              <!-- 로그아웃 기능 필요 -->
+              <a href="#" class="logout">로그아웃</a>
+              </div>
+            </div>
           </div>
         </div>
       </header>

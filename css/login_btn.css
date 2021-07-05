@@ -1,0 +1,47 @@
+.login_btn{
+  width:65px;
+  height:25px;
+  background: none;
+  border-radius: 5px;
+  border:0;
+  margin-top:10px;
+  cursor:pointer;
+}
+
+#profile_wrap{
+  display: none;
+  text-align: center;
+  width:200px;
+  height:250px;
+  padding:10px;
+  border:1px solid #ccc;
+  box-shadow: 0 2px 10px #ccc;
+  border-radius: 5px;
+  background: #eee;
+}
+
+.hello{
+  color:black;
+}
+
+.profile_img{
+  width:100px;
+  height:100px;
+  border-radius: 50%;
+  background: #efd2a8;
+  margin:20px auto;
+}
+
+.mypage, .logout{
+  margin:10px;
+  color:#4585f1;
+}
+
+.logout{
+  color:#f14548;
+}
+
+
+hr{
+  margin:20px 0;
+}

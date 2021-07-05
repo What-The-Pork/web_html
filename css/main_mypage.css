@@ -36,6 +36,15 @@ header{
   background: #fae6b1;
 }
 
+#login_btn{
+  float:right;
+}
+#profile_wrap{
+  position:absolute;
+  top:50px;
+  right:390px;
+}
+
 .head{
   display: block;
   margin:auto;
@@ -57,12 +66,14 @@ header{
   margin-top: 5px;
   display: flex;
   height:20px;
-  margin-left: 250px;
+  max-width:800px;
+  margin:auto;
 }
 .head-manu ul li a{
   color:#ccc;
   font-size:15px;
   padding:0 15px;
+
 }
 
 
