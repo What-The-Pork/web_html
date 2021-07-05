@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <title>고객센터_문의</title>
     <link rel="stylesheet" href="../css/CS_mtm_input.css">
+    <link rel="stylesheet" href="../css/login_btn.css">
+    <script type="text/javascript" src="../js/login_btn.js"></script>
   </head>
   <body>
     <div id="wrapper">
@@ -11,7 +13,22 @@
         <div class="head">
           <a href="index.html"><img src="../images/모두의랭킹.png" alt=""></a>
           <h2>고객센터</h2>
-          <span>고등어 조립</span>
+          <div class="login">
+            <!-- 회원 이름 db에서 받아오기 -->
+            <button type="button" class="login_btn" id="login_btn" onclick="login_btn()">박창주 님▼</button>
+            <div id="profile_wrap">
+              <div class="hello">
+                박창주 님 안녕하세요
+              <div class="profile_img">
+                <img src="" alt="">
+              </div>
+              <a href="main_mypage.html" class="mypage">마이페이지</a>
+              <hr>
+              <!-- 로그아웃 기능 필요 -->
+              <a href="#" class="logout">로그아웃</a>
+              </div>
+            </div>
+          </div>
         </div>
       </header>
       <div id="wire">
@@ -39,34 +56,38 @@
               <div class="main_title">
                 <h3>1:1문의</h3>
               </div>
-              <div class="main_table">
-                <table class="mtm">
-                  <tr>
-                    <th>제목</th>
-                    <td>
-                      <input type="text" name="title" value="">
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>분류</th>
-                    <td>
-                      <select class="" name="classified">
-                        <option value="계정 정보">계정 정보</option>
-                        <option value="사이트 이용">사이트 이용</option>
-                        <option value="건의사항">건의사항</option>
-                      </select>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>내용</th>
-                    <td><textarea name="" rows="8" col  s="80"></textarea> </td>
-                  </tr>
-                </table>
-                <div class="text_btn">
-                  <button class="btn_cancle" type="button" name="button" onclick="location.href='CS_mtm_list.html'">취소</button>
-                  <button class="btn_write" type="button" name="button">저장</button>
+              <!-- 게시글 작성 시작-->
+              <form class="" action="" method="post">
+                <div class="main_table">
+                  <table class="mtm">
+                    <tr>
+                      <th>제목</th>
+                      <td>
+                        <input type="text" name="title" value="">
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>분류</th>
+                      <td>
+                        <select class="" name="classified">
+                          <option value="계정 정보">계정 정보</option>
+                          <option value="사이트 이용">사이트 이용</option>
+                          <option value="건의사항">건의사항</option>
+                        </select>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>내용</th>
+                      <td><textarea name="" rows="8" col  s="80"></textarea> </td>
+                    </tr>
+                  </table>
+                  <div class="text_btn">
+                    <button class="btn_cancle" type="button" name="button" onclick="location.href='CS_mtm_list.html'">취소</button>
+                    <button class="btn_write" type="submit" name="button">저장</button>
+                  </div>
                 </div>
-              </div>
+              </form>
+              <!-- 작성 끝 -->
             </div>
           </article>
         </section>

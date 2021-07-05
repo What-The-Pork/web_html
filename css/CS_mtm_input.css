@@ -36,6 +36,12 @@ header{
   /* margin-top: 10px; */
 }
 
+#login_btn{
+  background:none;
+  border:none;
+}
+
+
 #wire{
   width:70%;
   height:auto;

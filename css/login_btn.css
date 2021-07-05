@@ -1,15 +1,22 @@
+.login{
+  float:right;
+  margin-right:20px;
+  text-align: right;
+}
+
 .login_btn{
-  width:65px;
+  width:75px;
   height:25px;
   background: none;
   border-radius: 5px;
   border:0;
-  margin-top:10px;
+  margin-top:5px;
   cursor:pointer;
 }
 
 #profile_wrap{
   display: none;
+  position:absolute;
   text-align: center;
   width:200px;
   height:250px;

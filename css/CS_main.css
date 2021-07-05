@@ -35,6 +35,10 @@ header{
   /* margin-top: 10px; */
 }
 
+.login button {
+  /* color:white;  */
+}
+
 #wire{
   width:70%;
   margin:auto;
