@@ -4,21 +4,39 @@
     <meta charset="utf-8">
     <title>비밀번호변경</title>
     <link rel="stylesheet" href="../css/passward_mypage.css">
+    <link rel="stylesheet" href="../css/login_btn.css">
+    <link rel="stylesheet" href="../css/mypage_header.css">
+    <script type="text/javascript" src="../js/login_btn.js"></script>
   </head>
   <body>
     <div id="wrapper">
       <header>
         <div class="head">
           <div class="head-text">
-            <a href="index.html"><img src="../images/모두의랭킹.png"></a>
-            <h2>마이페이지</h2>
-            <span><button>▽</button></span>
-            <span>고등어 조립</span>
+            <div class="head-flex">
+              <div class="logo-title">
+                <a href="index.html"><img src="../images/모두의랭킹.png"></a>
+                <h2>마이페이지</h2>
+              </div>
+              <button type="button" class="login_btn" id="login_btn" onclick="login_btn()"><%=userNixname%>님▼</button>
+            </div>
+            <div id="profile_wrap">
+              <div class="hello">
+                <%=userNixname%> 님 안녕하세요
+              <div class="profile_img">
+                <img src="<%=userImage%>" alt="">
+              </div>
+              <a href="main_mypage.html" class="mypage">마이페이지</a>
+              <hr>
+              <!-- 로그아웃 기능 필요 -->
+              <a href="#" class="logout">로그아웃</a>
+              </div>
+            </div>
           </div>
         </div>
       </header>
       <nav>
-        <div class="head-manu">
+        <div class="head-menu">
           <ul>
             <li><a href="main_mypage.html">회원정보</a></li>
             <li><a href="security_mypage.html">보안설정</a></li>
@@ -27,6 +45,8 @@
       </nav>
       <div class="contents">
         <br><br><br><br><br>
+
+        <!-- 비밀번호 변경 -->
           <form class="form-password">
             <div class="centered">
               <div class="">
@@ -49,12 +69,11 @@
               </div>
             </div>
             <label class="checkbox">
-              <!-- <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> -->
-              <!-- <span>자동 로그인</span> -->
             </label>
             <button class="btn" type="submit" onclick="location.href='#'">Login</button>
-              <!-- <input type="button" name="" value=""> -->
           </form>
+<!-- 비밀번호 변경 끝 -->
+
       </div>
       <footer>
         <div class="footer">

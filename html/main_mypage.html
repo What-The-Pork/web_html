@@ -5,6 +5,7 @@
     <title>마이페이지</title>
     <link rel="stylesheet" href="../css/main_mypage.css">
     <link rel="stylesheet" href="../css/login_btn.css">
+    <link rel="stylesheet" href="../css/mypage_header.css">
     <script type="text/javascript" src="../js/login_btn.js"></script>
   </head>
   <body>
@@ -12,14 +13,18 @@
       <header>
         <div class="head">
           <div class="head-text">
-            <a href="index.html"><img src="../images/모두의랭킹.png"></a>
-            <h2>마이페이지</h2>
-            <button type="button" class="login_btn" id="login_btn" onclick="login_btn()">박창주님▼</button>
+            <div class="head-flex">
+              <div class="logo-title">
+                <a href="index.html"><img src="../images/모두의랭킹.png"></a>
+                <h2>마이페이지</h2>
+              </div>
+              <button type="button" class="login_btn" id="login_btn" onclick="login_btn()"><%=userNixname%>님▼</button>
+            </div>
             <div id="profile_wrap">
               <div class="hello">
-                박창주 님 안녕하세요
+                <%=userNixname%> 님 안녕하세요
               <div class="profile_img">
-                <img src="" alt="">
+                <img src="<%=userImage%>" alt="">
               </div>
               <a href="main_mypage.html" class="mypage">마이페이지</a>
               <hr>
@@ -31,7 +36,7 @@
         </div>
       </header>
       <nav>
-        <div class="head-manu">
+        <div class="head-menu">
           <ul>
             <li><a href="main_mypage.html">회원정보</a></li>
             <li><a href="security_mypage.html">보안설정</a></li>
@@ -47,14 +52,15 @@
             <div class="content-item-min">
               <div class="content-item-profile">
                 <div class="content-item-profile-font-size">
-                  사진
+                  <!-- 이미지 경로 db로 가져오기 -->
+                  <img src="<%=userImage%>" alt="">
                 </div>
               </div>
               <div class="content-item-nixname">
                 닉네임:
               </div>
               <div class="content-item-nixname">
-                닉네임
+                <%=userNixname%>
               </div>
             </div>
             <div class="text_btn">
@@ -63,14 +69,14 @@
           </div>
           <div class="content-item">
             <div class="content-item-title">
-                <strong>연락처</strong>
+                <strong>이메일</strong>
             </div>
             <div class="content-item-min">
               <div class="content-item-nixname1">
-                닉네임:
+                  이메일:
               </div>
               <div class="content-item-nixname1">
-                닉네임
+                <%=userEmail%>
               </div>
             </div>
           </div>

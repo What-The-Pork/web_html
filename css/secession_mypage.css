@@ -22,50 +22,6 @@ body{
   background: #e2e2e2;
 }
 
-header{
-  display: block;
-  /* position: absolute; */
-  /* top:0; */
-  width:100%;
-  height:50px;
-  background: #fae6b1;
-}
-
-.head{
-  display: block;
-  margin:auto;
-  max-width: 1300px;
-  height:40px;
-  color:white;
-  padding-top:8px;
-  /* margin-top: 10px; */
-}
-
-.head-text{
-  width:900px;
-  margin-left: 240px;
-}
-
-.head-manu {
-  height: 30px;
-  border-bottom: 1px solid #ccc;
-  border-top: 1px solid  #ffd66b;
-  background: white;
-}
-
-.head-manu ul{
-  margin-top: 5px;
-  display: flex;
-  height:20px;
-  margin-left: 250px;
-}
-.head-manu ul li a{
-  color:#ccc;
-  font-size:15px;
-  padding:0 15px;
-}
-
-
 #centent-background{
   width: 100%;
   height: 100%;
@@ -77,25 +33,6 @@ header{
   width:70%;
   height: 90%;
   margin:auto;
-}
-
-.head img{
-  width:125px;
-  float:left;
-  margin-right: 15px;
-}
-
-.head h2{
-  float:left;
-}
-
-.head span{
-  float:right;
-  margin-top: 5px;
-}
-
-.head-manu{
-  clear:both;
 }
 
 .contents{
@@ -181,7 +118,7 @@ input[type="checkbox"]{
 }
 .footer{
   width:100%;
-  margin-top: 100px; 
+  margin-top: 100px;
   /* margin-top:300px; */
   /* margin-top:300px; */
   /* display: block; */

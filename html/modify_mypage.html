@@ -4,24 +4,42 @@
     <meta charset="utf-8">
     <title>프로필수정</title>
     <link rel="stylesheet" href="../css/modify_mypage.css">
+    <link rel="stylesheet" href="../css/login_btn.css">
+    <link rel="stylesheet" href="../css/mypage_header.css">
+    <script type="text/javascript" src="../js/login_btn.js"></script>
   </head>
   <body>
     <div id="wrapper">
       <header>
         <div class="head">
           <div class="head-text">
-            <a href="index.html"><img src="../images/모두의랭킹.png"></a>
-            <h2>마이페이지</h2>
-            <span><button>▽</button></span>
-            <span>고등어 조립</span>
+            <div class="head-flex">
+              <div class="logo-title">
+                <a href="index.html"><img src="../images/모두의랭킹.png"></a>
+                <h2>마이페이지</h2>
+              </div>
+              <button type="button" class="login_btn" id="login_btn" onclick="login_btn()"><%=userNixname%>님▼</button>
+            </div>
+            <div id="profile_wrap">
+              <div class="hello">
+                <%=userNixname%> 님 안녕하세요
+              <div class="profile_img">
+                <img src="<%=userImage%>" alt="">
+              </div>
+              <a href="main_mypage.html" class="mypage">마이페이지</a>
+              <hr>
+              <!-- 로그아웃 기능 필요 -->
+              <a href="#" class="logout">로그아웃</a>
+              </div>
+            </div>
           </div>
         </div>
       </header>
       <nav>
-        <div class="head-manu">
+        <div class="head-menu">
           <ul>
             <li><a href="main_mypage.html">회원정보</a></li>
-            <li><a href="modify_mypage.html">보안설정</a></li>
+            <li><a href="security_mypage.html">보안설정</a></li>
           </ul>
         </div>
       </nav>
@@ -33,30 +51,32 @@
             </div>
             <div class="content-item-profile">
               <div class="content-item-profile-font-size">
-                사진
+                <%=userImage%>
               </div>
             </div>
-            <div class="content-item-min">
-                <div class="content-item-modify-profile">
-                  <button type="button" name="button">사진찾기</button>
+            <!-- 프로필 수정 부분 -->
+            <form class="" action="index.html" method="post">
+              <div class="content-item-min">
+                  <div class="content-item-modify-profile">
+                    <label class="image-btn">이미지 변경<input type="file" name="button" value=""></label>
+                    <div class="content-item-modify-profile">
+                      <!-- 삭제 기능 추가 -->
+                      <input type="reset" name="button">삭제</button>
+                    </div>
+                  </div>
+              </div>
+              <div class="content-text">
+                <div class="content-item-nixname">
+                  <span>닉네임: <%=userNixname%></span>
                 </div>
-                <div class="content-item-modify-profile">
-                  <button type="button" name="button">삭제</button>
-                </div>
-            </div>
-            <div class="content-item-min">
-              <div class="content-item-nixname">
-                닉네임:
               </div>
-              <div class="content-item-nixname">
-                닉네임
-              </div>
-            </div>
-
               <div class="text_btns">
-                  <button type="button" class="edit_btn" name="button" onclick="">수정</button>
-                  <button type="button" class="delete_btn" name="button" onclick="">취소</button>
+                <!-- 수정 클릭 시 input 닉네임 변경하는 입력창(+중복확인) -->
+                  <button type="submit" class="edit_btn" name="button" onclick="">수정</button>
+                  <button type="button" class="delete_btn" name="button" onclick="location.href='main_mypage.html'">취소</button>
               </div>
+            </form>
+            <!-- 수정 끝 -->
 
           </div>
         </div>

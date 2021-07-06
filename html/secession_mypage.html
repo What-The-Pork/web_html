@@ -3,22 +3,40 @@
   <head>
     <meta charset="utf-8">
     <title>회원탈퇴</title>
-    <link rel="stylesheet" href="../css/secession_mypabe.css">
+    <link rel="stylesheet" href="../css/secession_mypage.css">
+    <link rel="stylesheet" href="../css/login_btn.css">
+    <link rel="stylesheet" href="../css/mypage_header.css">
+    <script type="text/javascript" src="../js/login_btn.js"></script>
   </head>
   <body>
     <div id="wrapper">
       <header>
         <div class="head">
           <div class="head-text">
-            <a href="index.html"><img src="../images/모두의랭킹.png"></a>
-            <h2>마이페이지</h2>
-            <span><button>▽</button></span>
-            <span>고등어 조립</span>
+            <div class="head-flex">
+              <div class="logo-title">
+                <a href="index.html"><img src="../images/모두의랭킹.png"></a>
+                <h2>마이페이지</h2>
+              </div>
+              <button type="button" class="login_btn" id="login_btn" onclick="login_btn()"><%=userNixname%>님▼</button>
+            </div>
+            <div id="profile_wrap">
+              <div class="hello">
+                <%=userNixname%> 님 안녕하세요
+              <div class="profile_img">
+                <img src="<%=userImage%>" alt="">
+              </div>
+              <a href="main_mypage.html" class="mypage">마이페이지</a>
+              <hr>
+              <!-- 로그아웃 기능 필요 -->
+              <a href="#" class="logout">로그아웃</a>
+              </div>
+            </div>
           </div>
         </div>
       </header>
       <nav>
-        <div class="head-manu">
+        <div class="head-menu">
           <ul>
             <li><a href="main_mypage.html">회원정보</a></li>
             <li><a href="security_mypage.html">보안설정</a></li>
@@ -35,8 +53,11 @@
             필요한 데이터는 미리 백업 해 주시기 바랍니다.<br><br>
             <label><input type="checkbox" name="checkbox" value="">회원 탈퇴 시 유의사항을 확인하였으며, 모두 동의 합니다.<label><br><br>
             <div class="text_btn">
-              <button type="button" name="button">동의</button>
-              <button type="button" name="button">비동의</button>
+              <!-- 값 집어 넣으면 됨 -->
+              <form class="" action="index.html" method="post">
+                <button type="submit" name="secession">동의</button>
+                <button type="button" name="button" onclick="history.go(-1);">돌아가기</button>
+              </form>
             </div>
           </div>
         </div>
