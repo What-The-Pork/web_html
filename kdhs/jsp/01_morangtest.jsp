@@ -1,10 +1,23 @@
 
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+  <%@page import ="java.sql.DriverManager" %>
+<%@page import = "java.sql.Connection" %>
+<%@page import = "java.sql.Statement" %>
+<%@page import = "java.sql.ResultSet" %>    
+
+
+  
 <!DOCTYPE html>
-<html lang="ko" dir="ltr">
+<html>
+
+
+
   <head>
 
-    <link rel="stylesheet" href="searchtest.css">
-    <script type="text/javascript" src="search_test.js"></script>
+    <link rel="stylesheet" href="01_morangtest.css">
+    <script type="text/javascript" src="01_morangtest.js"></script>
     <script src="https://kit.fontawesome.com/b71cf75717.js" crossorigin="anonymous"></script>
     <meta charset="utf-8">
     <title>모랭검색테스트</title>
@@ -12,6 +25,39 @@
   </head>
 
   <body>
+  
+	<%
+	           
+	Class.forName("oracle.jdbc.driver.OracleDriver");
+	Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","kdh","kdh331");
+	Statement stmt = conn.createStatement();
+	int x=1;
+	ResultSet rs = stmt.executeQuery("select * from search_info_test,rank_info_test where info_id="+x);
+	
+	String content ="";
+	String title = "";
+	String img = "";
+	int like =0;
+	String title_r = "";
+	String img_r = "";
+	while (rs.next())
+	{
+		content = rs.getString("info_content");
+		title = rs.getString("info_title");
+		img = rs.getString("img_link");
+		like = rs.getInt("info_like");
+		title_r = rs.getString("rank_title");
+		img_r = rs.getString("img_link_1");
+	}
+	
+	
+	
+	
+	stmt.close();
+	conn.close(); 
+	%>
+	
+  
     <div id = "frame">
     <header>
       <div class="logo" id= searchlogo>
@@ -62,33 +108,24 @@
 
       <div class="container" >
         <div class="cont_img">
-            <img src="logo/eyeing.png"  >
-            <button type="button" class= "cont_img_bt" ><a href="javascript:OpenPopimg();">이미지 더보기</a></button>
+            <img src="<%=img %>"  >
+         
           </div>
 
 
         <div class="contain_info">
           <p id=test>
-            ▶침착맨의 【이상형 월드컵】 모음: https://www.youtube.com/playlist?list...
-
-            ▶침투부 영상에 자막 달기 (감사합니다): https://bit.ly/2OJDF8O
-            ▶침투부 인기동영상:  http://goo.gl/i7Uqj1
-            ▶침착맨 트위치 실시간방송:  http://www.twitch.tv/zilioner
-
-            ▶편집자: 장효범 (6호 침투부수호자)
-            ▶2020년 9월 11일 방송분
-
-            #침착맨 #새끼동물 #이상형월드컵
-
+			<%=content %>
               </p>
         </div>
+        <button type="button" class= "cont_img_bt" ><a href="javascript:OpenPopimg();">이미지 더보기</a></button>
         <button type="button" class= "more" ><a href="javascript:OpenPop();">더보기</a></button>
 
 
 
 <div class="likeNshare">
       <button type="button" class= "like_share_button" id =likebtn onclick="ClickLikeButton()" >추천</button>
-      <button type="button" class= "like_share_button" id = sharebtn onclick="copyToClipboard('test')">공유</button>
+      <button type="button" class= "like_share_button" id = sharebtn onclick="copyToClipboard('getPageName()')">공유</button>
 </div>
 
 
@@ -96,9 +133,9 @@
           <div class="popup_box">
               <!--팝업 컨텐츠 영역-->
               <div class="popup_cont" >
-                  <h2>[ 이미지 제목 ]</h2>
+                  <h2><%=title %></h2>
                   <div class="popup_img">
-                    <img src="logo/doing.png" width="100%;"  >
+                    <img src="<%=img %>" width="100%;"  >
                   </div>
               </div>
               <!--팝업 버튼 영역-->
@@ -116,28 +153,10 @@
           <div class="popup_box">
               <!--팝업 컨텐츠 영역-->
               <div class="popup_cont" >
-                  <h2>[ 콘텐츠 제목 ]</h2>
+                  <h2><%=title %></h2>
                   <p>
-                    ▶침착맨의 【이상형 월드컵】 모음: https://www.youtube.com/playlist?list...
-
-                    ▶침투부 영상에 자막 달기 (감사합니다): https://bit.ly/2OJDF8O
-                    ▶침투부 인기동영상:  http://goo.gl/i7Uqj1
-                    ▶침착맨 트위치 실시간방송:  http://www.twitch.tv/zilioner
-
-                    ▶편집자: 장효범 (6호 침투부수호자)
-                    ▶2020년 9월 11일 방송분
-
-                    #침착맨 #새끼동물 #이상형월드컵
-                    ▶침착맨의 【이상형 월드컵】 모음: https://www.youtube.com/playlist?list...
-
-                    ▶침투부 영상에 자막 달기 (감사합니다): https://bit.ly/2OJDF8O
-                    ▶침투부 인기동영상:  http://goo.gl/i7Uqj1
-                    ▶침착맨 트위치 실시간방송:  http://www.twitch.tv/zilioner
-
-                    ▶편집자: 장효범 (6호 침투부수호자)
-                    ▶2020년 9월 11일 방송분
-
-                    #침착맨 #새끼동물 #이상형월드컵
+                    <%=content %>
+         
                   </p>
               </div>
               <!--팝업 버튼 영역-->
@@ -204,8 +223,8 @@
   <div class="sub_container">
 
     <div class="ranking_box">
-      <img src="logo/모두의랭킹5.png"  >
-      sadf
+      <img src="<%=img_r %>"  >
+      <%=title_r %><br><%=like %>
     </div>
     <div class="ranking_box">
       <img src="logo/모두의랭킹5.png"  >
@@ -225,5 +244,7 @@
 
 </div>
 
-  </body>
+ 
+
+</body>
 </html>

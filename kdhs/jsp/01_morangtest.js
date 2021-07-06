@@ -1,4 +1,6 @@
-
+/**
+ * 
+ */
 
 function OpenPop() {
 	document.getElementById("popup_layer").style.display = "";
@@ -46,4 +48,13 @@ function copyToClipboard(elementId) {
 
 	alert("링크 복사에 성공 하였습니다.");
 
+}
+function getPageName(){
+    var pageName = "";
+ 
+    var tempPageName = window.location.href;
+    var strPageName = tempPageName.split("/");
+    pageName = strPageName[strPageName.length-1].split("?")[0];
+ 
+    return pageName;
 }
