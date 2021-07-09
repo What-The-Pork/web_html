@@ -116,4 +116,53 @@ public class testDAO {
 	return ArrtDto;
 	}
 	
+	
+	public ArrayList<testDTO> getMiniRanks()
+	{	
+		ArrayList<testDTO> ArrtDto1 = new ArrayList<testDTO>();
+		
+	try {
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "kdh", "kdh331");
+		Statement stmt = conn.createStatement();
+		ResultSet rs = stmt.executeQuery("select img_link, info_title, like_num from search_info_result order by like_num DESC");
+		
+		
+		while (rs.next()) {
+			testDTO tstDTO = new testDTO();
+			tstDTO.setIMG_LINK(rs.getString(1));
+			tstDTO.setINFO_TITLE(rs.getString(2));
+			tstDTO.setLIKE_NUM(rs.getInt(3));
+			
+			ArrtDto1.add(tstDTO);
+		
+			
+		}
+
+	} catch (Exception e) {
+		e.printStackTrace();
+	} finally {
+		try {
+			if (conn != null)
+				conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		try {
+			if (stmt != null)
+				stmt.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		try {
+			if (rs != null)
+				rs.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	return ArrtDto1;
+	}
 }

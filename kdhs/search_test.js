@@ -21,7 +21,7 @@ function ClickLikeButton()
 {
 	const btnElement=document.getElementById("likebtn");
 	btnElement.innerText  = '추천완!';
-	
+
 }
 
 function copyToClipboard(elementId) {
@@ -45,5 +45,10 @@ function copyToClipboard(elementId) {
   document.body.removeChild(aux);
 
 	alert("링크 복사에 성공 하였습니다.");
+
+}
+
+function keyDown_enter()
+{
 
 }

@@ -18,6 +18,8 @@ public class testDTO {
 	private int COMMENT_LIKE;
 	
 	
+	
+	
 	public int getINFO_ID() {
 		return INFO_ID;
 	}

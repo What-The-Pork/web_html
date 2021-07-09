@@ -6,11 +6,11 @@
 <%@page import="java.sql.Connection"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.ResultSet"%>
-<%@page import= "java.util.ArrayList" %>
+<%@page import="java.util.ArrayList"%>
 
 
-<%@page import="test.testDAO" %>
-<%@page import="test.testDTO" %>
+<%@page import="test.testDAO"%>
+<%@page import="test.testDTO"%>
 
 
 <!DOCTYPE html>
@@ -34,20 +34,14 @@
 	<%
 	testDAO tDao = new testDAO();
 	ArrayList<testDTO> arrtDto = tDao.getcomments();
+	ArrayList<testDTO> arrtDto1 = tDao.getMiniRanks();
 	testDTO tDto = tDao.getinfo();
 
-	
-	
 	String title = tDto.getINFO_TITLE();
 	String img = tDto.getIMG_LINK();
 	String content = tDto.getINFO_CONTENT();
-	
-	
-
-
-	
 	%>
-	
+
 
 	<div id="frame">
 		<header>
@@ -126,7 +120,7 @@
 							<button type="button" class="like_share_button" id=likebtn
 								onclick="ClickLikeButton()">추천</button>
 							<button type="button" class="like_share_button" id=sharebtn
-								onclick="copyToClipboard('getPageName()')">공유</button>
+								onclick="copyToClipboard('http://localhost:8080/MorangWebPage/Search_info_test.jsp')">공유</button>
 						</div>
 
 
@@ -176,38 +170,45 @@
 
 					<div class="center_container">
 						<%
-                        for (int i=0; i<arrtDto.size(); i++){
-                        	testDTO notice = arrtDto.get(i);
-                        %>               
+						for (int i = 0; i < arrtDto.size(); i++) {
+							testDTO notice = arrtDto.get(i);
+						%>
 						<div class="comment_box">
 							<img src="<%=notice.getCOMMENT_PROFILE()%>">
-							<%=notice.getCOMMENT_ID()+" : "+notice.getCOMMENT_INFO()%>
-							
+							<%=notice.getCOMMENT_ID() + " : " + notice.getCOMMENT_INFO()%>
+
 						</div>
 						<%
-                        }
-                     %>
-						
+						}
+						%>
+						<div class="input_area">
+							<textarea name="comment_inputs" id="comment_input" rows="8"
+								cols="80" maxlength=25></textarea>
+							<button type="button" id="comment_into_db"
+								onclick="ClickLikeButton()">댓글 달기</button>
+						</div>
 
 					</div>
 
 
 					<div class="sub_container">
 
+						
+							<%
+						for (int i = 0; i < arrtDto1.size(); i++) {
+							testDTO notice = arrtDto1.get(i);
+						%>
 						<div class="ranking_box">
-							<img src="<%=img%>">
-							
-							
+							<img src="<%=notice.getIMG_LINK()%>">
+							<%=notice.getINFO_TITLE() + " : " + notice.getLIKE_NUM()%>
+
 						</div>
-						<div class="ranking_box">
-							<img src="logo/모두의랭킹5.png"> sadf
+						<%
+						}
+						%>
+
 						</div>
-						<div class="ranking_box">
-							<img src="logo/모두의랭킹5.png"> sadf
-						</div>
-						<div class="ranking_box">
-							<img src="logo/모두의랭킹5.png"> sadf
-						</div>
+						
 					</div>
 
 				</div>

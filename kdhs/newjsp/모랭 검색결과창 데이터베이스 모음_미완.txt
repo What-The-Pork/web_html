@@ -1,0 +1,24 @@
+
+
+
+create table commentss(
+comment_num number(8),
+comment_profile varchar2(1000),
+comment_id varchar2(100),
+comment_info varchar2(100),
+comment_like number(8)
+);
+
+insert into commentss 
+values(1,'https://img3.daumcdn.net/thumb/R658x0.q70/?fname=https://t1.daumcdn.net/news/202105/22/feelthemovie/20210522121407730buyl.jpg','kdh','재미있어요 다음에 또 보고싶은걸요',23);
+insert into commentss 
+values(1,'https://mblogthumb-phinf.pstatic.net/MjAyMTA2MTlfMjQ4/MDAxNjI0MTA2MTA3MTk5.aDGDZFSmeYd9thlcGbVyo1Q--_hIWcdn-XSnryEpoNkg.o5-lYGJvVtwORvJDAsn4nTzMAwguxvPsbAsS9zUhduwg.PNG.ysg3355/image.png?type=w800','kim2213','슈슛ㅅㅅ슉슈슛ㄱ슉슉',8);
+insert into commentss 
+values(1,'https://file.mk.co.kr/meet/neds/2019/04/image_readtop_2019_272089_15565035383729348.jpg','muyaho123','영화관가서 두번봤습니다 추천이요',126);
+insert into commentss 
+values(1,'http://file3.instiz.net/data/cached_img/upload/2020/09/01/2/bf3c1b0cc35b551c38310eb972e71a3d.jpg','maple486','재미있지만 메이플이 더 재밌는데요?',141);
+
+select img_link, info_title, like_num from search_info_result order by like_num DESC;
+//랭크 내림차순으로 서브 순위매기는거
+
+

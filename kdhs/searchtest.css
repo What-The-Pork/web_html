@@ -195,6 +195,25 @@ border-radius: 25px;
   width:50px;
 }
 
+#comment_input{
+  width: 95%;
+  height:50px;
+  font-size: 17px;
+  resize: none;
+  border: 2px solid grey;
+  border-radius: 10px;
+  padding-top:  1%;
+  padding-left:  5%;
+}
+#comment_into_db{
+  width:20%;
+  height:45px;
+  left:38%;
+  bottom:56px;
+  position:relative;
+  border-radius: 10px;
+  border-color: orange;
+}
 .ranking_box{
   width: 290px;
   height: 40px;

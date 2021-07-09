@@ -185,14 +185,35 @@ a {
 	height: 60px;
 	border: 3px solid #ddd;
 	border-radius: 10px;
+	
 }
 
 .comment_box img {
 	float: left;
-	width: 50px;
+	width: 14%;
+    height: 90%;
 	overflow: hidden;
+	border: 3px solid #ddd;
 }
-
+#comment_input{
+  width: 95%;
+  height:50px;
+  font-size: 17px;
+  resize: none;
+  border: 2px solid grey;
+  border-radius: 10px;
+  padding-top:  1%;
+  padding-left:  3%;
+}
+#comment_into_db{
+  width:20%;
+  height:45px;
+  left:38%;
+  bottom:56px;
+  position:relative;
+  border-radius: 10px;
+  border-color: orange;
+}
 .ranking_box {
 	width: 290px;
 	height: 40px;
