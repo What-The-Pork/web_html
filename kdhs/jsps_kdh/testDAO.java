@@ -7,6 +7,12 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
+
+
+
 
 public class testDAO {
 
@@ -14,6 +20,15 @@ public class testDAO {
 	private Connection conn = null;
 	private Statement stmt = null;
 	private ResultSet rs = null;
+	
+	public Connection getConnection() throws Exception {
+		Connection conn = null;
+		Context initContext = new InitialContext();
+		Context envContext = (Context) initContext.lookup("java:/comp/env");
+		DataSource ds = (DataSource) envContext.lookup("jdbc/myoracle");
+		conn = ds.getConnection();
+		return conn;
+	}
 	
 	
 	public testDTO getinfo() {
@@ -165,4 +180,6 @@ public class testDAO {
 	}
 	return ArrtDto1;
 	}
+	
+	
 }

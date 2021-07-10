@@ -1,3 +1,15 @@
+//테이블 생성
+
+create table search_info_result(
+    info_id number(8),
+    info_title varchar2(50),
+    like_num  number(8),
+    img_link  varchar2(1000),
+    rank_info_id number(8),
+    comment_num number(8),
+    comment_info varchar2(50),
+    info_content varchar2(4000)
+);
 
 
 
@@ -8,6 +20,9 @@ comment_id varchar2(100),
 comment_info varchar2(100),
 comment_like number(8)
 );
+
+
+//commentss 에 들어갈 내용
 
 insert into commentss 
 values(1,'https://img3.daumcdn.net/thumb/R658x0.q70/?fname=https://t1.daumcdn.net/news/202105/22/feelthemovie/20210522121407730buyl.jpg','kdh','재미있어요 다음에 또 보고싶은걸요',23);

@@ -6,7 +6,11 @@
 <%@page import="java.sql.Connection"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.ResultSet"%>
+<%@page import="java.util.ArrayList"%>
 
+
+<%@page import="test.testDAO"%>
+<%@page import="test.testDTO"%>
 
 
 <!DOCTYPE html>
@@ -28,30 +32,14 @@
 <body>
 
 	<%
-	Class.forName("oracle.jdbc.driver.OracleDriver");
-	Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "kdh", "kdh331");
-	Statement stmt = conn.createStatement();
-	
-	ResultSet rs = stmt.executeQuery("select * from search_info_result where info_id=2");
+	testDAO tDao = new testDAO();
+	ArrayList<testDTO> arrtDto = tDao.getcomments();
+	ArrayList<testDTO> arrtDto1 = tDao.getMiniRanks();
+	testDTO tDto = tDao.getinfo();
 
-	String content = "";
-	String title = "";
-	String img = "";
-	String comment = "";
-	int like = 0;
-
-	while (rs.next()) {
-		
-		content = rs.getString("info_content");
-		title = rs.getString("info_title");
-		img = rs.getString("img_link");
-		like = rs.getInt("like_num");
-		comment = rs.getString("comment_info");
-
-	}
-
-	stmt.close();
-	conn.close();
+	String title = tDto.getINFO_TITLE();
+	String img = tDto.getIMG_LINK();
+	String content = tDto.getINFO_CONTENT();
 	%>
 
 
@@ -132,7 +120,7 @@
 							<button type="button" class="like_share_button" id=likebtn
 								onclick="ClickLikeButton()">추천</button>
 							<button type="button" class="like_share_button" id=sharebtn
-								onclick="copyToClipboard('getPageName()')">공유</button>
+								onclick="copyToClipboard('http://localhost:8080/MorangWebPage/Search_info_test.jsp')">공유</button>
 						</div>
 
 
@@ -181,58 +169,47 @@
 					</div>
 
 					<div class="center_container">
-						<div class="comment_box">
-							<img src="logo/모두의랭킹5.png">
-							<%=comment%>
-						</div>
-						<div class="comment_box">
-							<img src="logo/모두의랭킹3.png"> <%=comment%>
-						</div>
-						<div class="comment_box">
-							<img src="logo/모두의랭킹.png"> <%=comment%>
-						</div>
-						<div class="comment_box">
-							<img src="logo/모두의랭킹2.png"> <%=comment%>
-						</div>
-						<div class="comment_box">
-							<img src="logo/모두의랭킹.png"> <%=comment%>
-						</div>
-						<div class="comment_box">
-							<img src="logo/모두의랭킹.png"> <%=comment%>
-						</div>
-						<div class="comment_box">
-							<img src="logo/모두의랭킹.png"> <%=comment%>
-						</div>
-						<div class="comment_box">
-							<img src="logo/모두의랭킹.png"> <%=comment%>
-						</div>
-						<div class="comment_box">
-							<img src="logo/모두의랭킹.png"> <%=comment%>
-						</div>
-						<div class="comment_box">
-							<img src="logo/모두의랭킹.png"> <%=comment%>
-						</div>
-						
+					
+						<%
+						for (int i = 0; i < arrtDto.size(); i++) {
+							testDTO notice = arrtDto.get(i);
+						%>
+						<div class="comment_box" name = "commentboxs">
+							<img src="<%=notice.getCOMMENT_PROFILE()%>">
+							<%=notice.getCOMMENT_ID() + " : " + notice.getCOMMENT_INFO()%>
 
+						</div>
+						<%
+						}
+						%> 
+						<form action ="insert.jsp" name="form1" method = "post" onsubmit="formCheck()">
+						
+							<textarea name="comment_inputs" id="comment_input" rows="8"
+								cols="80" maxlength=25></textarea>
+							<input type="submit" id="comment_into_db" value="댓글 달기"/>
+						
+						</form>
 					</div>
 
 
 					<div class="sub_container">
 
+						
+							<%
+						for (int i = 0; i < arrtDto1.size(); i++) {
+							testDTO notice = arrtDto1.get(i);
+						%>
 						<div class="ranking_box">
-							<img src="<%=img%>">
-							
-							좋아요 수 : <%=like%>
+							<img src="<%=notice.getIMG_LINK()%>">
+							<%=notice.getINFO_TITLE() + " : " + notice.getLIKE_NUM()%>
+
 						</div>
-						<div class="ranking_box">
-							<img src="logo/모두의랭킹5.png"> sadf
+						<%
+						}
+						%>
+
 						</div>
-						<div class="ranking_box">
-							<img src="logo/모두의랭킹5.png"> sadf
-						</div>
-						<div class="ranking_box">
-							<img src="logo/모두의랭킹5.png"> sadf
-						</div>
+						
 					</div>
 
 				</div>

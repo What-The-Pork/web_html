@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 
 function OpenPop() {
 	document.getElementById("popup_layer").style.display = "";
@@ -49,12 +47,21 @@ function copyToClipboard(elementId) {
 	alert("링크 복사에 성공 하였습니다.");
 
 }
-function getPageName(){
-    var pageName = "";
- 
-    var tempPageName = window.location.href;
-    var strPageName = tempPageName.split("/");
-    pageName = strPageName[strPageName.length-1].split("?")[0];
- 
-    return pageName;
+
+
+function formCheck(){
+	
+	
+	var comment_inputs = document.form1.comment_inputs.value;
+	
+	
+	if(comment_inputs == null || comment_inputs == "")
+	{
+		alert('내용을 입력하세요');
+		document.forms1.comment_inputs.focus();
+		return false;
+	}
+	
+	
+
 }
