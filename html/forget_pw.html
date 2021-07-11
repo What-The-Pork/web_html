@@ -16,14 +16,18 @@
           <div class="content">
             <h1>비밀번호 찾기</h1>
             <p>회원정보에 등록된 아이디와 이메일 주소를 입력해주세요.</p>
-            <input type="text" name="아이디" value="" placeholder="아이디 입력">
-            <div class="line"></div>
-            <input type="email" name="이메일" value="" placeholder="이메일 주소 입력">
-            <div class="line"></div>
-            <div class="button">
-              <button type="button" name="button" onclick="location.href='forget_pw_send.html'">이메일 전송</button>
-              <button type="button" name="button" onclick="location.href='login.html'">나가기</button>
-            </div>
+
+
+            <form class="" action="index.html" method="post">
+              <input type="text" name="아이디" value="" placeholder="아이디 입력">
+              <input type="email" name="이메일" value="" placeholder="이메일 주소 입력">
+              <div class="button">
+                <button type="button" name="submit" onclick="location.href='forget_pw_send.html'">이메일 전송</button>
+                <button type="button" name="button" onclick="location.href='login.html'">나가기</button>
+              </div>
+            </form>
+
+
             <a href="login.html">로그인 하러가기</a>
           </div>
         </div>
