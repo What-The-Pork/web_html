@@ -33,14 +33,19 @@ footer{
   margin-top:30px;
 }
 
+p{
+  font-size:14px;
+}
+
 #wrapper {
   background:white;
   text-align:center;
   margin:auto;
-  width:500px;
+  width:400px;
   height:100%;
   border-radius: 10px;
-  margin-top:50px;s
+  margin-top:50px;
+  box-shadow: 0 2px 10px #ccc;
   /* box-shadow:; */
 }
 
@@ -60,14 +65,23 @@ footer{
 }
 
 .email-check{
-  width:450px;
-  height:75px;
-  background:#ffe699;
-  border:1px solid #eee;
+  width:330px;
+  height:50px;
+  background:#f57f20;
+  border:none;
   margin:15px;
   cursor:pointer;
-  font-size: 24px;
+  font-size: 20px;
+  font-weight:bold;
   color:white;
+  border-radius: 10px;
+  transition: 0.5s;
+  box-shadow: 0 2px 10px #ccc;
+}
+
+.email-check:hover{
+  transform:translate(0,5%);
+  box-shadow: 0 2px 10px #aaa;
 }
 
 .footer{
