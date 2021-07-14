@@ -29,7 +29,7 @@
 		script.println("<script>");
 		script.println("alert('로그인을 해주세요')");
 		script.println("location.href = 'login.jsp'");
-		script.println("<script>");
+		script.println("</script>");
 		script.close();
 	}
 
@@ -40,7 +40,7 @@
 		script.println("<script>");
 		script.println("alert('잘못된 접근 입니다.')");
 		script.println("location.href = 'login.jsp'");
-		script.println("<script>");
+		script.println("</script>");
 		script.close();
 	}
 	//		boolean emailChecked = new UserDAO().getUserEmailChecked(userID); //이메일 인증 안될시

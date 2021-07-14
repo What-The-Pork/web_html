@@ -18,15 +18,6 @@
 		String userid = null;
 		if(session.getAttribute("userid") != null) {
 			userid = (String)session.getAttribute("userid");
-			boolean emailChecked = new UserDAO().getUserEmailChecked(userid); //이메일 인증 안될시
-			if(emailChecked==false){
-				PrintWriter script = response.getWriter();
-				script.println("<script>");
-				script.println("location.href = 'emailSendConfirm.jsp'");
-				script.println("</script>");
-				script.close();
-				return;
-			}
 		}
 	
 		UserDAO userDAO = new UserDAO();
@@ -40,77 +31,92 @@
     <meta charset="utf-8">
     <title>모두의 랭킹</title>
     <link rel="stylesheet" href="css/search_IN.css">
+    <link rel="stylesheet" href="css/login_btn.css">
+<link rel="stylesheet" href="css/mypage_header.css">
     <script src="https://kit.fontawesome.com/8b15bac25a.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="js/search_IN.js"></script>
-        <script src="https://kit.fontawesome.com/8b15bac25a.js" crossorigin="anonymous"></script>
-	<link rel="stylesheet" href="css/login_btn.css">
-	<script type="text/javascript" src="js/login_btn.js"></script>
+    <script src="https://kit.fontawesome.com/8b15bac25a.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="js/login_btn.js"></script>
+
   </head>
   <body>
 
     <div id="wrapper">
       <header>
-        <div class="head">
-          <a href="sesionout.jsp"><img src="images/모두의랭킹.png" alt=""></a>
-          <%
-				if(userid == null){
-			%>	
-					<button type="button" class="login_btn" onclick="location.href='serviceCenter.jsp'">고객센터</button>
-	         		<button type="button" class="login_btn" onclick="location.href='login.jsp'">로그인</button>
-	          		<button type="button" class="login_btn" onclick="location.href='join.jsp'">회원가입</button>
-          	<%		
-				} else {
-			%>
-					<button type="button" class="login_btn" id="login_btn"><%= user.getNixname()+"▼" %></button>
-          			<div id="profile_wrap">
-            			<div class="hello">
-              				<%= user.getNixname() + " 님 안녕하세요" %>
-            				<div class="profile_img">
-              					<img src="<%=profile %>" class="prof_img" alt="">
-            				</div>
-            				<a href="mypageMain.jsp" class="mypage">마이페이지</a>
-           					<a href="serviceCenter.jsp" class="mypage">고객센터</a>
-            				<hr>
-            				<form action="logoutAction">
-            					<a href="logoutAction.jsp" class="logoutAction.jsp">로그아웃</a>
-            				</form>
-            			</div>
-          			</div>
-			<%		
-				}
-			%>
-        </div>
-      </header>
+			<div class="head">
+				<div class="head-text">
+					<div class="head-flex">
+						<div class="logo-title">
+							<a href="index.jsp"><img src="images/모두의랭킹.png" alt=""></a>
+						</div>
+						<div class="login">
+							<%
+							if (userid == null) {
+							%>
+							<button type="button" class="login_btn"
+								onclick="location.href='serviceCenter.jsp'">고객센터</button>
+							<button type="button" class="login_btn"
+								onclick="location.href='login.jsp'">로그인</button>
+							<button type="button" class="login_btn"
+								onclick="location.href='join.jsp'">회원가입</button>
+							<%
+							} else {
+							%>
+							<button type="button" class="login_btn" id="login_btn"><%=user.getNixname() + "▼"%></button>
+							<div id="profile_wrap">
+								<div class="hello">
+									<%=user.getNixname() + " 님 안녕하세요"%>
+									<div class="profile_img">
+										<img src="<%=profile %>" alt="">
+									</div>
+									<a href="mypageMain.jsp" class="mypage">마이페이지</a> <a
+										href="serviceCenter.jsp" class="mypage">고객센터</a>
+									<hr>
+									<form action="logoutAction">
+										<a href="logoutAction.jsp" class="logoutAction.jsp">로그아웃</a>
+									</form>
+								</div>
+							</div>
+							<%
+							}
+							%>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
 
       <div id="wire">
 
         <section>
           <article class="main_contents">
           
-			<form method="post" action="search.jsp" >
+			<form method="post" action="search.jsp" class="search_form">
 	           
-	              <input type="text"  name="search" style="height:50px; width:50%">
-	              <input type="submit" style="width:50px; height:50px;" value="검색" >
+	              <input type="text" class="search" name="search" autofocus>
+	              <input type="submit" class="search_sub"  value="검색" >
 	              
 	           
 			</form>
 			<%
+			if(userid!=null){
 				if (user.getUserAvailable()==1){
 				%>
 				<button onclick="location.href='writeInfo.jsp'">정보작성</button>
 				<%
 				}
+				}
 				%>
 			<!-- 검색 결과 text -->
-			<div style="border: 1px solid black;  margin-top:20px;">
+			<div class="result_text">
 			<%	
 				//String search1 = request.getParameter("search");
-				out.print("\""+search+"\"에 대한 검색 결과 입니다.");
+				out.print("<h2>"+"\""+search+"\"</h2>"+"에 대한 검색 결과 입니다.");
 			%>
 			</div>
 			
 			<!-- 소 카테고리 분류 -->
-			<div style="border: 1px solid black; margin-top:20px;">
+			<div class="small_category">
 				<%
 					//String search = request.getParameter("search");
 					informationDAO iDao = new informationDAO();

@@ -101,8 +101,8 @@ informationDAO info = new informationDAO();
 				<div class="search">
 					<input class="keyword" type="text" name="search" maxlength=255
 						value="" autocomplete="off" placeholder="원하는 랭킹을 입력하세요" alt="">
-					<button type="submit" name="button">
-						<img src="images/Magnifying Glass.png" alt="">
+					<button type="submit" name="button" class="search_btn">
+						검색
 					</button>
 				</div>
 			</form>
@@ -143,9 +143,8 @@ informationDAO info = new informationDAO();
 								for (int i = 0; i < arrmovie.size(); i++) {
 									informationVO infoVO = arrmovie.get(i);
 									String total = infoVO.getSmallC_id()+Movie;
-									session.setAttribute("total", total);
 								%>
-								<a href="contents.jsp?info_id=<%=infoVO.getInfo_id()%>">
+								<a href="contents.jsp?info_id=<%=infoVO.getInfo_id()%>&total=<%=total%>">
 									<div class="rank_box">
 										<div class="num_box">
 											<strong><%=cnt++%></strong>
@@ -174,9 +173,8 @@ informationDAO info = new informationDAO();
 								for (int i = 0; i < arrgame.size(); i++) {
 									informationVO infoVO = arrgame.get(i);
 									String total = infoVO.getSmallC_id()+Game;
-									session.setAttribute("total", total);
 								%>
-								<a href="contents.jsp?info_id=<%=infoVO.getInfo_id()%>">
+								<a href="contents.jsp?info_id=<%=infoVO.getInfo_id()%>&total=<%=total%>">
 									<div class="rank_box">
 										<div class="num_box">
 											<strong><%=cnt++%></strong>
@@ -206,9 +204,8 @@ informationDAO info = new informationDAO();
 								for (int i = 0; i < arrcarton.size(); i++) {
 									informationVO infoVO = arrcarton.get(i);
 									String total = infoVO.getSmallC_id()+Carton;
-									session.setAttribute("total", total);
 								%>
-								<a href="contents.jsp?info_id=<%=infoVO.getInfo_id()%>">
+								<a href="contents.jsp?info_id=<%=infoVO.getInfo_id()%>&total=<%=total%>">
 									<div class="rank_box">
 										<div class="num_box">
 											<strong><%=cnt++%></strong>
@@ -237,9 +234,8 @@ informationDAO info = new informationDAO();
 								for (int i = 0; i < arrdrama.size(); i++) {
 									informationVO infoVO = arrdrama.get(i);
 									String total = infoVO.getSmallC_id()+drama;
-									session.setAttribute("total", total);
 								%>
-								<a href="contents.jsp?info_id=<%=infoVO.getInfo_id()%>">
+								<a href="contents.jsp?info_id=<%=infoVO.getInfo_id()%>&total=<%=total%>">
 									<div class="rank_box">
 										<div class="num_box">
 											<strong><%=cnt++%></strong>
@@ -268,9 +264,8 @@ informationDAO info = new informationDAO();
 								for (int i = 0; i < arrani.size(); i++) {
 									informationVO infoVO = arrani.get(i);
 									String total = infoVO.getSmallC_id()+annie;
-									session.setAttribute("total", total);
 								%>
-								<a href="contents.jsp?info_id=<%=infoVO.getInfo_id()%>">
+								<a href="contents.jsp?info_id=<%=infoVO.getInfo_id()%>&total=<%=total%>">
 									<div class="rank_box">
 										<div class="num_box">
 											<strong><%=cnt++%></strong>

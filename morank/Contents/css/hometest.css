@@ -81,6 +81,10 @@ header{
   box-sizing:border-box;
 }
 
+.col{
+	margin:auto;
+}
+
 label[for="keyword"]{
 	position:relative;
 	left:-40px;

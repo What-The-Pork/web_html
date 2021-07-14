@@ -15,10 +15,9 @@
 	//String info_id = request.getParameter("info_id");
 	informationDAO iDao = new informationDAO();
 	String search = (String) session.getAttribute("search");
-	String info_id = (String)session.getAttribute("info_id");
-
+	String info_id = request.getParameter("info_id");
+	String total = request.getParameter("total");
 	
-	String total = (String) session.getAttribute("total");
 
 	int result = tstDAO.likeplus(info_id);
 
@@ -33,7 +32,7 @@
 		PrintWriter outter = response.getWriter();
 		outter.println("<script>");
 		outter.println("alert('추천 완료')");
-		outter.println("location.href = 'contents.jsp?info_id="+info_id+"'");
+		outter.println("location.href = 'contents.jsp?info_id="+info_id+"&total="+total+"'");
 		outter.println("</script>");
 	}
 	%>

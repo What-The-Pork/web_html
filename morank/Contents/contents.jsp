@@ -48,6 +48,9 @@ if (request.getQueryString() != null)
 <meta charset="utf-8">
 <link rel="stylesheet" href="css/login_btn.css">
 <script type="text/javascript" src="js/login_btn.js"></script>
+<link rel="stylesheet" href="css/login_btn.css">
+<link rel="stylesheet" href="css/mypage_header.css">
+<script type="text/javascript" src="js/login_btn.js"></script>
 <title>모랭검색테스트</title>
 
 </head>
@@ -57,15 +60,16 @@ if (request.getQueryString() != null)
 	<%
 	String info_id = null;
 	
-	if (session.getAttribute("info_id") != null) {
-		info_id = (String) session.getAttribute("info_id");
-	}
 	if (request.getParameter("info_id") != null) {
 		info_id = request.getParameter("info_id");
-		session.setAttribute("info_id", info_id);
 	}
-
-	String total = (String) session.getAttribute("total");
+	
+	String total = null;
+	
+	if (request.getParameter("total") != null){
+		total = request.getParameter("total");
+	}
+	
 	informationDAO iDao = new informationDAO();
 	commentsDAO cDao = new commentsDAO();
 	ArrayList<commentsVO> arrtDto = cDao.getcomments(info_id);
@@ -84,49 +88,58 @@ if (request.getQueryString() != null)
 	<div id="frame">
 		<header>
 			<div class="head">
-				<a href="sesionout.jsp"><img src="images/모두의랭킹.png" alt=""></a>
-				<%
-				if (userid == null) {
-				%>
-				<button type="button" class="login_btn"
-					onclick="location.href='serviceCenter.jsp'">고객센터</button>
-				<button type="button" class="login_btn"
-					onclick="location.href='login.jsp'">로그인</button>
-				<button type="button" class="login_btn"
-					onclick="location.href='join.jsp'">회원가입</button>
-				<%
-				} else {
-				%>
-				<button type="button" class="login_btn" id="login_btn"><%=user.getNixname() + "▼"%></button>
-				<div id="profile_wrap">
-					<div class="hello">
-						<%=user.getNixname() + " 님 안녕하세요"%>
-						<div class="profile_img">
-							<img src="<%=profile%>" class="prof_img" alt="">
+				<div class="head-text">
+					<div class="head-flex">
+						<div class="logo-title">
+							<a href="index.jsp"><img src="images/모두의랭킹.png" alt=""></a>
 						</div>
-						<a href="mypageMain.jsp" class="mypage">마이페이지</a> <a
-							href="serviceCenter.jsp" class="mypage">고객센터</a>
-						<hr>
-						<form action="logoutAction">
-							<a href="logoutAction.jsp" class="logoutAction.jsp">로그아웃</a>
-						</form>
+						<div class="login">
+							<%
+							if (userid == null) {
+							%>
+							<button type="button" class="login_btn"
+								onclick="location.href='serviceCenter.jsp'">고객센터</button>
+							<button type="button" class="login_btn"
+								onclick="location.href='login.jsp'">로그인</button>
+							<button type="button" class="login_btn"
+								onclick="location.href='join.jsp'">회원가입</button>
+							<%
+							} else {
+							%>
+							<button type="button" class="login_btn" id="login_btn"><%=user.getNixname() + "▼"%></button>
+							<div id="profile_wrap">
+								<div class="hello">
+									<%=user.getNixname() + " 님 안녕하세요"%>
+									<div class="profile_img">
+										<img src="<%=profile %>" alt="">
+									</div>
+									<a href="mypageMain.jsp" class="mypage">마이페이지</a> <a
+										href="serviceCenter.jsp" class="mypage">고객센터</a>
+									<hr>
+									<form action="logoutAction">
+										<a href="logoutAction.jsp" class="logoutAction.jsp">로그아웃</a>
+									</form>
+								</div>
+							</div>
+							<%
+							}
+							%>
+						</div>
 					</div>
 				</div>
-				<%
-				}
-				%>
 			</div>
 		</header>
+		
 		<div id="wire">
 			<%
-			if (img == null && user.getUserAvailable() == 1) {
-				session.setAttribute("info_name", title);
+			if (img == null && userid != null) {
+				if (user.getUserAvailable() == 1){
 			%>
 
 			<h4>이미지 등록 하기</h4>
-			<button type="button" class="cancle" name="button"
-				onclick="location.href='infoprofile.jsp'">등록</button>
+			<a href="infoprofile.jsp?title=<%=title%>&info_id=<%=info_id %>&total=<%=total%>">등록</a>
 			<%
+				}
 			}
 			%>
 			<section>
@@ -139,12 +152,12 @@ if (request.getQueryString() != null)
 					</button>
 				</div>
 
-				<h3><%=title%></h3>
+				<h1><%=title%></h1>
 
 				<div class="parent_container">
 
 					<div class="container">
-						<div class="cont_img">
+						<div class="cont_img" style="background:">
 							<img src="<%=img%>">
 
 						</div>
@@ -168,7 +181,7 @@ if (request.getQueryString() != null)
 
 
 							<button type="button" class="like_share_button" id=likebtn
-								onclick="location.href = 'upLike.jsp'">추천</button>
+								onclick="location.href = 'upLike.jsp?total=<%=total%>&info_id=<%=info_id%>'">추천</button>
 
 
 							<button type="button" class="like_share_button" id=sharebtn
@@ -219,30 +232,36 @@ if (request.getQueryString() != null)
 
 
 					</div>
+					<div class="second_container">
+						<div class="center_container">
+	
+							<%
+							for (int i = 0; i < arrtDto.size(); i++) {
+								commentsVO notice = arrtDto.get(i);
+							%>
+							<div class="comment_box">
+								<img src="<%=notice.getUser_img()%>">
+								<%=notice.getUser_id() + " : " + notice.getComments_info()%>
 
-					<div class="center_container">
-
-						<%
-						for (int i = 0; i < arrtDto.size(); i++) {
-							commentsVO notice = arrtDto.get(i);
-						%>
-						<div class="comment_box" name="commentboxs">
-							<img src="<%=notice.getUser_img()%>">
-							<%=notice.getUser_id() + " : " + notice.getComments_info()%>
-
+							</div>
+							<%
+							}
+							%>
+							
 						</div>
-						<%
-						}
-						%>
-						<form action="insert.jsp" id="formcss" name="form1" method="post"
-							onsubmit="formCheck()">
-
-							<textarea name="comment_inputs" id="comment_input" rows="8"
-								cols="80" maxlength=215></textarea>
-							<input type="submit" id="comment_into_db" value="댓글 달기" />
-
-						</form>
-
+						
+						<p class="comment_text">댓글</p>
+						
+						<div class="comment_input_box">
+						
+							<form action="insert.jsp" id="formcss" name="form1" method="post"
+								onsubmit="formCheck()">
+								<textarea name="comment_inputs" id="comment_input" rows="8"
+									cols="80" maxlength=215></textarea>
+								<input type="submit" id="comment_into_db" name ="info_id" value="<%=info_id %>"/>
+							</form>
+							
+						</div>
 					</div>
 
 					<div class="sub_container">
@@ -254,12 +273,14 @@ if (request.getQueryString() != null)
 							String img1 = profileinfo.bringProfile(notice.getInfo_name());
 						%>
 						<div class="ranking_box">
-							<img src="<%=img1%>">
-							<%=notice.getInfo_name() + " : " + notice.getLikeamount()%>
-							<form action="moveto.jsp" name="form_move2" method="post">
-
-								<a href="contents.jsp?info_id=<%=notice.getInfo_id()%>">이동</a>
-							</form>
+							
+							<img src="<%=img1%>" class="profile">
+							<a href="contents.jsp?info_id=<%=notice.getInfo_id()%>&total=<%=total%>">
+								<%=notice.getInfo_name()%>
+							</a>
+							<span class="like_number">	
+								<%=" - " + notice.getLikeamount()%>
+							</span>
 						</div>
 						<%
 						}
@@ -268,18 +289,16 @@ if (request.getQueryString() != null)
 
 
 					</div>
-
-
-
 				</div>
+			</section>
 		</div>
-		</section>
+
 
 		<footer>
 			<div class="footer" id="foot">
 				<div class="company" id="foot">
 					<a style=""><img src="images/WTP.jpg" width="50px;">
-						<h2>What the Pork</h2></a>
+						What the Pork</a>
 				</div>
 				<div class="detail" id="foot">
 					<b>주소</b> : 경기 수원시 팔달구 중부대로 100 3층 <br> <b>대표</b> : 박창주
@@ -287,9 +306,6 @@ if (request.getQueryString() != null)
 			</div>
 
 		</footer>
-	</div>
-
-	</div>
-
+	</div>	
 </body>
 </html>

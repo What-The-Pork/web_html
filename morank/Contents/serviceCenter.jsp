@@ -31,13 +31,16 @@
 			return;
 		}
 	}
-	if (userid == null) {
+	
+	
+	if (userid==null) {
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
 		script.println("alert('로그인을 해주세요')");
 		script.println("location.href = 'login.jsp'");
-		script.println("<script>");
+		script.println("</script>");
 		script.close();
+		return;
 	}
 
 	int pageNumber = 1;
@@ -65,18 +68,7 @@
 				<a href="index.jsp"><img src="images/모두의랭킹.png" alt=""></a>
 				<h2>고객센터</h2>
 				<div class="login">
-					<%
-					if (userid == null) {
-					%>
-					<button type="button" class="login_btn"
-						onclick="location.href='serviceCenter.jsp'">고객센터</button>
-					<button type="button" class="login_btn"
-						onclick="location.href='login.jsp'">로그인</button>
-					<button type="button" class="login_btn"
-						onclick="location.href='join.jsp'">회원가입</button>
-					<%
-					} else {
-					%>
+					
 					<button type="button" class="login_btn" id="login_btn"><%= user.getNixname()+"▼" %></button>
 					<div id="profile_wrap">
 						<div class="hello">
@@ -92,19 +84,18 @@
 							</form>
 						</div>
 					</div>
-					<%
-					}
-					%>
 				</div>
 			</div>
 		</header>
 		<div id="wire">
 			<nav>
 			<%
+			if(userid != null){
 				if (user.getUserAvailable()==1){
 				%>
 				<button onclick="location.href='noticeWrite.jsp'">공지사항 작성</button>
 				<%
+					}
 				}
 				%>
 				<ul>

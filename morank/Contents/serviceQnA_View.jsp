@@ -36,7 +36,7 @@
 		script.println("<script>");
 		script.println("alert('로그인을 해주세요')");
 		script.println("location.href = 'login.jsp'");
-		script.println("<script>");
+		script.println("</script>");
 		script.close();
 	}
 	String scid = null;
@@ -176,10 +176,12 @@
 						}
 						%>
 						<%
+						if (userid != null){
 						if (user.getUserAvailable() == 1) {
 						%>
 						<button onclick="location.href='QnA_Answer.jsp'">답변 작성</button>
 						<%
+						}
 						}
 						%>
 					</div>

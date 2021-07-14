@@ -144,7 +144,7 @@ public class ServiceDAO {
 	}
 
 	public boolean nextPage(String pageNumber) {
-		String SQL = "SELECT * FROM sc WHERE scid >= ? AND scAvailable = 1 ORDER BY scid DESC;";
+		String SQL = "SELECT * FROM sc WHERE scid >= ? AND scAvailable = 1 ORDER BY scid DESC";
 		try {
 			conn = DatabaseUtil.getConnection();
 			pstmt = conn.prepareStatement(SQL);

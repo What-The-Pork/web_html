@@ -145,7 +145,7 @@ public class informationDAO {
 	
 	// contents 페이지 에서 모든 정보를 출력
 	public informationVO getinfo(String info_id) {
-		String sql = "select info_id, info_name, likeamount, img_link, info_content from information where info_id =?";
+		String sql = "select * from information where info_id =?";
 		
 		try {
 			conn = DatabaseUtil.getConnection();
@@ -155,11 +155,15 @@ public class informationDAO {
 
 			if (rs.next()) {
 				informationVO cVo = new informationVO();
-				cVo.setInfo_id(rs.getString(1));
-				cVo.setInfo_name(rs.getString(2));
-				cVo.setLikeamount(rs.getInt(3));
-				cVo.setImg_link(rs.getString(4));
-				cVo.setInfo_content(rs.getString(5));
+				cVo.setBigC_id(rs.getString("BigC_id"));
+				cVo.setSmallC_id(rs.getString("SmallC_id"));
+				cVo.setInfo_id(rs.getString("info_id"));
+				cVo.setInfo_name(rs.getString("info_name"));
+				cVo.setKeyword(rs.getString("keyword"));
+				cVo.setInfo_content(rs.getString("info_content"));
+				cVo.setLikeamount(rs.getInt("LIKEAMOUNT"));
+				cVo.setImg_link(rs.getString("IMG_LINK"));
+				cVo.setProducer(rs.getString("producer"));
 				return cVo;
 			}
 

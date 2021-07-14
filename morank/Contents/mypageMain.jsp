@@ -37,7 +37,7 @@
 		script.println("<script>");
 		script.println("alert('로그인을 해주세요')");
 		script.println("location.href = 'login.jsp'");
-		script.println("<script>");
+		script.println("</script>");
 		script.close();
 	}
 
@@ -146,8 +146,6 @@
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="content-items">
 				<div class="content-item">
 					<div class="content-item-title">
 						<strong>닉네임 변경</strong>
@@ -162,7 +160,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+			</div>
 		<footer>
 			<div class="footer">
 				<div class="company">

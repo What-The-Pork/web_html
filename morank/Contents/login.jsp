@@ -19,7 +19,7 @@ pageEncoding="UTF-8"%>
 		script.println("<script>");
 		script.println("alert('로그인이 된 상태 입니다.')");
 		script.println("location.href = 'index.jsp'");
-		script.println("<script>");
+		script.println("</script>");
 		script.close();
 	}
 	%>

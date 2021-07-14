@@ -29,8 +29,24 @@ MultipartRequest multipartRequest = new MultipartRequest(request, directory, max
 
 String IMG_LINK = multipartRequest.getOriginalFileName("IMG_LINK");
 
-String info_name = (String)session.getAttribute("info_name");
 
+String info_name = null;
+
+if(session.getAttribute("title") != null) {
+	info_name = (String) session.getAttribute("title");
+}
+
+String total = null;
+
+if(session.getAttribute("total") != null) {
+	total = (String) session.getAttribute("total");
+}
+
+String info_id = null;
+
+if(session.getAttribute("info_id") != null) {
+	info_id = (String) session.getAttribute("info_id");
+}
 if (IMG_LINK == null){
 	PrintWriter script = response.getWriter();
 	script.println("<script>");
@@ -54,7 +70,7 @@ else {
 	PrintWriter script = response.getWriter();
 	script.println("<script>");
 	script.println("alert('프로필 변경 완료')");
-	script.println("location.href = 'ranking.jsp'");
+	script.println("location.href = 'contents.jsp?info_id="+info_id+"&total="+total+"&title="+info_name+"'");
 	script.println("</script>");
 	script.close();
 }

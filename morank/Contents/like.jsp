@@ -16,7 +16,7 @@
 	String info_id = request.getParameter("info_id");
 	informationDAO iDao = new informationDAO();
 	String search = (String)session.getAttribute("search");
-	String total = (String)session.getAttribute("total");
+	String total = request.getParameter("total");
 	
 	int result1 = iDao.likeplus(info_id);
 	PrintWriter script  = response.getWriter();
@@ -26,7 +26,6 @@
 	script.close();
 	
 						
-	
 %>
 </body>
 </html>
