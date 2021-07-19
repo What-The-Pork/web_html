@@ -1,5 +1,5 @@
 package searchdto;
-
+// 검색 정보 자바빈즈
 public class informationVO {
 	private String BigC_id;
 	private String SmallC_id;    

@@ -3,8 +3,6 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="searchdao.informationDAO" %>
 <%@ page import="searchdto.informationVO" %>
-<%@ page import="searchdao.rankingDAO" %>
-<%@ page import="searchdto.rankingVO" %>
 <%@ page import="java.io.PrintWriter" %>
 <%@ page import="java.net.URLEncoder" %>
 <%@ page import = "user.UserDAO" %>   
@@ -15,6 +13,8 @@
    
  %>
  <%
+ 		// 검색 후 랭킹정보를 보여주는 페이지
+ 		// 유저 세션 유지
 		String userid = null;
 		if(session.getAttribute("userid") != null) {
 			userid = (String)session.getAttribute("userid");
@@ -22,13 +22,13 @@
 			if(emailChecked==false){
 				PrintWriter script = response.getWriter();
 				script.println("<script>");
-				script.println("location.href = 'emailSendConfirm.jsp'");
+				script.println("location.href = 'join3.jsp'");
 				script.println("</script>");
 				script.close();
 				return;
 			}
 		}
-	
+		// 유저정보를 가져올 객체 색성
 		UserDAO userDAO = new UserDAO();
 		UserDTO user = userDAO.getuser(userid);
 		String profile = new UserDAO().getProfile(userid);
@@ -59,7 +59,7 @@
 							<a href="index.jsp"><img src="images/모두의랭킹.png" alt=""></a>
 						</div>
 						<div class="login">
-							<%
+							<%// 로그인시
 							if (userid == null) {
 							%>
 							<button type="button" class="login_btn"
@@ -68,7 +68,7 @@
 								onclick="location.href='login.jsp'">로그인</button>
 							<button type="button" class="login_btn"
 								onclick="location.href='join.jsp'">회원가입</button>
-							<%
+							<%// 비로그인시
 							} else {
 							%>
 							<button type="button" class="login_btn" id="login_btn"><%=user.getNixname() + "▼"%></button>

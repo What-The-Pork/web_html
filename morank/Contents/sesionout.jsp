@@ -9,6 +9,7 @@
 </head>
 <body>
 <%
+// 마구잡이로 저장된 세션값을 초기화해주는 페이지
 session.removeAttribute("total");
 session.removeAttribute("search");
 session.removeAttribute("info_id");

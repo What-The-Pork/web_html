@@ -1,5 +1,5 @@
 package user;
-
+// 유저 정보 자바빈즈
 public class UserDTO {
 	
 	private String userid;

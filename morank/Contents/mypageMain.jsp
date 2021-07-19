@@ -19,6 +19,8 @@
 </head>
 <body>
 	<%
+	// 메인 마이페이지
+	// 로그인 세션 유지
 	String userid = null;
 	if(session.getAttribute("userid") != null) {
 		userid = (String)session.getAttribute("userid");
@@ -32,6 +34,7 @@
 			return;
 		}
 	}
+	// 비 로그인 시 접근을 방지하기 위함
 	if (userid == null) {
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
@@ -40,12 +43,7 @@
 		script.println("</script>");
 		script.close();
 	}
-
-	String pageNumber = "1";
-
-	if (request.getParameter("pageNumber") != null) {
-		pageNumber = request.getParameter("pageNumber");
-	}
+	// 회원정보를 가져올 객체를 생성
 	UserDAO userDAO = new UserDAO();
 	UserDTO user = userDAO.getuser(userid);
 	String profile = new UserDAO().getProfile(userid);
@@ -69,7 +67,7 @@
 							<h2>마이페이지</h2>
 						</div>
 						<div class="login">
-							<%
+							<%//비 로그인 시
 							if (userid == null) {
 							%>
 							<button type="button" class="login_btn"
@@ -78,7 +76,7 @@
 								onclick="location.href='login.jsp'">로그인</button>
 							<button type="button" class="login_btn"
 								onclick="location.href='join.jsp'">회원가입</button>
-							<%
+							<%//로그인 시
 							} else {
 							%>
 							<button type="button" class="login_btn" id="login_btn"><%=user.getNixname() + "▼"%></button>

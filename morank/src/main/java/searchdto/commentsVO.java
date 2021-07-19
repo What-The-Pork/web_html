@@ -1,5 +1,5 @@
 package searchdto;
-
+// ´ñ±Û ÀÚ¹Ù ºóÁî
 public class commentsVO {
 	private String info_id;
 	private String user_img;

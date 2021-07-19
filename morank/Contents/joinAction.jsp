@@ -12,10 +12,11 @@
 </head>
 <body>
 	<%
+	// 약관 동의를 담은 변수
 	String checkPoint1 = request.getParameter("checkPoint1");
 	String checkPoint2 = request.getParameter("checkPoint2");
 	String checkPoint3 = request.getParameter("checkPoint3");
-	
+	// 약관 동의를 하지 않았을 시
 	if (checkPoint1==null || checkPoint2 ==null || checkPoint3 ==null){
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
@@ -24,7 +25,7 @@
 		script.println("</script>");
 		script.close();
 	}
-	else {
+	else {// 동의 했을시 페이지 이동
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
 		script.println("location.href = 'join2.jsp'");

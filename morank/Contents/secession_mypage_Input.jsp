@@ -16,6 +16,8 @@
 </head>
 <body>
 	<%
+	// 회원 탈퇴시 입력 사항을 작성하는 페이지
+	// 로그인 세션 유지
 	String userid = null;
 	if(session.getAttribute("userid") != null) {
 		userid = (String)session.getAttribute("userid");
@@ -29,6 +31,7 @@
 			return;
 		}
 	}
+	// 비로그인 시 접근 방지
 	if (userid == null) {
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
@@ -39,19 +42,10 @@
 	}
 	
 
-
+	// 유저 정보를 가져오는 객체 생성
 	UserDAO userDAO = new UserDAO();
 	UserDTO user = userDAO.getuser(userid);
 	String profile = new UserDAO().getProfile(userid);
-	//		boolean emailChecked = new UserDAO().getUserEmailChecked(userID); 
-	//	if(emailChecked==false){
-	//	PrintWriter script = response.getWriter();
-	//		script.println("<script>");
-	//		script.println("location.href = 'emailSendConfirm.jsp'");
-	//		script.println("</script>");
-	//		script.close();
-	//		return;
-	//	}
 	
 
 	
@@ -67,7 +61,7 @@
 							<h2>마이페이지</h2>
 						</div>
 						<div class="login">
-							<%
+							<%// 비 로그인 시
 							if (userid == null) {
 							%>
 							<button type="button" class="login_btn"
@@ -76,7 +70,7 @@
 								onclick="location.href='login.jsp'">로그인</button>
 							<button type="button" class="login_btn"
 								onclick="location.href='join.jsp'">회원가입</button>
-							<%
+							<%// 로그인 시
 							} else {
 							%>
 							<button type="button" class="login_btn" id="login_btn"><%=user.getNixname() + "▼"%></button>
@@ -113,11 +107,11 @@
 		<div class="contents">
 			<br> <br> <br> <br> <br>
 
-			<!-- 비밀번호 변경 -->
+			<!-- 유저의 아이디 정보와 비밀번호를 secession_mypageAction.jsp 페이지에 전달 -->
 			<form class="form-password" action="secession_mypageAction.jsp" method="post">
 				<div class="centered">
 					<div class="">
-						<h3>비밀번호변경</h3>
+						<h3>회원탈퇴</h3>
 					</div>
 					<div class="account">
 						<input type="text" class="form-control" id="pwd"

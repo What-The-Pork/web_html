@@ -16,6 +16,8 @@
 </head>
 <body>
 	<%
+	// 회원 탈퇴 및 비밀번호 변경 페이지로 이동하기 위한 페이지
+	// 회원 세션 유지
 	String userid = null;
 	if (session.getAttribute("userid") != null) {
 		userid = (String) session.getAttribute("userid");
@@ -28,7 +30,7 @@
 			script.close();
 			return;
 		}
-	}
+	}// 비로그인 시 접근 방지
 	if (userid == null) {
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
@@ -37,24 +39,10 @@
 		script.println("</script>");
 		script.close();
 	}
-
-	String pageNumber = "1";
-
-	if (request.getParameter("pageNumber") != null) {
-		pageNumber = request.getParameter("pageNumber");
-	}
+	// 유저 정보를 가져오는 객체 생성
 	UserDAO userDAO = new UserDAO();
 	UserDTO user = userDAO.getuser(userid);
 	String profile = new UserDAO().getProfile(userid);
-	//		boolean emailChecked = new UserDAO().getUserEmailChecked(userID); //이메일 인증 안될시
-	//	if(emailChecked==false){
-	//	PrintWriter script = response.getWriter();
-	//		script.println("<script>");
-	//		script.println("location.href = 'emailSendConfirm.jsp'");
-	//		script.println("</script>");
-	//		script.close();
-	//		return;
-	//	}
 	%>
 	<div id="wrapper">
 		<header>
@@ -66,7 +54,7 @@
 							<h2>마이페이지</h2>
 						</div>
 						<div class="login">
-							<%
+							<%// 비 로그인 시
 							if (userid == null) {
 							%>
 							<button type="button" class="login_btn"
@@ -76,7 +64,7 @@
 							<button type="button" class="login_btn"
 								onclick="location.href='join.jsp'">회원가입</button>
 							<%
-							} else {
+							} else {//로그인 시
 							%>
 							<button type="button" class="login_btn" id="login_btn"><%=user.getNixname() + "▼"%></button>
 							<div id="profile_wrap">
@@ -112,6 +100,7 @@
 		<div class="contents">
 			<div class="content-items">
 				<div class="content-item">
+				<!-- 비밀번호 변경 페이지 이동-->
 					<div class="content-item-title">
 						<strong>비밀번호 변경</strong>
 					</div>
@@ -120,6 +109,7 @@
 					</div>
 				</div>
 				<div class="content-item">
+				<!-- 회원 탈퇴 페이지 이동-->
 					<div class="content-item-title">
 						<strong>회원 탈퇴</strong>
 					</div>

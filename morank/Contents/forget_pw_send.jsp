@@ -14,17 +14,18 @@
 <%@ page import="java.io.PrintWriter"%>
 <%@ page import="user.UserDTO"%>
 <%
-UserDAO userDAO = new UserDAO();
-String userid = null;
+//비밀번호 찾기 페이지
+UserDAO userDAO = new UserDAO(); //객체생성
+String userid = null; 
 String email = null;
-
+// 값 저장
 if (request.getParameter("userid") != null) {
 	userid = request.getParameter("userid");
 }
 if (request.getParameter("email") != null) {
 	email = request.getParameter("email");
 }
-
+// 정보가 없을시 리턴
 if (userid == null || email == null) {
 	PrintWriter script = response.getWriter();
 	script.println("<script>");
@@ -35,15 +36,26 @@ if (userid == null || email == null) {
 	return;
 }
 
-
+//자바빈즈 객체에서 불러온 내용 저장
 UserDTO userdto = userDAO.getuser(userid);
+// 회원정보에서 이메일을 
+if (!userdto.getUserid().equals(userid) || !userdto.getEmail().equals(email)){
+	PrintWriter script = response.getWriter();
+	script.println("<script>");
+	script.println("alert('회원정보와 일치하지 않습니다.')");
+	script.println("history.back()");
+	script.println("</script>");
+	script.close();
+	return;
+}
 
+//사이트 주소
 String host = "http://localhost:8080/morank/";
-String from = "pcj0228test.gmail.com";
-String to = userDAO.getUserEmail(userid);
-String subject = "모랭 사이트 비밀번호 찾기 메일 입니다.";
-String content = "회원님의 비밀 번호는 "+userdto.getPwd()+" 입니다." + "<a href='" + host + "login.jsp'><br>로그인하기</a>";
-
+String from = "pcj0228test.gmail.com";//구글아이디
+String to = userDAO.getUserEmail(userid);//유저아이디
+String subject = "모랭 사이트 비밀번호 찾기 메일 입니다."; //제목
+String content = "회원님의 비밀 번호는 "+userdto.getPwd()+" 입니다." + "<a href='" + host + "login.jsp'><br>로그인하기</a>"; //메일내용
+// 이메일 전송 내용 저장
 Properties p = new Properties();
 p.put("mail.smtp.user", from);
 p.put("mail.smtp.host", "smtp.googlemail.com");
@@ -54,7 +66,7 @@ p.put("mail.smtp.debug", "true");
 p.put("mail.smtp.socketFactory.port", "465");
 p.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 p.put("mail.smtp.socketFactory.fallback", "false");
-
+//이메일 전송
 try {
 	Authenticator auth = new Gmail();
 	Session ses = Session.getInstance(p, auth);

@@ -1,5 +1,5 @@
 package notice;
-
+//공지사항 자바빈즈
 public class NoticeDTO {
 	private int noticeid;
 	private String noticeTitle;

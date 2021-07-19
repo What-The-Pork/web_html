@@ -16,6 +16,8 @@
 </head>
 <body>
 	<%
+	// 회원 탈퇴 시 동의사항 페이지
+	// 유저정보 유지
 	String userid = null;
 	if(session.getAttribute("userid") != null) {
 		userid = (String)session.getAttribute("userid");
@@ -29,6 +31,7 @@
 			return;
 		}
 	}
+	// 비 로그인 시 접근 방지
 	if (userid == null) {
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
@@ -37,19 +40,10 @@
 		script.println("</script>");
 		script.close();
 	}
-
+	// 유저 정보를 가져올 객체 생성
 	UserDAO userDAO = new UserDAO();
 	UserDTO user = userDAO.getuser(userid);
 	String profile = new UserDAO().getProfile(userid);
-	//		boolean emailChecked = new UserDAO().getUserEmailChecked(userID); //이메일 인증 안될시
-	//	if(emailChecked==false){
-	//	PrintWriter script = response.getWriter();
-	//		script.println("<script>");
-	//		script.println("location.href = 'emailSendConfirm.jsp'");
-	//		script.println("</script>");
-	//		script.close();
-	//		return;
-	//	}
 	%>
 	<div id="wrapper">
 		<header>
@@ -61,7 +55,7 @@
 							<h2>마이페이지</h2>
 						</div>
 						<div class="login">
-							<%
+							<%// 비로그인시
 							if (userid == null) {
 							%>
 							<button type="button" class="login_btn"
@@ -70,7 +64,7 @@
 								onclick="location.href='login.jsp'">로그인</button>
 							<button type="button" class="login_btn"
 								onclick="location.href='join.jsp'">회원가입</button>
-							<%
+							<%//로그인시
 							} else {
 							%>
 							<button type="button" class="login_btn" id="login_btn"><%=user.getNixname() + "▼"%></button>
@@ -107,6 +101,7 @@
 		<div class="contents">
 			<div class="content-item">
 				<div class="content-box">
+				<!-- 회원탈퇴시 동의사항 값을 secessionCheckPoint.jsp 페이지에 전달-->
 					<form class="" action="secessionCheckPoint.jsp" method="post">
 						<h2>회원탈퇴</h2>
 						회원 탈퇴 전에 반드시 유의 사항을 확인하고 진행해 주세요<br> <br>

@@ -17,9 +17,12 @@
 </head>
 <body>
 	<%
+	//닉네임 변경 페이지
+	// 로그인 세션 유지
 	String userid = null;
 	if(session.getAttribute("userid") != null) {
 		userid = (String)session.getAttribute("userid");
+		// 이메일 비 인증시 다시 인증할수 있게 이동
 		boolean emailChecked = new UserDAO().getUserEmailChecked(userid); //이메일 인증 안될시
 		if(emailChecked==false){
 			PrintWriter script = response.getWriter();
@@ -30,6 +33,7 @@
 			return;
 		}
 	}
+	// 비로그인시 리턴
 	if (userid == null) {
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
@@ -38,12 +42,8 @@
 		script.println("</script>");
 		script.close();
 	}
-
-	String pageNumber = "1";
-
-	if (request.getParameter("pageNumber") != null) {
-		pageNumber = request.getParameter("pageNumber");
-	}
+	
+	// 유저 정보를 가져올 객체 생성
 	UserDAO userDAO = new UserDAO();
 	UserDTO user = userDAO.getuser(userid);
 	String profile = new UserDAO().getProfile(userid);
@@ -67,7 +67,7 @@
 							<h2>마이페이지</h2>
 						</div>
 						<div class="login">
-							<%
+							<%//비 로그인시
 							if (userid == null) {
 							%>
 							<button type="button" class="login_btn"
@@ -76,7 +76,7 @@
 								onclick="location.href='login.jsp'">로그인</button>
 							<button type="button" class="login_btn"
 								onclick="location.href='join.jsp'">회원가입</button>
-							<%
+							<%// 로그인 시
 							} else {
 							%>
 							<button type="button" class="login_btn" id="login_btn"><%=user.getNixname() + "▼"%></button>
@@ -114,11 +114,11 @@
 			<div class="content-items">
 				<div class="content-item">
 					<div class="content-item-title">
-						<strong><h2>프로필수정</h2></strong>
+						<strong><h2>닉네임 변경</h2></strong>
 					</div>
 					<div class="content-item-profile">
 							<img src="<%=profile %>" alt="" style="width:100px; border-radius:50%;">
-					</div>
+					</div><!-- 입력 받은 닉네임을 modifyNixname.jsp 페이지로 전달 -->
 						<form action="modifyNixname.jsp" method="post">
 						<div class="content-text">
 							<div class="content-item-nixname">

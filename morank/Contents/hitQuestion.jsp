@@ -17,6 +17,7 @@
 </head>
 <body>
 	<%
+	// 로그인 세션 유지
 	request.setCharacterEncoding("UTF-8");
 	String userid = null;
 	if(session.getAttribute("userid") != null) {
@@ -31,6 +32,7 @@
 			return;
 		}
 	}
+	// 비로그인 시
 	if (userid == null) {
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
@@ -39,13 +41,16 @@
 		script.println("<script>");
 		script.close();
 	}
+	// 게시물 아이디 저장
 	String scid = null;
 	if (request.getParameter("scid") != null) {
 		scid = (String) request.getParameter("scid");
 	}
+	// 게시물 객체 생성
 	ServiceDAO svDAO = new ServiceDAO();
+	//조회수 증가 메소드
 	svDAO.good(scid);
-	
+	// 회원정보를 가져올 유저 객체 생성
 	UserDAO userDAO = new UserDAO();
 	UserDTO user = userDAO.getuser(userid);
 	String profile = new UserDAO().getProfile(userid);
@@ -66,6 +71,7 @@
 				<h2>고객센터</h2>
 				<div class="login">
 					<%
+					// 비로그인 시
 					if (userid == null) {
 					%>
 					<button type="button" class="login_btn"
@@ -74,7 +80,7 @@
 						onclick="location.href='login.jsp'">로그인</button>
 					<button type="button" class="login_btn"
 						onclick="location.href='join.jsp'">회원가입</button>
-					<%
+					<%// 로그인시
 					} else {
 					%>
 					<button type="button" class="login_btn" id="login_btn"><%= user.getNixname()+"▼" %></button>
@@ -130,7 +136,7 @@
 									<th>조회수</th>
 								</tr>
 								<%
-								
+								// 리턴타입 arraylist 인 문의글 정보를 가져오는 메소드를 자바빈즈에 담아 줌 
 								ArrayList<ServiceDTO> list = svDAO.gethitquestion();
 								for (int i = 0; i < list.size(); i++) {
 									ServiceDTO sv = list.get(i);

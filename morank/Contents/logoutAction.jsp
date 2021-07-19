@@ -11,6 +11,8 @@
 </head>
 <body>
 	<%
+	//로그아웃을 담당하는 페이지
+	//모든 세션을 닫아줌
 	session.invalidate();
 	%>
 

@@ -1,5 +1,5 @@
 package notice;
-
+// 공지사항 객체
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,10 +14,10 @@ public class NoticeDAO {
 	private PreparedStatement pstmt = null;
 	private ResultSet rs = null;
 
-	
+	//공지사항 작성시 사용되는 메소드
 	public int write(NoticeDTO noticeDTO) {
 
-		String SQL = "INSERT INTO notice VALUES (NULL, ?, ?)";
+		String SQL = "INSERT INTO NOTICE VALUES (NULL, ?, ?)";
 		try {
 			conn = DatabaseUtil.getConnection();
 			pstmt = conn.prepareStatement(SQL);
@@ -50,9 +50,9 @@ public class NoticeDAO {
 		}
 		return -1;
 	}
-	
+	// 공지글을 전부 가져와주는 메소드
 	public ArrayList<NoticeDTO> getList() {
-		String SQL = "SELECT * FROM notice ORDER BY noticeid  DESC";
+		String SQL = "SELECT * FROM NOTICE ORDER BY noticeid  DESC";
 		ArrayList<NoticeDTO> list = null;
 		try {
 			conn = DatabaseUtil.getConnection();
@@ -93,9 +93,9 @@ public class NoticeDAO {
 		}
 		return list;
 	}
-	
+	// 일부 공지글의 정보를 가져와주는 메소드
 	public NoticeDTO getnotice(String noticeid) {
-		String SQL = "SELECT * FROM notice WHERE noticeid=?";
+		String SQL = "SELECT * FROM NOTICE WHERE noticeid=?";
 		try {
 			conn = DatabaseUtil.getConnection();
 			pstmt = conn.prepareStatement(SQL);

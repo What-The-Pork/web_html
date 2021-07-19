@@ -11,6 +11,7 @@
 </head>
 <body>
 	<%
+	// 검색정보를 저장할 관리자 페이지
 	String userid = null;
 	if (session.getAttribute("userid") != null) {
 		userid = (String) session.getAttribute("userid");
@@ -23,7 +24,7 @@
 			script.close();
 			return;
 		}
-	}
+	}// 비 로그인 시 방지
 	if (userid == null) {
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
@@ -32,9 +33,10 @@
 		script.println("</script>");
 		script.close();
 	}
-
+	// 회원 정보를 가져올 객체 생성
 	UserDAO userDAO = new UserDAO();
 	UserDTO user = userDAO.getuser(userid);
+	// 잘못된 접근을 방지하기 위함
 	if (user.getUserAvailable() != 1) {
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
@@ -43,16 +45,8 @@
 		script.println("</script>");
 		script.close();
 	}
-	//		boolean emailChecked = new UserDAO().getUserEmailChecked(userID); //이메일 인증 안될시
-	//	if(emailChecked==false){
-	//	PrintWriter script = response.getWriter();
-	//		script.println("<script>");
-	//		script.println("location.href = 'emailSendConfirm.jsp'");
-	//		script.println("</script>");
-	//		script.close();
-	//		return;
-	//	}
 	%>
+	<!-- 카테고리 정보를 WriteinfoAction.jsp 페이지로 전달해줌 -->
 	<form action="WriteinfoAction.jsp" medhod="post">
 		<div>
 			<h4>카테고리(대)</h4>

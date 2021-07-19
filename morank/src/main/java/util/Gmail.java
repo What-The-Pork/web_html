@@ -1,5 +1,5 @@
 package util;
-
+//이메일 연동 객체
 import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
 
@@ -7,7 +7,7 @@ public class Gmail extends Authenticator {
 	
 	@Override
 	protected PasswordAuthentication getPasswordAuthentication() {
-		return new PasswordAuthentication("pcj0228test@gmail.com", "jusu159357!!"); //본인 아이디
+		return new PasswordAuthentication("구글아이디", "구글비밀번호"); //본인 아이디
 	}
 	
 	

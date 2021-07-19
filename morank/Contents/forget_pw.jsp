@@ -24,8 +24,8 @@
             <form class="" action="forget_pw_send.jsp" method="post">
               <input type="text" name="userid" value="" placeholder="아이디 입력">
               <input type="email" name="email" value="" placeholder="이메일 주소 입력">
-              <div class="button">
-                <button type="submit" name="submit" onclick="location.href='forget_pw_send.jsp'">이메일 전송</button>
+              <div class="button"> 
+                <button type="submit" name="submit" onclick="location.href='forget_pw_send.jsp'">이메일 전송</button><!-- 이메일 전송 페이지 이동 -->
                 <button type="button" name="button" onclick="location.href='login.jsp'">나가기</button>
               </div>
             </form>

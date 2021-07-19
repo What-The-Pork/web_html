@@ -1,5 +1,5 @@
 package service;
-
+// 문의글 객체
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,7 +13,7 @@ public class ServiceDAO {
 	private PreparedStatement pstmt = null;
 	private ResultSet rs = null;
 
-
+	//현재 시간을 가져와주는 메소드
 	public String getDate() {
 		String SQL = "SELECT NOW()";
 		try {
@@ -50,10 +50,10 @@ public class ServiceDAO {
 		return "";
 
 	}
-
+	// 문의글 작성 메소드
 	public int write(ServiceDTO svDTO) {
 
-		String SQL = "INSERT INTO sc VALUES (NULL, ?, ?, ?, ?, ?, 0, 0,?,NULL)";
+		String SQL = "INSERT INTO SC VALUES (NULL, ?, ?, ?, ?, ?, 0, 0,?,NULL)";
 		try {
 			conn = DatabaseUtil.getConnection();
 			pstmt = conn.prepareStatement(SQL);
@@ -90,9 +90,9 @@ public class ServiceDAO {
 		}
 		return -1;
 	}
-
+	// 문의글의 마지막 번호부터 8번째까지 가져와주는 메소드
 	public ArrayList<ServiceDTO> getList(String pageNumber) {
-		String SQL = "SELECT * FROM sc WHERE scid > (SELECT MAX(scid) FROM sc) - ? AND scid <= (SELECT MAX(scid) FROM sc) - ? AND scAvailable = 1 ORDER BY scid DESC";
+		String SQL = "SELECT * FROM SC WHERE scid > (SELECT MAX(scid) FROM SC) - ? AND scid <= (SELECT MAX(scid) FROM SC) - ? AND scAvailable = 1 ORDER BY scid DESC";
 		ArrayList<ServiceDTO> list = null;
 		try {
 			conn = DatabaseUtil.getConnection();
@@ -142,9 +142,9 @@ public class ServiceDAO {
 		}
 		return list;
 	}
-
+	// 문의글의 마지막 번호부터 8번째까지 이후 값이 있을 시 true를 반환해주는 메소드 없을 시 false 
 	public boolean nextPage(String pageNumber) {
-		String SQL = "SELECT * FROM sc WHERE scid >= ? AND scAvailable = 1 ORDER BY scid DESC";
+		String SQL = "SELECT * FROM SC WHERE scid >= ? AND scAvailable = 1 ORDER BY scid DESC";
 		try {
 			conn = DatabaseUtil.getConnection();
 			pstmt = conn.prepareStatement(SQL);
@@ -180,9 +180,9 @@ public class ServiceDAO {
 		}
 		return false;
 	}
-
+	// 문의글 정보를 가져와주는 메소드
 	public ServiceDTO getSC(String scid) {
-		String SQL = "SELECT * FROM sc WHERE scid=?";
+		String SQL = "SELECT * FROM SC WHERE scid=?";
 		try {
 			conn = DatabaseUtil.getConnection();
 			pstmt = conn.prepareStatement(SQL);
@@ -229,10 +229,10 @@ public class ServiceDAO {
 		}
 		return null;
 	}
-
+	// 조회수를 늘려주는 메소드
 	public int good(String scid) {
 
-		String SQL = "UPDATE sc SET scGood = scgood + 1 WHERE scid = ?";
+		String SQL = "UPDATE SC SET scGood = scgood + 1 WHERE scid = ?";
 		try {
 			conn = DatabaseUtil.getConnection();
 			pstmt = conn.prepareStatement(SQL);
@@ -264,10 +264,10 @@ public class ServiceDAO {
 		}
 		return -1;
 	}
-
+	// 답변 내용을 저장해주는 메소드
 	public int answer(String answer, String scid) {
 
-		String SQL = "UPDATE sc SET scAnswer = ?, statused=1 WHERE scid = ?";
+		String SQL = "UPDATE SC SET scAnswer = ?, statused=1 WHERE scid = ?";
 		try {
 			ServiceDTO sv = new ServiceDTO();
 			conn = DatabaseUtil.getConnection();
@@ -301,9 +301,9 @@ public class ServiceDAO {
 		}
 		return -1;
 	}
-
+	// 문의글의 조회수가 높은거부터 8번째까지 가져와주는 메소드
 	public ArrayList<ServiceDTO> gethitquestion() {
-		String SQL = "SELECT * FROM sc WHERE scid  ORDER BY scGood  DESC LIMIT 8";
+		String SQL = "SELECT * FROM SC WHERE scid  ORDER BY scGood  DESC LIMIT 8";
 		ArrayList<ServiceDTO> list = null;
 		try {
 			conn = DatabaseUtil.getConnection();
@@ -351,9 +351,9 @@ public class ServiceDAO {
 		}
 		return list;
 	}
-	
+	// 문의글을 삭제 해주는 메소드
 	public int delectQnA (String userid, String scid) {
-		String SQL = "DELETE FROM sc WHERE userid = ? and scid= ?";
+		String SQL = "DELETE FROM SC WHERE userid = ? and scid= ?";
 		Connection conn = null;
 		PreparedStatement pstmt=null;
 		ResultSet rs = null;
@@ -387,10 +387,10 @@ public class ServiceDAO {
 		}
 		return -1; //데이터베이스 오류
 	}
-	
+	// 문의글을 수정해주는 메소드
 	public int QnA_modify(String scTitle, String scContent, String scDate, String classified , String scid) {
 
-		String SQL = "UPDATE sc SET scTitle = ?, scContent = ?, scDate = ?, classified = ? WHERE scid = ?";
+		String SQL = "UPDATE SC SET scTitle = ?, scContent = ?, scDate = ?, classified = ? WHERE scid = ?";
 		try {
 			ServiceDTO sv = new ServiceDTO();
 			conn = DatabaseUtil.getConnection();

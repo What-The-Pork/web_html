@@ -1,5 +1,5 @@
 package service;
-
+// 문의글의 자바빈즈
 public class ServiceDTO {
 	private int scid;
 	private String scTitle;

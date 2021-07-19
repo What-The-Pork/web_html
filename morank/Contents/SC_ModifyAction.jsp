@@ -11,6 +11,7 @@
 </head>
 <body>
 	<%
+	// 유저 세션 유지
 	request.setCharacterEncoding("UTF-8");
 	String userid = null;
 	if(session.getAttribute("userid") != null) {
@@ -25,6 +26,7 @@
 			return;
 		}
 	}
+	// 비로그인시 접근을 방지
 	if (userid == null) {
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
@@ -33,15 +35,25 @@
 		script.println("</script>");
 		script.close();
 	}
+	// 게시물 정보를 가져옴
 	String scid = null;
 	if (session.getAttribute("scid") != null) {
 		scid = (String) session.getAttribute("scid");
 	}
-	
+	// 비정상적인 접근을 방지하기 위함
+	if (scid == null) {
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("alert('잘못된 접근 입니다.')");
+		script.println("location.href = 'login.jsp'");
+		script.println("</script>");
+		script.close();
+	}
+	// 전달받은 제목, 내용, 카테고리를 담을 변수
 	String scTitle = null;
 	String scContent= null;
 	String classified=null;
-	
+	// 전달받은 제목, 내용, 카테고리를 변수에 넣어줌
 	if (request.getParameter("scTitle") != null){
 		scTitle = request.getParameter("scTitle");
 	}
@@ -51,7 +63,7 @@
 	if (request.getParameter("classified") != null){
 		classified = request.getParameter("classified");
 	}
-	
+	// 입력을 하지 않았을시 방지
 	if (scTitle == null || scContent == null ){
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
@@ -61,16 +73,18 @@
 		script.close();
 		return;
 	}
-	
+	// 문의글 등록을 위한 객체 생성
 	ServiceDAO serviceDAO = new ServiceDAO();
+	// 데이터베이스에 문의글을 등록 해주는 메소드 실행
 	int result = serviceDAO.QnA_modify(scTitle, scContent, serviceDAO.getDate(), classified, scid);
+	// 데이터베이스 오류
 	if (result == -1){
 		PrintWriter outter = response.getWriter();
 		outter.println("<script>");
 		outter.println("alert('데이터베이스 오류')");
 		outter.println("history.back()");
 		outter.println("</script>");
-	}
+	}// 수정완료
 	else {
 		PrintWriter outter = response.getWriter();
 		outter.println("<script>");

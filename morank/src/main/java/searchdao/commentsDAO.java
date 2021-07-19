@@ -1,5 +1,5 @@
 package searchdao;
-
+// 댓글정보 객체
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,7 +15,7 @@ public class commentsDAO {
 	private PreparedStatement pstmt = null;
 	private ResultSet rs = null;
 
-
+	// 댓글 정보를 가져와주는 메소드
 	public ArrayList<commentsVO> getcomments(String info_id) {
 		ArrayList<commentsVO> ArrtDto = new ArrayList<commentsVO>();
 		String sql = "select * from comments where info_id=? ORDER BY comment_id DESC";
@@ -53,9 +53,9 @@ public class commentsDAO {
 		}
 		return ArrtDto;
 	}
-	
+	// 댓글 작성시 사용되는 메소드
 	public int creatcomment(commentsVO commentsvo) {
-		String sql = "INSERT INTO COMMENTS VALUES(?,?,?,?,0)";
+		String sql = "INSERT INTO comments VALUES(?,?,?,?,0)";
 		try {
 			conn = DatabaseUtil.getConnection();
 			pstmt = conn.prepareStatement(sql);

@@ -1,5 +1,5 @@
 package searchdao;
-
+// 검색정보에 대한 객체
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -56,7 +56,7 @@ public class informationDAO {
 	// 카테고리 선택시 랭킹 리스트 출력
 	public ArrayList<informationVO> showranklist (String select) {
 		ArrayList<informationVO> list = new ArrayList<informationVO>();
-		String sql = "select info_name, likeamount, info_id from information where CONCAT(SmallC_id,BigC_id) = ? order by likeamount desc";
+		String sql = "select info_name, likeamount, info_id from information where CONCAT(SmallC_id,BigC_id) = ? order by likeamount desc LIMIT 10";
 		
 		try {
 			conn = DatabaseUtil.getConnection();
@@ -90,7 +90,7 @@ public class informationDAO {
 		}
 		return list; 
 	}
-	
+	// 좋아요 수를 늘려주는 메소드
 	public int likeplus(String info_id) {
 		String sql = "update information set likeamount = likeamount + 1 where info_id = ? ";
 		try {
@@ -116,7 +116,7 @@ public class informationDAO {
 		return -1; 
 		
 	}
-	
+	// 좋아요 수를 줄여주는 메소드 구현 전
 	public int likeminus(String info_id) {
 		String sql = "update information set likeamount = likeamount - 1 where info_id = ? ";
 		try {
@@ -189,7 +189,7 @@ public class informationDAO {
 	// 다른 랭킹 보기
 	public ArrayList<informationVO> getMiniRanks(String category) {
 		ArrayList<informationVO> ArrtDto1 = new ArrayList<informationVO>();
-		String sql = "SELECT info_id, img_link, info_name, likeamount FROM information WHERE CONCAT(SmallC_id,BigC_id) = ? ORDER BY likeamount DESC;";
+		String sql = "SELECT info_id, img_link, info_name, likeamount FROM information WHERE CONCAT(SmallC_id,BigC_id) = ? ORDER BY likeamount DESC LIMIT 10";
 		
 		try {
 			conn = DatabaseUtil.getConnection();
@@ -227,7 +227,7 @@ public class informationDAO {
 		return ArrtDto1;
 	}
 
-	
+	// 인덱스 랭킹 페이지정보를 가져와주는 메소드
 	public ArrayList<informationVO> getindexinfo(String BigC_id) {
 		String SQL = "SELECT * FROM information WHERE BigC_id=? order by likeamount desc LIMIT 10";
 		ArrayList<informationVO> arr = new ArrayList<informationVO>();
@@ -263,10 +263,10 @@ public class informationDAO {
 		}
 		return arr;
 	}
-	
+	// 검색 정보 작성시 사용되는 메소드
 	public int writeinfo(informationVO infoVO) {
 
-		String SQL = "INSERT INTO information VALUES (?, ?, ?, ?, ?, ?, NULL, NULL, ?)";
+		String SQL = "INSERT INTO information VALUES (?, ?, ?, ?, ?, ?, 0, NULL, ?)";
 		try {
 			conn = DatabaseUtil.getConnection();
 			pstmt = conn.prepareStatement(SQL);
@@ -304,7 +304,66 @@ public class informationDAO {
 		}
 		return -1;
 	}
-	
+	// 검색 정보 등록 시 아이디의 중복을 체크해주는 메소드
+	public boolean getprimarykey(String info_id) {
+		String SQL = "SELECT * FROM information WHERE info_id =?";
+		try {
+			conn = DatabaseUtil.getConnection();
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, info_id);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				return true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				if (conn != null)
+					conn.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (rs != null)
+					rs.close();
+			}
+			catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return false;
+	}
+	// 정보 아이디를 가져와주는 메소드
+	public String getinfoid(String BigC_id, String SmallC_id) {
+		String SQL = "SELECT info_id FROM information WHERE BigC_id=? AND SmallC_id=? ORDER BY info_id DESC";
+		try {
+			conn = DatabaseUtil.getConnection();
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, BigC_id);
+			pstmt.setString(2, SmallC_id);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				return rs.getString(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				if (conn != null)
+					conn.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (rs != null)
+					rs.close();
+			}
+			catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return null;
+	}
+	// 검색정보의 모든걸 가져오는 메소드
 	public ArrayList<informationVO> getallinfo() {
 		String SQL = "SELECT * FROM information";
 		ArrayList<informationVO> arr = new ArrayList<informationVO>();
@@ -343,7 +402,7 @@ public class informationDAO {
 		}
 		return arr;
 	}
-	
+	// 검색정보 프로필 사진을 등록해 주는 메소드
 	public int getProfile(String IMG_LINK, String info_name) {
 		String SQL = "UPDATE information SET IMG_LINK = ? WHERE info_name = ?";
 		try {
@@ -369,7 +428,7 @@ public class informationDAO {
 		}
 		return -1;
 	}
-	
+	// 검색정보 프로필 사진을 가져와주는 메소드
 	public String bringProfile(String info_name) {
 		String SQL = "SELECT IMG_LINK FROM information WHERE info_name = ?";
 		try {
@@ -381,7 +440,7 @@ public class informationDAO {
 				if (rs.getString("IMG_LINK").equals("")) {
 					return null;
 				}
-				return "http://localhost:8080/morank/upload/"+rs.getString("IMG_LINK");
+				return "upload/"+rs.getString("IMG_LINK");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

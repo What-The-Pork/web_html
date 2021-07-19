@@ -10,10 +10,12 @@ pageEncoding="UTF-8"%>
 </head>
 <body>
 <%
+	//로그인 세션 유지
 	String userid = null;
 	if (session.getAttribute("userid") != null) {
 		userid = (String) session.getAttribute("userid");
 	}
+	// 이미 로그인 했을 시 접근을 방지
 	if (userid != null) {
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
@@ -24,6 +26,7 @@ pageEncoding="UTF-8"%>
 	}
 	%>
 	<div class="wrapper">
+	<!-- 입력받은 아이디와 비밀번호를 검증하는 페이지로 전달후 이동 -->
       <form class="form-signin" action="loginAction.jsp" method="post">
         <p><a href="index.jsp"><img src="images/모두의랭킹2.png" width="250px" alt=""></a></p>
         <div class="centered">

@@ -11,6 +11,8 @@
 </head>
 <body>
 	<%
+	// 공지글 작성을 위한 관리자 페이지
+	// 회원 세션 유지
 	String userid = null;
 	if (session.getAttribute("userid") != null) {
 		userid = (String) session.getAttribute("userid");
@@ -24,23 +26,25 @@
 			return;
 		}
 	}
+	// 잘못된 접근 방지
 	if (userid == null) {
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
-		script.println("alert('로그인을 해주세요')");
+		script.println("alert('잘못된 접근 입니다.')");
 		script.println("location.href = 'login.jsp'");
 		script.println("</script>");
 		script.close();
 	}
-
+	// 유저 정보를 가져올 객체 생성
 	UserDAO userDAO = new UserDAO();
 	UserDTO user = userDAO.getuser(userid);
+	// 관리자 계정이외 접근 시 을 방지하기 위함
 	if (user.getUserAvailable() != 1) {
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
 		script.println("alert('잘못된 접근 입니다.')");
 		script.println("location.href = 'login.jsp'");
-		script.println("<script>");
+		script.println("</script>");
 		script.close();
 	}
 	//		boolean emailChecked = new UserDAO().getUserEmailChecked(userID); //이메일 인증 안될시
@@ -53,6 +57,7 @@
 	//		return;
 	//	}
 	%>
+	<!-- 공지 제목 과 공지 내용을  noticeWriteAction.jsp 페이지에 전달-->
 	<form action="noticeWriteAction.jsp" medhod="post">
 		<div>
 			<h4>공지제목</h4>

@@ -17,6 +17,8 @@
 </head>
 <body>
 	<%
+	// 문의글 수정 페이지
+	// 유저정보 유지
 	String userid = null;
 	if(session.getAttribute("userid") != null) {
 		userid = (String)session.getAttribute("userid");
@@ -30,10 +32,12 @@
 			return;
 		}
 	}
+	// 게시물 아이디 값을 넣어줌
 	String scid = null;
 	if (session.getAttribute("scid") != null) {
 		scid = (String) session.getAttribute("scid");
 	}
+	// 비로그인 시 접근을 방지
 	if (userid == null) {
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
@@ -42,10 +46,7 @@
 		script.println("</script>");
 		script.close();
 	}
-	int pageNumber = 1;
-	if (request.getParameter("pageNumber") != null) {
-		pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
-	}
+	// 유저 정보를 가져오는 객체 생성
 	UserDAO userDAO = new UserDAO();
 	UserDTO user = userDAO.getuser(userid);
 	String profile = new UserDAO().getProfile(userid);
@@ -65,7 +66,7 @@
 				<a href="index.jsp"><img src="images/모두의랭킹.png" alt=""></a>
 				<h2>고객센터</h2>
 				<div class="login">
-					<%
+					<%// 비 로그인 시
 					if (userid == null) {
 					%>
 					<button type="button" class="login_btn"
@@ -74,7 +75,7 @@
 						onclick="location.href='login.jsp'">로그인</button>
 					<button type="button" class="login_btn"
 						onclick="location.href='join.jsp'">회원가입</button>
-					<%
+					<%// 로그인시
 					} else {
 					%>
 					<button type="button" class="login_btn" id="login_btn"><%= user.getNixname()+"▼" %></button>
@@ -125,6 +126,7 @@
 						<div class="main_title">
 							<h3>수정</h3>
 						</div>
+						<!-- 수정할 문의 글의 제목과 분류 내용을 SC_ModifyAction.jsp 페이지에 전달해줌 -->
 						<form method="post" action="SC_ModifyAction.jsp">
 							<div class="main_table">
 								<table class="mtm">

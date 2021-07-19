@@ -5,8 +5,6 @@
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="index.Category_DAO"%>
-<%@page import="index.Category_dto"%>
 <%@ page import = "java.io.PrintWriter" %> 
 <%@ page import = "user.UserDAO" %>   
 <%@ page import = "user.UserDTO" %>
@@ -14,17 +12,18 @@
 <%@ page import = "searchdto.informationVO" %>  
 
 <%
+//영화 변수
 String Movie = "Movie";
-String Game = "Game";
-String annie = "Annie";
-String drama = "Drama";
-String Carton = "Carton";
-informationDAO info = new informationDAO();
+String Game = "Game"; //게임 변수
+String annie = "Annie"; //애니메이션 변수
+String drama = "Drama"; //드라마 변수
+String Carton = "Carton"; //만화 변수
+informationDAO info = new informationDAO(); //인덱스 랭킹 정보를 가져올 정보 객체 생성
 
 
 %>
 
-<%
+<%		// 로그인 세션 유지
 		String userid = null;
 		if(session.getAttribute("userid") != null) {
 			userid = (String)session.getAttribute("userid");
@@ -32,13 +31,13 @@ informationDAO info = new informationDAO();
 			if(emailChecked==false){
 				PrintWriter script = response.getWriter();
 				script.println("<script>");
-				script.println("location.href = 'emailSendConfirm.jsp'");
+				script.println("location.href = 'join3.jsp'");
 				script.println("</script>");
 				script.close();
 				return;
 			}
-		}
-	
+		}	
+		//회원정보를 가져올 회원객체 생성
 		UserDAO userDAO = new UserDAO();
 		UserDTO user = userDAO.getuser(userid);
 		String profile = new UserDAO().getProfile(userid);
@@ -64,13 +63,13 @@ informationDAO info = new informationDAO();
 	<div id="wrap">
 		<header>
 			<div class="login">
-				<%
+				<%//비 로그인 시
 				if(userid == null){
 			%>	
 					<button type="button" class="login_btn" onclick="location.href='serviceCenter.jsp'">고객센터</button>
 	         		<button type="button" class="login_btn" onclick="location.href='login.jsp'">로그인</button>
 	          		<button type="button" class="login_btn" onclick="location.href='join.jsp'">회원가입</button>
-          	<%		
+          	<%		//로그인시
 				} else {
 			%>
 					<button type="button" class="login_btn" id="login_btn"><%= user.getNixname()+"▼" %></button>
@@ -137,7 +136,7 @@ informationDAO info = new informationDAO();
 						</div>
 						<div class="tab-content">
 							<div class="tab-pane fade show active" id="영화">
-								<%
+								<%// 리턴타입 arraylist 인 정보객체에서 정보를 전부 가져오는 메소드를 자바빈즈에 담아 줌
 								ArrayList<informationVO> arrmovie = info.getindexinfo(Movie);
 								int cnt = 1;
 								for (int i = 0; i < arrmovie.size(); i++) {
@@ -167,7 +166,7 @@ informationDAO info = new informationDAO();
 								</a>
 							</div>
 							<div class="tab-pane fade" id="게임">
-								<%
+								<%// 리턴타입 arraylist 인 정보객체에서 정보를 전부 가져오는 메소드를 자바빈즈에 담아 줌
 								ArrayList<informationVO> arrgame = info.getindexinfo(Game);
 								cnt = 1;
 								for (int i = 0; i < arrgame.size(); i++) {
@@ -198,7 +197,7 @@ informationDAO info = new informationDAO();
 								</a>
 							</div>
 							<div class="tab-pane fade" id="만화">
-								<%
+								<%// 리턴타입 arraylist 인 정보객체에서 정보를 전부 가져오는 메소드를 자바빈즈에 담아 줌
 								ArrayList<informationVO> arrcarton = info.getindexinfo(Carton);
 								cnt = 1;
 								for (int i = 0; i < arrcarton.size(); i++) {
@@ -228,7 +227,7 @@ informationDAO info = new informationDAO();
 								</a>
 							</div>
 							<div class="tab-pane fade" id="드라마">
-								<%
+								<%// 리턴타입 arraylist 인 정보객체에서 정보를 전부 가져오는 메소드를 자바빈즈에 담아 줌
 								ArrayList<informationVO> arrdrama = info.getindexinfo(drama);
 								cnt = 1;
 								for (int i = 0; i < arrdrama.size(); i++) {
@@ -258,7 +257,7 @@ informationDAO info = new informationDAO();
 								</a>
 							</div>
 							<div class="tab-pane fade" id="애니">
-								<%
+								<%// 리턴타입 arraylist 인 정보객체에서 정보를 전부 가져오는 메소드를 자바빈즈에 담아 줌
 								ArrayList<informationVO> arrani = info.getindexinfo(annie);
 								cnt = 1;
 								for (int i = 0; i < arrani.size(); i++) {

@@ -12,6 +12,8 @@
 </head>
 <body>
 	<%
+	// 회원가입 페이지 (2)
+	// 유저 세션 정보를 가져와 로그인 시 접근을 제한 하기위함
 	String userid = null;
 	if (session.getAttribute("userid") != null) {
 		userid = (String) session.getAttribute("userid");
@@ -29,6 +31,7 @@
 		<div class="logo">
 			<a href="index.jsp"><img src="images/모두의랭킹6.png" alt=""></a>
 		</div>
+		<!-- 입력한 회원 정보를 userRegisterAction.jsp 페이지로 전달해 회원가입 진행 -->
 		<form action="userRegisterAction.jsp">
 			<div class="button">
 				<img src="images/join_button_off.png" alt=""> <img

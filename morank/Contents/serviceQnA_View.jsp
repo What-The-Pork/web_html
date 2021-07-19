@@ -17,8 +17,10 @@
 </head>
 <body>
 	<%
+	// 문의 글의 상세 내용을 보여주는 페이지
 	request.setCharacterEncoding("UTF-8");
 	String userid = null;
+	// 로그인 세션 유지
 	if (session.getAttribute("userid") != null) {
 		userid = (String) session.getAttribute("userid");
 		boolean emailChecked = new UserDAO().getUserEmailChecked(userid); //이메일 인증 안될시
@@ -31,6 +33,7 @@
 			return;
 		}
 	}
+	// 비 로그인 시 방지
 	if (userid == null) {
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
@@ -39,26 +42,23 @@
 		script.println("</script>");
 		script.close();
 	}
+	// 비 정상적인 접근시 방지
 	String scid = null;
 	if (request.getParameter("scid") != null) {
 		scid = (String) request.getParameter("scid");
 	}
+	// 문의 글 수정 및 삭제 진행 시 적용된 문의아이디를 세션적용 해줌
 	session.setAttribute("scid", scid);
+	// 문의글을 보여줄 객체 생성
 	ServiceDAO svDAO = new ServiceDAO();
+	// 문의글의 내용을 담아줄 자바빈즈 생성
 	ServiceDTO svDTO = svDAO.getSC(scid);
+	// 문의글 이동 시 조회수 증가
 	svDAO.good(scid);
+	// 유저정보를 보여줄 객체 생성
 	UserDAO userDAO = new UserDAO();
 	UserDTO user = userDAO.getuser(userid);
 	String profile = new UserDAO().getProfile(userid);
-	//		boolean emailChecked = new UserDAO().getUserEmailChecked(userID); //이메일 인증 안될시
-	//	if(emailChecked==false){
-	//	PrintWriter script = response.getWriter();
-	//		script.println("<script>");
-	//		script.println("location.href = 'emailSendConfirm.jsp'");
-	//		script.println("</script>");
-	//		script.close();
-	//		return;
-	//	}
 	%>
 	<div id="wrapper">
 		<header>
@@ -66,7 +66,7 @@
 				<a href="index.jsp"><img src="images/모두의랭킹.png" alt=""></a>
 				<h2>고객센터</h2>
 				<div class="login">
-					<%
+					<%//로그인시
 					if (userid == null) {
 					%>
 					<button type="button" class="login_btn"
@@ -75,7 +75,7 @@
 						onclick="location.href='login.jsp'">로그인</button>
 					<button type="button" class="login_btn"
 						onclick="location.href='join.jsp'">회원가입</button>
-					<%
+					<%//비로그인시
 					} else {
 					%>
 					<button type="button" class="login_btn" id="login_btn"><%=user.getNixname() + "▼"%></button>
@@ -125,7 +125,7 @@
 						</div>
 						<div class="main_table">
 							<table class="mtm">
-								<tr>
+								<tr><!-- 가져온 데이터를 자바빈즈에서 불러옴 -->
 									<th>제목</th>
 									<td><%=svDTO.getScTitle()%></td>
 								</tr>
@@ -134,7 +134,7 @@
 									<td><%=svDTO.getClassified()%></td>
 								</tr>
 								<tr>
-									<th>작성일</th>
+									<th>작성일</th><!-- 필요한 부분 자름 -->
 									<td><%=svDTO.getScDate().substring(2, 4) + "-" + svDTO.getScDate().substring(5, 7) + "-"
 		+ svDTO.getScDate().substring(8, 10)%></td>
 								</tr>
@@ -159,7 +159,7 @@
 								</tr>
 							</table>
 						</div>
-						<%
+						<%// 본인이 작성한 글이라면 띄어줌
 						if (svDTO.getUserid().equals(userid)) {
 						%>
 						<div class="text_btn">
@@ -175,7 +175,7 @@
 						<%
 						}
 						%>
-						<%
+						<%// 관리자 권한일시 문의글 답변 작성 가능
 						if (userid != null){
 						if (user.getUserAvailable() == 1) {
 						%>

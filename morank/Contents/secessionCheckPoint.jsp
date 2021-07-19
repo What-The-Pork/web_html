@@ -10,8 +10,9 @@
 </head>
 <body>
 	<%
+	// 회원 탈퇴 동의 값을 변수 생성 후 넣어줌	
 	String checkPoint = request.getParameter("checkPoint");
-
+	// 회원 탈퇴 동의 체크를 확인해주는 페이지
 	String userid = null;
 	if (session.getAttribute("userid") != null) {
 		userid = (String) session.getAttribute("userid");
@@ -24,7 +25,7 @@
 			script.close();
 			return;
 		}
-	}
+	}	// 비로그인 시 접근 방지
 	if (userid == null) {
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
@@ -33,7 +34,7 @@
 		script.println("</script>");
 		script.close();
 	}
-
+	// 값이 없을 시 방지
 	if (checkPoint == null) {
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
@@ -41,7 +42,7 @@
 		script.println("history.back()");
 		script.println("</script>");
 		script.close();
-	} else {
+	} else {// 값이 있으면 회원탈퇴 페이지 이동
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
 		script.println("location.href = 'secession_mypage_Input.jsp'");

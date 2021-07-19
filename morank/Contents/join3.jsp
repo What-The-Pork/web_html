@@ -14,20 +14,25 @@
 <%@ page import="java.io.PrintWriter"%>
 <%@ page import="user.UserDTO"%>
 <%
+// 유저 이메일을 가져올 객체 생성
 UserDAO userDAO = new UserDAO();
+//회원가입 페이지 (3)
+// 유저 세션 정보를 가져와 로그인 시 접근을 제한 하기위함
 String userid = null;
 if (session.getAttribute("userid") != null) {
 	userid = (String) session.getAttribute("userid");
 }
+// 회원가입 절차를 무시하고 접근 시 방지하기 위함
 if (userid == null) {
 	PrintWriter script = response.getWriter();
 	script.println("<script>");
-	script.println("alert('로그인을 해주세요')");
+	script.println("alert('잘못된 접근 입니다.')");
 	script.println("location.href = 'login.jsp'");
 	script.println("</script>");
 	script.close();
 	return;
 }
+// 이메일 인증이 완료 되었는데 접근 시 방지하기 위함
 boolean emailChecked = userDAO.getUserEmailChecked(userid);
 if (emailChecked == true) {
 	PrintWriter script = response.getWriter();
@@ -39,13 +44,13 @@ if (emailChecked == true) {
 	return;
 }
 
-String host = "http://localhost:8080/morank/";
-String from = "pcj0228test.gmail.com";
-String to = userDAO.getUserEmail(userid);
-String subject = "모랭 사이트 회원가입 이메일 인증 메일 입니다.";
+String host = "http://jusu0369.cafe24.com/"; //사이트 주소
+String from = "pcj0228test.gmail.com"; //구글아이디
+String to = userDAO.getUserEmail(userid); //유저아이디
+String subject = "모랭 사이트 회원가입 이메일 인증 메일 입니다."; // 메일 제목
 String content = "다음 링크에 접속하여 이메일 인증을 진행하세요." + "<a href='" + host + "emailCheckAction.jsp?code="
-		+ new SHA256().getSHA256(to) + "'><br>이메일 인증하기</a>";
-
+		+ new SHA256().getSHA256(to) + "'><br>이메일 인증하기</a>"; // 메일 내용
+// 이메일 전송 내용 저장
 Properties p = new Properties();
 p.put("mail.smtp.user", from);
 p.put("mail.smtp.host", "smtp.googlemail.com");
@@ -56,7 +61,7 @@ p.put("mail.smtp.debug", "true");
 p.put("mail.smtp.socketFactory.port", "465");
 p.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 p.put("mail.smtp.socketFactory.fallback", "false");
-
+//이메일 전송
 try {
 	Authenticator auth = new Gmail();
 	Session ses = Session.getInstance(p, auth);

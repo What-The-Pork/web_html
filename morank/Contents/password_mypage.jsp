@@ -16,6 +16,8 @@
 </head>
 <body>
 	<%
+	// 비밀번호 변경하는 페이지
+	// 유저 세션을 유지하는 페이지
 	String userid = null;
 	if(session.getAttribute("userid") != null) {
 		userid = (String)session.getAttribute("userid");
@@ -29,6 +31,7 @@
 			return;
 		}
 	}
+	// 비로그인시 접근을 방지
 	if (userid == null) {
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
@@ -37,24 +40,10 @@
 		script.println("</script>");
 		script.close();
 	}
-
-	String pageNumber = "1";
-
-	if (request.getParameter("pageNumber") != null) {
-		pageNumber = request.getParameter("pageNumber");
-	}
+	// 유저 정보를 가져올 객체 생성
 	UserDAO userDAO = new UserDAO();
 	UserDTO user = userDAO.getuser(userid);
 	String profile = new UserDAO().getProfile(userid);
-	//		boolean emailChecked = new UserDAO().getUserEmailChecked(userID); //이메일 인증 안될시
-	//	if(emailChecked==false){
-	//	PrintWriter script = response.getWriter();
-	//		script.println("<script>");
-	//		script.println("location.href = 'emailSendConfirm.jsp'");
-	//		script.println("</script>");
-	//		script.close();
-	//		return;
-	//	}
 	%>
 	<div id="wrapper">
 		<header>
@@ -66,7 +55,7 @@
 							<h2>마이페이지</h2>
 						</div>
 						<div class="login">
-							<%
+							<%// 비 로그인 시
 							if (userid == null) {
 							%>
 							<button type="button" class="login_btn"
@@ -75,7 +64,7 @@
 								onclick="location.href='login.jsp'">로그인</button>
 							<button type="button" class="login_btn"
 								onclick="location.href='join.jsp'">회원가입</button>
-							<%
+							<%// 로그인 시
 							} else {
 							%>
 							<button type="button" class="login_btn" id="login_btn"><%=user.getNixname() + "▼"%></button>

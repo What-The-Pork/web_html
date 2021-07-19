@@ -1,5 +1,5 @@
 package util;
-
+// 해쉬태그로 변환
 import java.security.MessageDigest;
 
 public class SHA256 {

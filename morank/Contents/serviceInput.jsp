@@ -17,6 +17,8 @@
 </head>
 <body>
 	<%
+	// 문의글을 작성하는 페이지
+	// 로그인 세션 유지
 	String userid = null;
 	if (session.getAttribute("userid") != null) {
 		userid = (String) session.getAttribute("userid");
@@ -30,6 +32,7 @@
 			return;
 		}
 	}
+	// 비로그인시 방지
 	if (userid == null) {
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
@@ -38,22 +41,10 @@
 		script.println("</script>");
 		script.close();
 	}
-	int pageNumber = 1;
-	if (request.getParameter("pageNumber") != null) {
-		pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
-	}
+	//회원 정보를 가져올 객체 생성
 	UserDAO userDAO = new UserDAO();
 	UserDTO user = userDAO.getuser(userid);
 	String profile = new UserDAO().getProfile(userid);
-	//		boolean emailChecked = new UserDAO().getUserEmailChecked(userID); //이메일 인증 안될시
-	//	if(emailChecked==false){
-	//	PrintWriter script = response.getWriter();
-	//		script.println("<script>");
-	//		script.println("location.href = 'emailSendConfirm.jsp'");
-	//		script.println("</script>");
-	//		script.close();
-	//		return;
-	//	}
 	%>
 	<div id="wrapper">
 		<header>
@@ -61,7 +52,7 @@
 				<a href="index.jsp"><img src="images/모두의랭킹.png" alt=""></a>
 				<h2>고객센터</h2>
 				<div class="login">
-					<%
+					<% //비 로그인시
 					if (userid == null) {
 					%>
 					<button type="button" class="login_btn"
@@ -70,7 +61,7 @@
 						onclick="location.href='login.jsp'">로그인</button>
 					<button type="button" class="login_btn"
 						onclick="location.href='join.jsp'">회원가입</button>
-					<%
+					<%//  로그인시
 					} else {
 					%>
 					<button type="button" class="login_btn" id="login_btn"><%= user.getNixname()+"▼" %></button>
@@ -121,6 +112,7 @@
 						<div class="main_title">
 							<h3>1:1문의</h3>
 						</div>
+						<!-- 입력 받은 제목 분류 내용을  serviceAction.jsp 페이지에 전달-->
 						<form method="post" action="serviceAction.jsp">
 							<div class="main_table">
 								<table class="mtm">

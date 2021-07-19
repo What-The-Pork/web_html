@@ -20,6 +20,7 @@
 </head>
 <body>
 	<%
+	// 유저 세션 유지
 	String userid = null;
 	if (session.getAttribute("userid") != null) {
 		userid = (String) session.getAttribute("userid");
@@ -33,6 +34,7 @@
 			return;
 		}
 	}
+	// 비로그인시 방지
 	if (userid == null) {
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
@@ -41,12 +43,13 @@
 		script.println("</script>");
 		script.close();
 	}
-
+	// 페이징 처리를 위한 변수
 	String pageNumber = "1";
-	
+	// 다음 이전을 클릭시 넘어올 변수를 페이지 변수에 넣어줌
 	if (request.getParameter("pageNumber") != null) {
 		pageNumber = request.getParameter("pageNumber");
 	}
+	// 스트링인 pageNumber를 int 형으로 변환
 	try {
 		Integer.parseInt(pageNumber);
 	}catch (Exception e){
@@ -56,19 +59,10 @@
 		return;
 		
 	}
+	//유저정보를 보여줄 객체생성
 	UserDAO userDAO = new UserDAO();
 	UserDTO user = userDAO.getuser(userid);
 	String profile = new UserDAO().getProfile(userid);
-	//		boolean emailChecked = new UserDAO().getUserEmailChecked(userID); //이메일 인증 안될시
-	//	if(emailChecked==false){
-	//	PrintWriter script = response.getWriter();
-	//		script.println("<script>");
-	//		script.println("location.href = 'emailSendConfirm.jsp'");
-	//		script.println("</script>");
-	//		script.close();
-	//		return;
-	//	}
-	int cnt = 1;
 	%>
 	<div id="wrapper">
 		<header>
@@ -76,7 +70,7 @@
 				<a href="index.jsp"><img src="images/모두의랭킹.png" alt=""></a>
 				<h2>고객센터</h2>
 				<div class="login">
-					<%
+					<%//비 로그인 시
 					if (userid == null) {
 					%>
 					<button type="button" class="login_btn"
@@ -85,7 +79,7 @@
 						onclick="location.href='login.jsp'">로그인</button>
 					<button type="button" class="login_btn"
 						onclick="location.href='join.jsp'">회원가입</button>
-					<%
+					<%// 로그인 시
 					} else {
 					%>
 					<button type="button" class="login_btn" id="login_btn"><%= user.getNixname()+"▼" %></button>
@@ -141,7 +135,7 @@
 									<th>문의날짜</th>
 									<th>답변여부</th>
 								</tr>
-								<%
+								<% // 리턴 값이 arraylist인 게시물 객체 메소드에 페이지 넘버를 넣어준 후 가져운 정보를 포문을 통해 메소드의 내용에 맞게 정보를 띄어줌
 								ServiceDAO svDAO = new ServiceDAO();
 								ArrayList<ServiceDTO> list = svDAO.getList(pageNumber);
 								for (int i = 0; i < list.size(); i++) {
@@ -172,12 +166,12 @@
 							<button type="button" class="write_btn" name="button"
 								onclick="location.href='serviceInput.jsp'">글쓰기</button>
 								<div class="list_page">
-								<%
+								<%//페이징처리 첫번째 페이지 가 아니라면 이전을 띄어줌
 									if (!pageNumber.equals("1")){
 								%>
 									<a href="serviceQnA.jsp?pageNumber=<%=Integer.parseInt(pageNumber)-1%>">이전</a>
 									
-								<%
+								<%// 페이지가 있을 시 treu 없을 시 false 값을 리턴해주는 메소드을 실행하여 페이지가 있으면 다음버튼을 띄어줌
 									} if (svDAO.nextPage(pageNumber)){
 								%>
 								

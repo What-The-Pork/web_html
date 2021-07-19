@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
+// 유저 세션 유지
 String userid = null;
 if (session.getAttribute("userid") != null) {
 	userid = (String) session.getAttribute("userid");

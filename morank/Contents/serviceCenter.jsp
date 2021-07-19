@@ -14,10 +14,12 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/CS_main.css">
 <link rel="stylesheet" href="css/login_btn.css">
-<script type="text/javascript" src="js/login_btn.js"></script>
+<script type="text/javascript" src="js/login_btn_cs.js"></script>
 </head>
 <body>
 	<%
+	//공지사항의 메인 페이지
+	// 유저 세션 유지
 	String userid = null;
 	if (session.getAttribute("userid") != null) {
 		userid = (String) session.getAttribute("userid");
@@ -32,7 +34,7 @@
 		}
 	}
 	
-	
+	// 비 로그인 시 접근 방지
 	if (userid==null) {
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
@@ -42,25 +44,13 @@
 		script.close();
 		return;
 	}
-
-	int pageNumber = 1;
-	if (request.getParameter("pageNumber") != null) {
-		pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
-	}
+	// 유저 정보를 보여줄 객체 생성
 	UserDAO userDAO = new UserDAO();
 	UserDTO user = userDAO.getuser(userid);
+	// 공지 정보를 보여줄 객체 생성
 	NoticeDAO noticeDAO = new NoticeDAO();
 	ArrayList<NoticeDTO> list = noticeDAO.getList();
 	String profile = new UserDAO().getProfile(userid);
-	//		boolean emailChecked = new UserDAO().getUserEmailChecked(userID); //이메일 인증 안될시
-	//	if(emailChecked==false){
-	//	PrintWriter script = response.getWriter();
-	//		script.println("<script>");
-	//		script.println("location.href = 'emailSendConfirm.jsp'");
-	//		script.println("</script>");
-	//		script.close();
-	//		return;
-	//	}
 	%>
 	<div id="wrapper">
 		<header>
@@ -68,20 +58,22 @@
 				<a href="index.jsp"><img src="images/모두의랭킹.png" alt=""></a>
 				<h2>고객센터</h2>
 				<div class="login">
-					
+					<!-- 비로그인시엔 접근이 불가하기에 정보만 띄어줌 -->
 					<button type="button" class="login_btn" id="login_btn"><%= user.getNixname()+"▼" %></button>
-					<div id="profile_wrap">
-						<div class="hello">
-							<%= user.getNixname() + " 님 안녕하세요" %>
-							<div class="profile_img">
-								<img src="<%=profile %>" alt="">
+					<div class="probox">
+						<div id="profile_wrap">
+							<div class="hello">
+								<%= user.getNixname() + " 님 안녕하세요" %>
+								<div class="profile_img">
+									<img src="<%=profile %>" alt="">
+								</div>
+								<a href="mypageMain.jsp" class="mypage">마이페이지</a> <a
+									href="serviceCenter.jsp" class="mypage">고객센터</a>
+								<hr>
+								<form action="logoutAction">
+									<a href="logoutAction.jsp" class="logoutAction.jsp">로그아웃</a>
+								</form>
 							</div>
-							<a href="mypageMain.jsp" class="mypage">마이페이지</a> <a
-								href="serviceCenter.jsp" class="mypage">고객센터</a>
-							<hr>
-							<form action="logoutAction">
-								<a href="logoutAction.jsp" class="logoutAction.jsp">로그아웃</a>
-							</form>
 						</div>
 					</div>
 				</div>
@@ -89,7 +81,7 @@
 		</header>
 		<div id="wire">
 			<nav>
-			<%
+			<%// 관리자가 공지사항을 작성할시 페이지 이동을 위함
 			if(userid != null){
 				if (user.getUserAvailable()==1){
 				%>
@@ -112,10 +104,10 @@
 					<div class="notice_list">
 						<ul>
 							<li><a href="#"><h3>공지사항</h3></a></li>
-							<%
+							<%//공지의 자바빈즈에 리스트값을 넣어 포문을 통해 정보를 가져옴
 								for (int i=0; i<list.size(); i++){
 									NoticeDTO notice = list.get(i);
-								%>
+								%><!-- 포문을 통해 온 정보을 serviceCenter_View.jsp 페이지에 전달해줌 -->
 									<li><a href="serviceCenter_View.jsp?noticeid=<%=notice.getNoticeid()%>"><%= notice.getNoticeTitle() %></a></li>								
 								<%
 								}

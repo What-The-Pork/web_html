@@ -13,6 +13,8 @@
 </head>
 <body>
 <%
+// 회원가입 페이지 (1)
+// 유저 세션 정보를 가져와 로그인 시 접근을 제한 하기위함
 String userid = null;
 if (session.getAttribute("userid") != null) {
 	userid = (String) session.getAttribute("userid");
@@ -38,6 +40,7 @@ if (userid != null) {
       </div>
       <p class="title">서비스 약관 안내</p>
       <hr>
+      <!-- joinAction.jsp는 약관 동의를 전부 하지 않았을때 회원가입 진행을 막기 위한 동작 페이지 -->
       <form action="joinAction.jsp" method="post">
 	      <div class="terms_check">
 	        <ul>

@@ -1,5 +1,5 @@
 package user;
-
+//유저 정보 객체
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
@@ -8,9 +8,9 @@ import java.sql.Connection;
 import util.DatabaseUtil;
 
 public class UserDAO {
-	
+	//로그인 메소드
 	public int login(String userid, String pwd) { // 로그인을 시도해주는 메소드
-		String SQL = "SELECT pwd FROM USER WHERE userid = ?";
+		String SQL = "SELECT pwd FROM users WHERE userid = ?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -54,9 +54,9 @@ public class UserDAO {
 	}
 	
 	
-	
+	// 비밀번호 변경 메소드
 	public int changepassword(String userid, String change) { // 로그인을 시도해주는 메소드
-		String SQL = "UPDATE USER SET pwd = ? WHERE userid = ?";
+		String SQL = "UPDATE users SET pwd = ? WHERE userid = ?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -90,9 +90,9 @@ public class UserDAO {
 		}
 		return -1; //디비 오류
 	}
-	
+	// 유저정보를 가져오는 메소드
 	public UserDTO getuser(String userid) {
-		String SQL = "SELECT * FROM user WHERE userid=?";
+		String SQL = "SELECT * FROM users WHERE userid=?";
 		Connection conn = null;
 		PreparedStatement pstmt=null;
 		ResultSet rs = null;
@@ -139,9 +139,9 @@ public class UserDAO {
 		}
 		return null;
 	}
-	
+	// 회원가입 메소드
 	public int join(UserDTO user) { // 회원가입을 해주는 메소드
-		String SQL = "INSERT INTO USER VALUES (?,?,?,?,?,FALSE,0,NULL)";
+		String SQL = "INSERT INTO users VALUES (?,?,?,?,?,FALSE,0,NULL)";
 		Connection conn = null;
 		PreparedStatement pstmt=null;
 		ResultSet rs = null;
@@ -177,9 +177,9 @@ public class UserDAO {
 		}
 		return -1; //회원가입 실패
 	}
-	
+	// 이메일 정보를 가져오는 메소드
 	public String getUserEmail(String userid) { // 인증메일을 송신할때 유저의 이메일 정보를 가져오는 메소드
-		String SQL = "SELECT email FROM USER WHERE userid = ?";
+		String SQL = "SELECT email FROM users WHERE userid = ?";
 		Connection conn = null;
 		PreparedStatement pstmt=null;
 		ResultSet rs = null;
@@ -215,9 +215,9 @@ public class UserDAO {
 		}
 		return null; //데이터베이스 오류
 	}
-	
+	// 이메일 인증을 확인해주는 메소드
 	public boolean getUserEmailChecked(String userid) { // 유저가 이메일 인정절차를 완료했는지 확인 하는 메소드
-		String SQL = "SELECT emailchecked FROM user WHERE userid = ?";
+		String SQL = "SELECT emailchecked FROM users WHERE userid = ?";
 		Connection conn = null;
 		PreparedStatement pstmt=null;
 		ResultSet rs = null;
@@ -256,7 +256,7 @@ public class UserDAO {
 	
 
 	public boolean setUserEmailChecked(String userID) { // 사용자의 이메일 전송을 해주는 메소드
-		String SQL = "UPDATE user SET emailchecked = true WHERE userid =?";
+		String SQL = "UPDATE users SET emailchecked = true WHERE userid =?";
 		Connection conn = null;
 		PreparedStatement pstmt=null;
 		try {
@@ -283,9 +283,9 @@ public class UserDAO {
 		}
 		return false; //데이터베이스 오류
 	}
-	
+	// 계정 삭제 메소드
 	public int delectUser(String userid) {
-		String SQL = "DELETE FROM USER WHERE userid = ?";
+		String SQL = "DELETE FROM users WHERE userid = ?";
 		Connection conn = null;
 		PreparedStatement pstmt=null;
 		ResultSet rs = null;
@@ -318,9 +318,9 @@ public class UserDAO {
 		}
 		return -1; //데이터베이스 오류
 	}
-	
+	// 유저 사진을 업로드 해주는 메소드
 	public int upload(String profile, String userid) {
-		String SQL = "UPDATE USER SET profile = ? WHERE userid = ?";
+		String SQL = "UPDATE users SET profile = ? WHERE userid = ?";
 		Connection conn = null;
 		PreparedStatement pstmt=null;
 		try {
@@ -346,9 +346,9 @@ public class UserDAO {
 		}
 		return -1;
 	}
-	
+	// 닉네임 수정 메소드
 	public int modifyNixname(String nixname, String userid) {
-		String SQL = "UPDATE USER SET nixname = ? WHERE userid = ?";
+		String SQL = "UPDATE users SET nixname = ? WHERE userid = ?";
 		Connection conn = null;
 		PreparedStatement pstmt=null;
 		try {
@@ -374,9 +374,9 @@ public class UserDAO {
 		}
 		return -1;
 	}
-	
+	// 사진정보를 가져와주는 메소드
 	public String getProfile(String userid) {
-		String SQL = "SELECT profile FROM user WHERE userid = ?";
+		String SQL = "SELECT profile FROM users WHERE userid = ?";
 		Connection conn = null;
 		PreparedStatement pstmt=null;
 		ResultSet rs = null;
@@ -387,9 +387,9 @@ public class UserDAO {
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				if (rs.getString("profile").equals("")) {
-					return "http://localhost:8080/morank/images/user.png";
+					return "images/user.png";
 				}
-				return "http://localhost:8080/morank/upload/"+rs.getString("profile");
+				return "upload/"+rs.getString("profile");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -407,6 +407,6 @@ public class UserDAO {
 				e.printStackTrace();
 			}
 		}
-		return "http://localhost:8080/morank/images/user.png";
+		return "images/user.png";
 	}
 }

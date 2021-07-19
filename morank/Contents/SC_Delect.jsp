@@ -11,7 +11,9 @@
 </head>
 <body>
 	<%
+	// 게시물 삭제가 이루어지는 페이지
 	request.setCharacterEncoding("UTF-8");
+	// 아이디 세션 유지
 	String userid = null;
 	if(session.getAttribute("userid") != null) {
 		userid = (String)session.getAttribute("userid");
@@ -25,10 +27,12 @@
 			return;
 		}
 	}
+	// 게시물 아이디를 가져옴
 	String scid = null;
 	if (session.getAttribute("scid") != null) {
 		scid = (String) session.getAttribute("scid");
 	}
+	// 비로그인시 접근을 방지하기 위함
 	if (userid == null) {
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
@@ -37,8 +41,18 @@
 		script.println("</script>");
 		script.close();
 	}
+	// 비정상적인 접근 시
+	if (scid == null) {
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("alert('잘못된 접근 입니다.')");
+		script.println("location.href = 'login.jsp'");
+		script.println("</script>");
+		script.close();
+	}
+	// 게시물 객체 생성
 	ServiceDAO serviceDAO = new ServiceDAO();
-
+	// 데이터를 삭제해주는 메소드를 실행
 	int result = serviceDAO.delectQnA(userid, scid);
 	if (result == -1) {
 		PrintWriter script = response.getWriter();
