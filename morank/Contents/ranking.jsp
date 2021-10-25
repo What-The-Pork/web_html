@@ -35,20 +35,19 @@
 	%>
  
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="ko" dir="ltr">
   <head>
     <meta charset="utf-8">
     <title>모두의 랭킹</title>
-    <script src="https://kit.fontawesome.com/8b15bac25a.js" crossorigin="anonymous"></script>
+    <!-- crossorigin="anonymous" -->
+    <script src="https://kit.fontawesome.com/8b15bac25a.js"></script>
     <script type="text/javascript" src="js/search_IN.js"></script>
-    <script src="https://kit.fontawesome.com/8b15bac25a.js" crossorigin="anonymous"></script>
 	<script type="text/javascript" src="js/login_btn.js"></script>
-	<script type="text/javascript" src="js/login_btn.js"></script>
-	
-	<link rel="stylesheet" href="css/search_IN.css">
 	<link rel="stylesheet" href="css/login_btn.css">
 	<link rel="stylesheet" href="css/mypage_header.css">
+	<link rel="stylesheet" href="css/search_IN.css">
   </head>
+  
   <body>
     <div id="wrapper">
       <header>
@@ -134,7 +133,7 @@
 					if (result.size() == 0){
 				%>		
 					<form method="post" action="SCpage.jsp">
-						<input type="submit" name="gotoSC" value="추가 요청하러 가기">
+						<input type="submit" name="gotoSC" value="정보 추가 요청">
 					</form>
 				<%		
 					}
@@ -149,7 +148,7 @@
 		                    <th>순위</th>
 		                    <th>이름</th>
 		                    <th>투표수</th>
-		                    <th>좋아요</th>
+		                    <th>좋아요 test</th>
 	                  	</tr>
 							<%
 								String select = request.getParameter("showcate");
@@ -160,7 +159,7 @@
 									informationVO iVo = table.get(i);
 							%>
 	              
-		                <tr>
+		                <tr style="font-size:14px;">
 		                   <td><%=cnt++%></td>
 		                   <td><a href="contents.jsp?info_id=<%=iVo.getInfo_id()%>&total=<%=select%>"><%= iVo.getInfo_name() %></a></td>
 		                   <td><%= iVo.getLikeamount() %></td>

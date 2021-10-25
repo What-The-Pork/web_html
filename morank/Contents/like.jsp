@@ -49,7 +49,8 @@
 		PrintWriter script  = response.getWriter();
 		script.println("<script>");
 		//이전 페이지에 total = 카테고리(소)+카테고리(대) 정보를 전달해줌
-		script.println("location.href='ranking.jsp?showcate="+total+"'");
+		//script.println("location.href='ranking.jsp?showcate="+total+"'");
+		script.println("history.back()");
 		script.println("</script>");
 		script.close();
 	}

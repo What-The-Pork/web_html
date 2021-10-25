@@ -279,7 +279,8 @@ if (request.getQueryString() != null)
 								onsubmit="formCheck()">
 								<textarea name="comment_inputs" id="comment_input" rows="8"
 									cols="80" maxlength=215></textarea>
-								<input type="submit" id="comment_into_db" name ="info_id" value="<%=info_id %>"/>
+								<input type="hidden" name ="info_id" value="<%=info_id %>"/>
+								<input type="submit" id="comment_into_db" value="등록">
 							</form>
 							
 						</div>

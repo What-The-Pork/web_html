@@ -1,5 +1,5 @@
 package searchdao;
-// °Ë»öÁ¤º¸¿¡ ´ëÇÑ °´Ã¼
+// ï¿½Ë»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -16,7 +16,7 @@ public class informationDAO {
 	private ResultSet rs = null;
 	
 	
-	// °Ë»ö¾î ÀÔ·Â½Ã Ä«Å×°í¸® Ãâ·Â
+	// ï¿½Ë»ï¿½ï¿½ï¿½ ï¿½Ô·Â½ï¿½ Ä«ï¿½×°ï¿½ ï¿½ï¿½ï¿½
 	public ArrayList<informationVO> showcategory (String search) {
 		ArrayList<informationVO> list = new ArrayList<informationVO>();
 		String sql = "SELECT distinct SmallC_id, BigC_id FROM information WHERE keyword LIKE ?";
@@ -53,7 +53,7 @@ public class informationDAO {
 		return list; 
 	}
 	
-	// Ä«Å×°í¸® ¼±ÅÃ½Ã ·©Å· ¸®½ºÆ® Ãâ·Â
+	// Ä«ï¿½×°ï¿½ ï¿½ï¿½ï¿½Ã½ï¿½ ï¿½ï¿½Å· ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½
 	public ArrayList<informationVO> showranklist (String select) {
 		ArrayList<informationVO> list = new ArrayList<informationVO>();
 		String sql = "select info_name, likeamount, info_id from information where CONCAT(SmallC_id,BigC_id) = ? order by likeamount desc LIMIT 10";
@@ -90,7 +90,7 @@ public class informationDAO {
 		}
 		return list; 
 	}
-	// ÁÁ¾Æ¿ä ¼ö¸¦ ´Ã·ÁÁÖ´Â ¸Þ¼Òµå
+	// ï¿½ï¿½ï¿½Æ¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ö´ï¿½ ï¿½Þ¼Òµï¿½
 	public int likeplus(String info_id) {
 		String sql = "update information set likeamount = likeamount + 1 where info_id = ? ";
 		try {
@@ -116,7 +116,7 @@ public class informationDAO {
 		return -1; 
 		
 	}
-	// ÁÁ¾Æ¿ä ¼ö¸¦ ÁÙ¿©ÁÖ´Â ¸Þ¼Òµå ±¸Çö Àü
+	// ï¿½ï¿½ï¿½Æ¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¿ï¿½ï¿½Ö´ï¿½ ï¿½Þ¼Òµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 	public int likeminus(String info_id) {
 		String sql = "update information set likeamount = likeamount - 1 where info_id = ? ";
 		try {
@@ -143,7 +143,7 @@ public class informationDAO {
 		
 	}
 	
-	// contents ÆäÀÌÁö ¿¡¼­ ¸ðµç Á¤º¸¸¦ Ãâ·Â
+	// contents ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 	public informationVO getinfo(String info_id) {
 		String sql = "select * from information where info_id =?";
 		
@@ -186,7 +186,7 @@ public class informationDAO {
 		return null;
 	}
 	
-	// ´Ù¸¥ ·©Å· º¸±â
+	// ï¿½Ù¸ï¿½ ï¿½ï¿½Å· ï¿½ï¿½ï¿½ï¿½
 	public ArrayList<informationVO> getMiniRanks(String category) {
 		ArrayList<informationVO> ArrtDto1 = new ArrayList<informationVO>();
 		String sql = "SELECT info_id, img_link, info_name, likeamount FROM information WHERE CONCAT(SmallC_id,BigC_id) = ? ORDER BY likeamount DESC LIMIT 10";
@@ -227,7 +227,7 @@ public class informationDAO {
 		return ArrtDto1;
 	}
 
-	// ÀÎµ¦½º ·©Å· ÆäÀÌÁöÁ¤º¸¸¦ °¡Á®¿ÍÁÖ´Â ¸Þ¼Òµå
+	// ï¿½Îµï¿½ï¿½ï¿½ ï¿½ï¿½Å· ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½Þ¼Òµï¿½
 	public ArrayList<informationVO> getindexinfo(String BigC_id) {
 		String SQL = "SELECT * FROM information WHERE BigC_id=? order by likeamount desc LIMIT 10";
 		ArrayList<informationVO> arr = new ArrayList<informationVO>();
@@ -263,7 +263,7 @@ public class informationDAO {
 		}
 		return arr;
 	}
-	// °Ë»ö Á¤º¸ ÀÛ¼º½Ã »ç¿ëµÇ´Â ¸Þ¼Òµå
+	// ï¿½Ë»ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Û¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ç´ï¿½ ï¿½Þ¼Òµï¿½
 	public int writeinfo(informationVO infoVO) {
 
 		String SQL = "INSERT INTO information VALUES (?, ?, ?, ?, ?, ?, 0, NULL, ?)";
@@ -304,7 +304,7 @@ public class informationDAO {
 		}
 		return -1;
 	}
-	// °Ë»ö Á¤º¸ µî·Ï ½Ã ¾ÆÀÌµðÀÇ Áßº¹À» Ã¼Å©ÇØÁÖ´Â ¸Þ¼Òµå
+	// ï¿½Ë»ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ï¿½ï¿½ ï¿½ßºï¿½ï¿½ï¿½ Ã¼Å©ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½Þ¼Òµï¿½
 	public boolean getprimarykey(String info_id) {
 		String SQL = "SELECT * FROM information WHERE info_id =?";
 		try {
@@ -333,7 +333,7 @@ public class informationDAO {
 		}
 		return false;
 	}
-	// Á¤º¸ ¾ÆÀÌµð¸¦ °¡Á®¿ÍÁÖ´Â ¸Þ¼Òµå
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½Þ¼Òµï¿½
 	public String getinfoid(String BigC_id, String SmallC_id) {
 		String SQL = "SELECT info_id FROM information WHERE BigC_id=? AND SmallC_id=? ORDER BY info_id DESC";
 		try {
@@ -363,7 +363,7 @@ public class informationDAO {
 		}
 		return null;
 	}
-	// °Ë»öÁ¤º¸ÀÇ ¸ðµç°É °¡Á®¿À´Â ¸Þ¼Òµå
+	// ï¿½Ë»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¼Òµï¿½
 	public ArrayList<informationVO> getallinfo() {
 		String SQL = "SELECT * FROM information";
 		ArrayList<informationVO> arr = new ArrayList<informationVO>();
@@ -402,7 +402,7 @@ public class informationDAO {
 		}
 		return arr;
 	}
-	// °Ë»öÁ¤º¸ ÇÁ·ÎÇÊ »çÁøÀ» µî·ÏÇØ ÁÖ´Â ¸Þ¼Òµå
+	// ï¿½Ë»ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½Þ¼Òµï¿½
 	public int getProfile(String IMG_LINK, String info_name) {
 		String SQL = "UPDATE information SET IMG_LINK = ? WHERE info_name = ?";
 		try {
@@ -428,7 +428,7 @@ public class informationDAO {
 		}
 		return -1;
 	}
-	// °Ë»öÁ¤º¸ ÇÁ·ÎÇÊ »çÁøÀ» °¡Á®¿ÍÁÖ´Â ¸Þ¼Òµå
+	// ï¿½Ë»ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½Þ¼Òµï¿½
 	public String bringProfile(String info_name) {
 		String SQL = "SELECT IMG_LINK FROM information WHERE info_name = ?";
 		try {

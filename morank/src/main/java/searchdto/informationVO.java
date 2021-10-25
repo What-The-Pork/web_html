@@ -1,5 +1,5 @@
 package searchdto;
-// °Ë»ö Á¤º¸ ÀÚ¹ÙºóÁî
+// ï¿½Ë»ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ú¹Ùºï¿½ï¿½ï¿½
 public class informationVO {
 	private String BigC_id;
 	private String SmallC_id;    

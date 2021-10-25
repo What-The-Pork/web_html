@@ -44,36 +44,74 @@ if (emailChecked == true) {
 	return;
 }
 
-String host = "http://jusu0369.cafe24.com/"; //사이트 주소
-String from = "pcj0228test.gmail.com"; //구글아이디
-String to = userDAO.getUserEmail(userid); //유저아이디
-String subject = "모랭 사이트 회원가입 이메일 인증 메일 입니다."; // 메일 제목
+//사이트 주소
+String host = "http://localhost:8080/morank/"; 
+
+//보낼 아이디 지정
+String from = "userTest";
+//유저아이디
+String to = userDAO.getUserEmail(userid); 
+//메일 제목
+String subject = "모랭 사이트 회원가입 이메일 인증 메일 입니다."; 
+//메일 내용
 String content = "다음 링크에 접속하여 이메일 인증을 진행하세요." + "<a href='" + host + "emailCheckAction.jsp?code="
-		+ new SHA256().getSHA256(to) + "'><br>이메일 인증하기</a>"; // 메일 내용
-// 이메일 전송 내용 저장
+		+ new SHA256().getSHA256(to) + "'><br>이메일 인증하기</a>";
+		
+// Property에 SMTP 서버의 정보를 설정
 Properties p = new Properties();
+//SMTP의 기본 사용자 이름
 p.put("mail.smtp.user", from);
+//연결할 SMT 서버
 p.put("mail.smtp.host", "smtp.googlemail.com");
+//SMTP 서버 포트
+//SSL용 - 465 // TSL/STARTTLS - 587
 p.put("mail.smtp.port", "465");
-p.put("mail.smtp.starttls.enable", "true");
+
+//SMTP MAIL 명령에 사용할 이메일 주소
+p.put("mail.smtp.from", "fromTest");
+
+//ture인 경우 AUTH 명령을 사용하여 사용자 인증을 시도
 p.put("mail.smtp.auth", "true");
+
+//javaMail에서 tls를 시작을 명시적 요청
+//이전에는 암호화되지 않은 평문으로 보내다 설정을 확인하면 보안 관련 채널을 생성 , 인증서 확인 등의 작업을 거침
+//p.put("mail.smtp.starttls.enable", "true");
+//사용 시 - SSL(Secure Sockets Layer) : 자동으로 보안 채널을 생성하여 메일을 전송
+p.put("mail.smtp.ssl.enable","true");
+
+//debug에서 사용(로그출력)
 p.put("mail.smtp.debug", "true");
-p.put("mail.smtp.socketFactory.port", "465");
+
+//설정된 경우 javax.net.SocketFactory 인터페이스를 구현하는 클래스의 이름을 지정
 p.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+//지정된 소켓 팩토리 클래스를 사용하여 소켓을 생성하지 못하면 해당 java.net.Socket 클래스를 사용하여 소켓을 생성하는 부분
 p.put("mail.smtp.socketFactory.fallback", "false");
+//지정된 소켓 팩토리를 사용할 때 연결할 포트를 지정
+p.put("mail.smtp.socketFactory.port", "465");
+
 //이메일 전송
 try {
+	//구글 메일 계정으로 인스턴스 생성
 	Authenticator auth = new Gmail();
+	//session 클래스의 인스턴스 생성
 	Session ses = Session.getInstance(p, auth);
 	ses.setDebug(true);
+	//msg 클래스의 객체를 사용하여 수신자와 내용, 제목의 메시지를 작성
 	MimeMessage msg = new MimeMessage(ses);
+	//제목
 	msg.setSubject(subject);
-	Address fromAddr = new InternetAddress(from);
+	//보내는 아이디
+	//InternetAddress(메일주소, 보내는사람 이름, 문자셋)
+	Address fromAddr = new InternetAddress(from, "모랭", "UTF-8");
 	msg.setFrom(fromAddr);
+	//수신자 메일 주소
 	Address toAddr = new InternetAddress(to);
 	msg.addRecipient(Message.RecipientType.TO, toAddr);
+	//메일 내용
 	msg.setContent(content, "text/html;charset=UTF-8");
+	//메시지 전송
 	Transport.send(msg);
+	
 } catch (Exception e) {
 	e.printStackTrace();
 	PrintWriter script = response.getWriter();
@@ -82,6 +120,7 @@ try {
 	script.println("history.back()");
 	script.println("</script>");
 	script.close();
+	
 	return;
 }
 %>

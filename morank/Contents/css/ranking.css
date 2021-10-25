@@ -100,7 +100,7 @@ header{
 }
 
 .categorybord{
-  width: 50%;
+  width: 70%;
   margin: auto;
   margin-top: 8%;
   margin-bottom: 8px;
@@ -136,6 +136,7 @@ header{
   overflow: hidden; /*글자 넘칠때 아래로 뻗는경우 예방*/
   margin:auto;
   border: 1px solid black;
+  font-size: 14px;
 }
 
 .rankings{

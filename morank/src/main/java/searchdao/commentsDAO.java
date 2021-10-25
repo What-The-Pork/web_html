@@ -1,5 +1,5 @@
 package searchdao;
-// ´ñ±ÛÁ¤º¸ °´Ã¼
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,7 +15,7 @@ public class commentsDAO {
 	private PreparedStatement pstmt = null;
 	private ResultSet rs = null;
 
-	// ´ñ±Û Á¤º¸¸¦ °¡Á®¿ÍÁÖ´Â ¸Þ¼Òµå
+	// ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½Þ¼Òµï¿½
 	public ArrayList<commentsVO> getcomments(String info_id) {
 		ArrayList<commentsVO> ArrtDto = new ArrayList<commentsVO>();
 		String sql = "select * from comments where info_id=? ORDER BY comment_id DESC";
@@ -53,7 +53,7 @@ public class commentsDAO {
 		}
 		return ArrtDto;
 	}
-	// ´ñ±Û ÀÛ¼º½Ã »ç¿ëµÇ´Â ¸Þ¼Òµå
+	// ï¿½ï¿½ï¿½ ï¿½Û¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ç´ï¿½ ï¿½Þ¼Òµï¿½
 	public int creatcomment(commentsVO commentsvo) {
 		String sql = "INSERT INTO comments VALUES(?,?,?,?,0)";
 		try {

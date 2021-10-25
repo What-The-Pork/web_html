@@ -9,7 +9,8 @@
 <%@ page import = "user.UserDAO" %>   
 <%@ page import = "user.UserDTO" %>
 <%@ page import = "searchdao.informationDAO" %>
-<%@ page import = "searchdto.informationVO" %>  
+<%@ page import = "searchdto.informationVO" %>
+<%@ page import = "util.SHA256" %>  
 
 <%
 //영화 변수
@@ -37,6 +38,8 @@ informationDAO info = new informationDAO(); //인덱스 랭킹 정보를 가져�
 				return;
 			}
 		}	
+		
+		System.out.println(session.getAttribute("userid"));
 		//회원정보를 가져올 회원객체 생성
 		UserDAO userDAO = new UserDAO();
 		UserDTO user = userDAO.getuser(userid);
@@ -301,6 +304,7 @@ informationDAO info = new informationDAO(); //인덱스 랭킹 정보를 가져�
             <b>주소</b> : 경기 수원시 팔달구 중부대로 100 3층
             <br>
             <b>대표</b> : 박창주
+            <div><%System.out.println( SHA256.getSHA256("salt") ); %></div>
           </div>
         </div>
       </footer>

@@ -1,5 +1,5 @@
 package util;
-//ÀÌ¸ÞÀÏ ¿¬µ¿ °´Ã¼
+//ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼
 import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
 
@@ -7,7 +7,7 @@ public class Gmail extends Authenticator {
 	
 	@Override
 	protected PasswordAuthentication getPasswordAuthentication() {
-		return new PasswordAuthentication("±¸±Û¾ÆÀÌµð", "±¸±Ûºñ¹Ð¹øÈ£"); //º»ÀÎ ¾ÆÀÌµð
+		return new PasswordAuthentication("schs1214@gmail.com", "wjdtjs12"); //êµ¬ê¸€ ê³„ì •ì •ë³´(ID, PW)
 	}
 	
 	
